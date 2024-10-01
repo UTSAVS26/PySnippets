@@ -1,20 +1,24 @@
-<!-- Pull Request Template -->
-
-## Related Issue*
-
-Closes #issue_number
-
-<!-- If there is no issue number, the PR will not be merged. Therefore, please ensure that the issue number is added -->
+# Pull Request for New Snippet: `<snippet_name>`
 
 ## Description
 
-<!-- Write a brief description of the changes made in the PR. Explain the problem being addressed, or any relevant
-information. -->
+- **Snippet Name**: `<snippet_name>`
+- **Category**: `<category>` (e.g., strings, numbers, files)
+- **Function Name**: `<function_name>`
 
-## Screenshot Section
+### Summary of Changes
 
-<!-- Include the screenshot to preview the changes done and their proper functionality -->
+- Briefly describe what this snippet does and why it is useful.
+- Mention any important details or considerations for users.
 
-## Demo Video Section*
+### Code Changes
 
-<!-- Include the demo video to preview the changes done and their proper functionality -->
+- Provide a summary of the changes made in the code (if applicable).
+
+### Example Usage
+
+```python
+# Provide an example of how to use the snippet.
+result = <function_name>(<example_arguments>)
+print(result)
+```
