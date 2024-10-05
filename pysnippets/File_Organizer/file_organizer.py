@@ -65,7 +65,7 @@ def organize_files_by_type(folder_path):
 
 # Example usage
 if __name__ == "__main__":
-    folder_to_organize = r"E:\trial"  # Replace with the actual folder path
+    folder_to_organize = r"path_to_the_folder"  # Replace with the actual folder path
     try:
         organize_files_by_type(folder_to_organize)
     except ValueError as e:
