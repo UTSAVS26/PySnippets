@@ -2,7 +2,7 @@ import unittest
 import os
 import tempfile
 import shutil
-from snippets.File_Organizer.file_organizer import organize_files_by_type
+from Snippets.File_Organizer.file_organizer import organize_files_by_type
 
 class TestOrganizeFilesByType(unittest.TestCase):
 
