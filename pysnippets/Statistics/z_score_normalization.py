@@ -1,5 +1,8 @@
 # statistics.py (continued)
 
+from mean_median_mode import mean
+from standard_deviation import standard_deviation
+
 def z_score_normalization(data):
     """
     Normalize a list of numbers using Z-score normalization.
