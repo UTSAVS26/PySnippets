@@ -1,7 +1,7 @@
 # test_number_formatting.py
 
 import unittest
-from Snippets.Numbers.number_formatting import format_number
+from pysnippets.Numbers.number_formatting import format_number
 
 
 class TestNumberFormatting(unittest.TestCase):
