@@ -25,13 +25,55 @@ def organize_files_by_type(folder_path):
     
     # Define file categories and their extensions
     file_categories = {
-        'Images': ['.jpg', '.jpeg', '.png', '.gif', '.bmp'],
-        'Documents': ['.pdf', '.docx', '.txt', '.xls', '.xlsx', '.pptx'],
-        'Videos': ['.mp4', '.mov', '.avi', '.mkv'],
-        'Music': ['.mp3', '.wav', '.flac'],
-        'Archives': ['.zip', '.rar', '.tar', '.gz'],
-        'Scripts': ['.py', '.js', '.html', '.css', '.c'],
-    }
+    'Images': [
+        '.jpg', '.jpeg', '.png', '.gif', '.bmp', 
+        '.tiff', '.tif', '.svg', '.webp', '.raw', 
+        '.heif', '.heic', '.ico', '.ai', '.eps',
+        '.indd', '.pdf', '.jfif', '.exif'
+    ],
+    'Documents': [
+        '.pdf', '.docx', '.doc', '.txt', '.xls', 
+        '.xlsx', '.pptx', '.ppt', '.csv', '.odt', 
+        '.rtf', '.wps', '.xml', '.html', '.md', 
+        '.tex', '.epub', '.xps', '.mobi', '.wps', 
+        '.numbers', '.key', '.pages'
+    ],
+    'Videos': [
+        '.mp4', '.mov', '.avi', '.mkv', '.wmv', 
+        '.flv', '.webm', '.mpeg', '.mpg', '.3gp', 
+        '.mpv', '.m4v', '.f4v', '.vob', '.rm', 
+        '.rmvb', '.asf', '.m2ts', '.ts', '.divx', 
+        '.xvid'
+    ],
+    'Music': [
+        '.mp3', '.wav', '.flac', '.aac', '.ogg', 
+        '.m4a', '.wma', '.opus', '.alac', '.aiff', 
+        '.mid', '.midi', '.ra', '.3gp', '.dsf', 
+        '.dff', '.wv', '.cda'
+    ],
+    'Archives': [
+        '.zip', '.rar', '.tar', '.gz', '.7z', 
+        '.bz2', '.xz', '.iso', '.dmg', '.jar', 
+        '.tar.gz', '.tgz', '.z', '.ace', '.cab', 
+        '.lzh', '.arj'
+    ],
+    'Scripts': [
+        '.py', '.js', '.html', '.css', '.c', 
+        '.cpp', '.rb', '.php', '.java', '.sh', 
+        '.go', '.swift', '.pl', '.perl', '.sql', 
+        '.dart', '.kotlin', '.xml', '.yaml', 
+        '.json', '.bat', '.vbs', '.asp'
+    ],
+    'Fonts': [
+        '.ttf', '.otf', '.woff', '.woff2', '.eot', 
+        '.svg', '.fnt', '.fon', '.apk' 
+    ],
+    'System': [
+        '.exe', '.dll', '.sys', '.bin', '.iso', 
+        '.img', '.sh', '.cmd', '.bat'
+    ]
+}
+
 
     # Create category folders if they don't exist
     for category in file_categories:
