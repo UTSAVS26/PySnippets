@@ -1,29 +1,24 @@
-# Pull Request for New Snippet: `Tkinter Widgets`
+# Pull Request for New Snippet: `<snippet_name>`
 
 ## Description
 
-- **Snippet Name**: `Widgets`
-- **Category**: `tkinter`
-- **Function Name**: `Tkinter widget functions`
+- **Snippet Name**: `<snippet_name>`
+- **Category**: `<category>` (e.g., strings, numbers, files)
+- **Function Name**: `<function_name>`
 
 ### Summary of Changes
 
-- These snippets will help people create GUI applications using tkinter.
-- Users can directly copy and paste the widgets with their desired dimensions and use them in their programs
+- Briefly describe what this snippet does and why it is useful.
+- Mention any important details or considerations for users.
 
 ### Code Changes
 
-None
+- Provide a summary of the changes made in the code (if applicable).
 
 ### Example Usage
 
 ```python
 # Provide an example of how to use the snippet.
-import tkinter as tk
-
-root = tk.Tk()
-button = tk.Button(root, text="Click Me", width=your_desired_value, height=your_desired_value)
-button.pack()
-root.mainloop()
+result = <function_name>(<example_arguments>)
+print(result)
 ```
-The above code will generate a button widget of the specified dimensions.
