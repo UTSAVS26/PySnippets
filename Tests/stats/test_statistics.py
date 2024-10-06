@@ -1,5 +1,7 @@
 import unittest
-from snippets.statistics import mean, median, mode, variance, standard_deviation
+from pysnippets.stats.mean_median_mode import mean, median, mode
+from pysnippets.stats.standard_deviation import standard_deviation
+from pysnippets.stats.variance import variance
 
 class TestStatistics(unittest.TestCase):
 

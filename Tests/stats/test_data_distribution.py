@@ -1,5 +1,6 @@
 import unittest
-from snippets.statistics import quantile, z_score_normalization
+from pysnippets.stats.quantile import quantile
+from pysnippets.stats.z_score_normalization import  z_score_normalization
 
 class TestDataDistribution(unittest.TestCase):
 

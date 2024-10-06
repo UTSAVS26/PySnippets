@@ -7,8 +7,8 @@ Wellcome To PySnippet's Mathematics Module Section, This Section Contains The Do
 - [Introduction](#introduction)
 - [Matrix Operations](#matrix-operations)
   - [Matrix Addition](#matrix-addition)
-  - [Matrix Multiplication](#matrix-multiplication)
   - [Matrix Transpose](#matrix-transpose)
+  - [Matrix Multiplication](#matrix-multiplication)
 - [Determinant](#determinant)
   - [Determinant of a Matrix](#determinant-of-a-matrix)
 - [Complex Numbers](#complex-numbers)
@@ -69,7 +69,7 @@ transpose(matrix)
 - **Returns**: The transposed matrix.
 - **Example**:
   ```python
-  >>> transpose([[1, 2], [3, 4]])
+  >>> matrix_transpose([[1, 2], [3, 4]])
   [[1, 3], [2, 4]]
   ```
 
