@@ -4,7 +4,7 @@ import unittest
 import os
 import tempfile
 import shutil
-from pysnippets.FileOrganizer.file_organizer import organize_files_by_type
+from pysnippets.files.file_organizer import organize_files_by_type
 
 class TestOrganizeFilesByType(unittest.TestCase):
 
