@@ -2,7 +2,7 @@
 
 import os
 import unittest
-from Snippets.Files.file_reader import read_file
+from pysnippets.files.file_reader import read_file
 
 
 class TestFileReader(unittest.TestCase):

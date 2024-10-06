@@ -1,7 +1,7 @@
 # test_list_to_comma_string.py
 
 import unittest
-from Snippets.Strings.list_to_comma_string import list_to_comma_string
+from pysnippets.strings.list_to_comma_string import list_to_comma_string
 
 
 class TestListToCommaString(unittest.TestCase):

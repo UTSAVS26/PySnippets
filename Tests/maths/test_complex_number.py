@@ -1,5 +1,5 @@
 import unittest
-from snippets.complex_numbers import add_complex, multiply_complex
+from pysnippets.maths.complex_number_operations import add_complex, multiply_complex
 
 class TestComplexNumbers(unittest.TestCase):
 
