@@ -6,11 +6,16 @@ Wellcome To PySnippet's Mathematics Module Section, This Section Contains The Do
 
 - [Introduction](#introduction)
 - [Matrix Operations](#matrix-operations)
+  - [Matrix Inverse](#matrix-inverse)
   - [Matrix Addition](#matrix-addition)
   - [Matrix Transpose](#matrix-transpose)
   - [Matrix Multiplication](#matrix-multiplication)
+  - [Matrix Sclar Multiplication](#matrix-sclar-multiplication)
 - [Determinant](#determinant)
-  - [Determinant of a Matrix](#determinant-of-a-matrix)
+  - [Determinant](#determinant-of-a-matrix)
+  - [Minor](#minor)
+  - [Cofactor](#cofactor)
+  - [Adjugate](#adjugate)
 - [Complex Numbers](#complex-numbers)
   - [Complex Addition](#complex-addition)
   - [Complex Conjugate](#complex-conjugate)
@@ -24,6 +29,22 @@ The **Mathematics Module** simplifies the handling of matrix operations and comp
 ---
 
 ## Matrix Operations
+
+### Matrix Inverse
+
+Calculates the inverse of a square matrix.
+
+```python
+matrix_inverse(matrix)
+```
+
+- **Args**: A square matrix `matrix`.
+- **Returns**: The inverse of the matrix.
+- **Example**:
+  ```python
+  >>> matrix_inverse([[1, 2], [3, 4]])
+  [[-2.0, 1.0], [1.5, -0.5]]
+  ```
 
 ### Matrix Addition
 
@@ -73,7 +94,24 @@ transpose(matrix)
   [[1, 3], [2, 4]]
   ```
 
+### Matrix Scalar Multiplication
+
+Multiplies a matrix by a scalar value.
+
+```python
+matrix_scalar_multiplication(matrix, scalar)
+```
+
+- **Args**: A matrix `matrix` and a scalar value `scalar`.
+- **Returns**: The resulting matrix after scalar multiplication.
+- **Example**:
+  ```python
+  >>> matrix_scalar_multiplication([[1, 2], [3, 4]], 2)
+  [[2, 4], [6, 8]]
+  ```
+
 ---
+
 ## Determinant
 
 ### Determinant of a Matrix
@@ -90,6 +128,38 @@ determinant(matrix)
   ```python
   >>> determinant([[1, 2], [3, 4]])
   -2
+  ```
+
+### Minor
+
+Calculates the minor of a matrix element.
+
+```python
+minor(matrix, row, col)
+```
+
+- **Args**: A matrix `matrix`, row index `row`, and column index `col`.
+- **Returns**: The minor of the element at the specified row and column.
+- **Example**:
+  ```python
+  >>> minor([[1, 2], [3, 4]], 0, 0)
+  4
+  ```
+
+### Cofactor
+
+Calculates the cofactor of a matrix element.
+
+```python
+cofactor(matrix, row, col)
+```
+
+- **Args**: A matrix `matrix`, row index `row`, and column index `col`.
+- **Returns**: The cofactor of the element at the specified row and column.
+- **Example**:
+  ```python
+  >>> cofactor([[1, 2], [3, 4]], 0, 0)
+  4
   ```
 
 ---
