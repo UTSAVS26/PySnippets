@@ -1,4 +1,6 @@
 # matrix_multiplication.py
+from determinant import determinant
+
 def matrix_addition(A, B):
     """
     Add two matrices A and B.
@@ -87,6 +89,46 @@ def matrix_transpose(A):
     """
     return [[A[j][i] for j in range(len(A))] for i in range(len(A[0]))]
 
+def matrix_scalar_multiplication(A, scalar):
+    """
+    Multiply a matrix A by a scalar.
+
+    Args:
+        A (list of list of int/float): The matrix.
+        scalar (int/float): The scalar to multiply by.
+
+    Returns:
+        list of list of int/float: The resulting matrix after scalar multiplication.
+
+    Example:
+        >>> A = [[1, 2], [3, 4]]
+        >>> matrix_scalar_multiplication(A, 2)
+        [[2, 4], [6, 8]]
+    """
+    return [[element * scalar for element in row] for row in A]
+
+def matrix_inverse(A):
+    """
+    Calculate the inverse of a 2x2 matrix A.
+
+    Args:
+        A (list of list of int/float): The 2x2 matrix.
+
+    Returns:
+        list of list of int/float: The inverse of the matrix.
+
+    Raises:
+        ValueError: If the matrix is not 2x2 or if the matrix is singular.
+
+    Example:
+        >>> A = [[1, 2], [3, 4]]
+        >>> matrix_inverse(A)
+        [[-2.0, 1.0], [1.5, -0.5]]
+    """
+    det = determinant(A)
+    if det == 0:
+        raise ValueError("The matrix is singular and cannot be inverted.")
+    return [[A[1][1] / det, -A[0][1] / det], [-A[1][0] / det, A[0][0] / det]]
 
 # Example usage
 if __name__ == "__main__":
