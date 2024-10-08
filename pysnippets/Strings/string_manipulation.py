@@ -90,7 +90,7 @@ def to_encode(s:str) -> bytes:
     to_encode("hello") ->b'hello'
     """
     return s.encode("utf-8")
-def to_decode(s)->str:
+def to_decode(s:bytes)->str:
     """
     Decodes a bytes object back into a string. 
 
