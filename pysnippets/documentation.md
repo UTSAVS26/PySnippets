@@ -4,10 +4,10 @@ Welcome to **PySnippets**, a Python package that offers a collection of reusable
 
 ## Modules
 
-- [Math](math/math.md)
-- [Files](files/files.md)
+- [Math](maths/mathematics.md)
+- [Files](Files/reader.md)
 - [Numbers](numbers/numbers.md)
-- [Strings](strings/strings.md)
-- [Statistics](statistics/statistics.md)
+- [Strings](Strings/Strings.md)
+- [Statistics](Stats/Statistics.md)
 
 ---
