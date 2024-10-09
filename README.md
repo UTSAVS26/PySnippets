@@ -2,7 +2,7 @@
 
 Welcome to **PySnippets**, a Python package that offers a collection of reusable code snippets designed to solve common programming challenges and perform everyday tasks. With this package, developers can easily integrate useful snippets directly into their projects, speeding up development while maintaining clarity and simplicity. Whether you're a beginner or an experienced developer, **PySnippets** provides a robust set of tools to enhance your workflow.
 
-## Table of Contents
+## 🦋 Table of Contents
 
 - [Features](#features)
 - [Getting Started](#getting-started)
@@ -16,7 +16,7 @@ Welcome to **PySnippets**, a Python package that offers a collection of reusable
 
 ---
 
-## Features
+## 🔥Features
 
 - **Python Package**: Install and import snippets directly into your projects as a package.
 - **Modular Code**: Snippets are designed to be easily integrated and modified for specific use cases.
@@ -28,7 +28,7 @@ Welcome to **PySnippets**, a Python package that offers a collection of reusable
 
 ---
 
-## Getting Started
+## 👊 Getting Started
 
 ### Prerequisites
 
@@ -78,7 +78,7 @@ Check the full documentation for details on each snippet's functionality and usa
 
 ---
 
-## Contributing
+## 🌱 Contributing
 
 We welcome contributions! You can help improve **PySnippets** by submitting new snippets, fixing bugs, or enhancing existing functionality.
 
@@ -106,13 +106,13 @@ If you find any bugs or issues, please submit an issue on GitHub with detailed i
 
 ---
 
-## License
+## 📜 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Contact
+## 📞 Contact
 
 For questions, suggestions, or feedback, feel free to contact the project maintainer:
 
@@ -135,7 +135,7 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
 
 ---
 
-## Acknowledgments
+## ❤️ Acknowledgments
 
 A special thanks to all contributors and the open-source community for their support and valuable contributions to this project!
 
