@@ -7,27 +7,39 @@ import logging
 import scipy.stats as stats
 
 # Set up logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+# logging.basicConfig(level=logging.INFO)
+# logger = logging.getLogger(__name__)
 
-# Configuration dictionary
+# Global configuration dictionary
 config = {
     'default_style': 'default',
     'default_figsize': (10, 6),
     'default_color_palette': 'viridis'
 }
 
-def set_config(style=None, figsize=None, color_palette=None):
+def set_config(style='default', figsize=(10, 6), color_palette='viridis'):
     global config
-    if style:
-        if style in plt.style.available:
-            config['default_style'] = style
-        else:
-            logger.warning(f"Style '{style}' not available. Using default style.")
-    if figsize:
-        config['default_figsize'] = figsize
-    if color_palette:
-        config['default_color_palette'] = color_palette
+    config['default_style'] = style
+    config['default_figsize'] = figsize
+    config['default_color_palette'] = color_palette
+    plt.style.use(style)
+    
+    # Validate color palette
+    valid_palettes = sns.color_palette()  # Get list of valid palettes
+    if color_palette in sns.palettes.SEABORN_PALETTES.keys():  # Check against valid Seaborn palettes
+        sns.set_palette(color_palette)
+    else:
+        # Use a default palette silently without printing
+        sns.set_palette('viridis') 
+
+def reset_config():
+    """Resets the configuration to default values."""
+    global config
+    config = {
+        'default_style': 'default',
+        'default_figsize': (10, 6),
+        'default_color_palette': 'viridis'
+    }
 
 def apply_config():
     try:
@@ -36,8 +48,8 @@ def apply_config():
         plt.rcParams['figure.figsize'] = config['default_figsize']
         sns.set_palette(config['default_color_palette'])
     except Exception as e:
-        logger.error(f"Error applying configuration: {str(e)}")
-        logger.info("Reverting to default matplotlib style")
+        # logger.error(f"Error applying configuration: {str(e)}")
+        # logger.info("Reverting to default matplotlib style")
         plt.style.use('default')
 
 def get_available_styles():
@@ -127,5 +139,5 @@ def safe_plot(plot_func, *args, **kwargs):
     try:
         plot_func(*args, **kwargs)
     except Exception as e:
-        logger.error(f"Error in plotting: {str(e)}")
+        # logger.error(f"Error in plotting: {str(e)}")
         raise
