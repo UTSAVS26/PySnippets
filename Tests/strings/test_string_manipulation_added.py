@@ -1,7 +1,7 @@
 # test_string_functions.py
 
 import pytest
-from string_manipulation import swap_case, to_replace, to_split, to_strip, to_encode, to_decode
+from pysnippets.Strings.string_manipulation import swap_case, to_replace, to_split, to_strip, to_encode, to_decode
 
 def test_swap_case():
     assert swap_case("Apple") == "aPPLE"
