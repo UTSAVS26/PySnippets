@@ -47,5 +47,4 @@ if __name__ == "__main__":
         'E': ['F'],
         'F': []
     }
-    bfs(graph, 'A')
-  # Output: A B C D E F
+    bfs(graph, 'A') # Output: A B C D E F
