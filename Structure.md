@@ -8,6 +8,14 @@ PySnippets
 │   │   ├── strings.md
 │   │   ├── list_to_comma_string.py
 │   │   ├── string_manipulation.py
+│   ├── system/
+│   │   ├── __init__.py
+│   │   ├── system.md
+│   │   ├── process_manager.py
+│   │   ├── system_resource_monitor.py
+│   │   ├── disk_space_checker.py
+│   │   ├── temporary_file_handler.py
+│   │   ├── environment_variable_manager.py
 │   ├── stats/
 │   │   ├── __init__.py
 │   │   ├── stats.md
@@ -56,6 +64,12 @@ PySnippets
 │   ├── strings/
 │   │   ├── test_string_manipulation.py
 │   │   ├── test_list_to_comma_string.py
+│   ├── system/
+│   │   ├── test_process_manager.py
+│   │   ├── test_system_resource_monitor.py
+│   │   ├── test_disk_space_checker.py
+│   │   ├── test_environment_variable_manager.py
+├───│   ├── test_temporary_file_handler.py
 ├── LICENSE
 ├── setup.py
 ├── README.md
