@@ -48,3 +48,4 @@ if __name__ == "__main__":
         'F': []
     }
     bfs(graph, 'A')
+  # Output: A B C D E F
