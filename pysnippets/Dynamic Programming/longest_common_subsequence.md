@@ -37,61 +37,27 @@ To solve the LCS problem, we can utilize dynamic programming by creating a 2D ta
 
 ## Code Implementation in C++
 
-Here’s a C++ implementation of the LCS problem:
+Here’s a Python implementation of the LCS problem:
 
-```cpp
-#include <iostream>
-#include <vector>
-#include <string>
+```python
+def longest_common_subsequence(x, y):
+    m, n = len(x), len(y)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
 
-using namespace std;
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if x[i - 1] == y[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+            else:
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
 
-int lcs(string X, string Y) {
-    int m = X.length();
-    int n = Y.length();
-    
-    // Create a 2D dp table to store lengths of LCS
-    vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+    return dp[m][n]
 
-    // Fill dp table in bottom-up manner
-    for (int i = 1; i <= m; i++) {
-        for (int j = 1; j <= n; j++) {
-            if (X[i - 1] == Y[j - 1]) {
-                dp[i][j] = dp[i - 1][j - 1] + 1; // Characters match
-            } else {
-                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]); // Characters do not match
-            }
-        }
-    }
+if __name__ == "__main__":
+    x = "AGGTAB"
+    y = "GXTXAYB"
+    print(longest_common_subsequence(x, y))  # Output: 4
 
-    // The length of LCS is found at dp[m][n]
-    return dp[m][n];
-}
-
-int main() {
-    string X = "ABCBDAB";
-    string Y = "BDCAB";
-    cout << "Length of LCS: " << lcs(X, Y) << endl;  // Output: 4
-
-    // Additional test cases
-    string X1 = "AGGTAB";
-    string Y1 = "GXTXAYB";
-    cout << "Length of LCS (AGGTAB, GXTXAYB): " << lcs(X1, Y1) << endl;  // Output: 4
-
-    string X2 = "AA";
-    string Y2 = "AB";
-    cout << "Length of LCS (AA, AB): " << lcs(X2, Y2) << endl;  // Output: 1
-
-    string X3 = "ABC";
-    string Y3 = "DEF";
-    cout << "Length of LCS (ABC, DEF): " << lcs(X3, Y3) << endl;  // Output: 0
-
-    string X4 = "AAB";
-    string Y4 = "AAAB";
-    cout << "Length of LCS (AAB, AAAB): " << lcs(X4, Y4) << endl;  // Output: 2
-
-    return 0;
-}
 ```
 ## Explanation of the Code
 
