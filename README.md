@@ -1,6 +1,38 @@
+<div align="center">
+
 # PySnippets - A Python Package for Reusable Code Snippets
 
-Welcome to **PySnippets**, a Python package that offers a collection of reusable code snippets designed to solve common programming challenges and perform everyday tasks. With this package, developers can easily integrate useful snippets directly into their projects, speeding up development while maintaining clarity and simplicity. Whether you're a beginner or an experienced developer, **PySnippets** provides a robust set of tools to enhance your workflow.
+<i>Welcome to <strong>PySnippets</strong>, a Python package that offers a collection of reusable code snippets designed to solve common programming challenges and perform everyday tasks. With this package, developers can easily integrate useful snippets directly into their projects, speeding up development while maintaining clarity and simplicity. Whether you're a beginner or an experienced developer, <strong>PySnippets</strong> provides a robust set of tools to enhance your workflow.</i>
+
+</div>
+
+<div align = "center">
+<br>
+
+<table align="center">
+    <thead align="center">
+        <tr border: 1px;>
+            <td><b>🌟 Stars</b></td>
+            <td><b>🍴 Forks</b></td>
+            <td><b>🐛 Issues</b></td>
+            <td><b>🔔 Open PRs</b></td>
+            <td><b>🔕 Close PRs</b></td>
+            <td><b>🛠️ Languages</b></td>
+        </tr>
+     </thead>
+    <tbody>
+         <tr>
+            <td><img alt="Stars" src="https://img.shields.io/github/stars/UTSAVS26/PySnippets?style=flat&logo=github"/></td>
+            <td><img alt="Forks" src="https://img.shields.io/github/forks/UTSAVS26/PySnippets?style=flat&logo=github"/></td>
+            <td><img alt="Issues" src="https://img.shields.io/github/issues/UTSAVS26/PySnippets?style=flat&logo=github"/></td>
+            <td><img alt="Open Pull Requests" src="https://img.shields.io/github/issues-pr/UTSAVS26/PySnippets?style=flat&logo=github"/></td>
+           <td><img alt="Close Pull Requests" src="https://img.shields.io/github/issues-pr-closed/UTSAVS26/PySnippets?style=flat&color=critical&logo=github"/></td>
+           <td><img alt="GitHub language count" src="https://img.shields.io/github/languages/count/UTSAVS26/PySnippets?style=flat&color=critical&logo=github"></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<br>
 
 ## Table of Contents
 
@@ -37,6 +69,8 @@ Ensure you have the following installed:
 - [Git](https://git-scm.com/) for cloning the repository or contributing.
 - [Python 3.x](https://www.python.org/downloads/) to run the package and snippets.
 - [pip](https://pip.pypa.io/en/stable/) for installing the **PySnippets** package.
+- A code editor or IDE (e.g., [VS Code](https://code.visualstudio.com/), [PyCharm](https://www.jetbrains.com/pycharm/)) for writing and running Python code.
+- Unit testing frameworks (e.g., [unittest](https://docs.python.org/3/library/unittest.html), [pytest](https://docs.pytest.org/en/6.2.x/)) for testing snippets.
 
 ### Installation
 
@@ -84,17 +118,63 @@ We welcome contributions! You can help improve **PySnippets** by submitting new 
 
 ### How to Contribute
 
-1. Fork the repository on GitHub.
-2. Create a new branch for your feature or bug fix:
-   ```bash
-   git checkout -b feature/my-feature
-   ```
-3. Write your code, along with unit tests for the new functionality.
-4. Commit your changes and push them to your fork:
-   ```bash
-   git push origin feature/my-feature
-   ```
-5. Open a pull request on GitHub to merge your changes into the main repository.
+We welcome contributions from the community! Follow these steps to contribute to the **PySnippets** repository:
+
+1. **Fork the Repository**: 
+  - Navigate to the [PySnippets GitHub repository](https://github.com/UTSAVS26/PySnippets).
+  - Click the "Fork" button in the top-right corner to create a copy of the repository in your GitHub account.
+
+2. **Clone Your Fork**:
+  - Open your terminal or command prompt.
+
+  - Clone your forked repository to your local machine:
+    ```bash
+    git clone https://github.com/<your-username>/PySnippets.git
+    ```
+  - Navigate to the cloned directory:
+    ```bash
+    cd PySnippets
+    ```
+
+3. **Create a New Branch**:
+  - Create a new branch for your feature or bug fix:
+    ```bash
+    git checkout -b feature/my-feature
+    ```
+
+4. **Make Your Changes**:
+  - Write your code, ensuring it adheres to the project's coding standards.
+  - Add unit tests for any new functionality to ensure reliability.
+
+5. **Commit Your Changes**:
+  - Stage your changes:
+    ```bash
+    git add .
+    ```
+  - Commit your changes with a descriptive message:
+    ```bash
+    git commit -m "Add feature: description of your feature"
+    ```
+
+6. **Push to Your Fork**:
+  - Push your changes to your forked repository:
+    ```bash
+    git push origin feature/my-feature
+    ```
+
+7. **Open a Pull Request**:
+  - Navigate to the original [PySnippets repository](https://github.com/UTSAVS26/PySnippets).
+  - Click the "New Pull Request" button.
+  - Select your branch and provide a detailed description of your changes.
+  - Submit the pull request for review.
+
+8. **Review Process**:
+  - Your pull request will be reviewed by the maintainers.
+  - You may be asked to make additional changes or provide further information.
+  - Once approved, your changes will be merged into the main repository.
+
+Thank you for your contribution! Your efforts help make **PySnippets** better for everyone.
+
 
 ### Adding Your Project
 
@@ -126,12 +206,8 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
 - We extend our heartfelt gratitude for your invaluable contribution to our project! Your efforts play a pivotal role in elevating PySnippets to greater heights.
 - Make sure you show some love by giving ⭐ to our repository.
 
-<div align="center">
-
-  <a href="https://github.com/UTSAVS26/PySnippets">
-    <img src="https://contrib.rocks/image?repo=UTSAVS26/PySnippets&&max=1000" />
-  </a>
-</div>
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
 
 ---
 
