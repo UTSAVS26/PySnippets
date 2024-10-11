@@ -46,6 +46,23 @@ PySnippets
 │   │   ├── datautils.py
 │   │   ├── modelutils.md
 │   │   ├── modelutils.py
+│   ├── database/
+│   │   ├── __init__.py
+│   │   ├── database.md
+│   │   │   ├── mysql/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── sql_transaction_handling.py
+│   │   │   │   ├── sql_data_insertion.py
+│   │   │   │   ├── sql_schema_creation.py
+│   │   │   │   ├── sql_connection_manager.py
+│   │   │   │   ├── sql_query_executor.py
+│   │   │   ├── mongodb/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── mongo_connection_manager.py
+│   │   │   │   ├── mongo_document_insertion.py
+│   │   │   │   ├── mongo_document_query.py
+│   │   │   │   ├── mongo_document_update.py
+│   │   │   │   ├── mongo_index_management.py
 ├── Tests
 │   ├── __init__.py 
 │   ├── analysis/
