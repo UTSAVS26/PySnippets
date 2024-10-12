@@ -123,10 +123,10 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 👥 Team
 
-| ![UTSAV SINGHAL](https://avatars.githubusercontent.com/u/119779889?v=4&s=80) |
+| ![Utsav Singhal](https://avatars.githubusercontent.com/u/119779889?v=4&s=80) |
 |:--:|
-| **UTSAV SINGHAL** <br> <sub>Project Admin</sub> | 
-| [![LinkedIn](https://img.icons8.com/fluency/32/000000/linkedin.png)](https://www.linkedin.com/in/utsavsinghal2604/) |
+| **Utsav Singhal** <br> <sub>Project Admin</sub> | 
+| [![LinkedIn](https://img.icons8.com/fluency/32/000000/linkedin.png)](https://www.linkedin.com/in/utsavsinghal2604/) [![Gmail](https://img.icons8.com/fluency/32/000000/gmail.png)](mailto:utsavsinghal26@gmail.com)|
 
 For any inquiries or feedback, please contact. Happy Contributing 🫡
 
