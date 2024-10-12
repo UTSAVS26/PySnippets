@@ -2,6 +2,9 @@
 
 Welcome to **PySnippets**, a Python package that offers a collection of reusable code snippets designed to solve common programming challenges and perform everyday tasks. With this package, developers can easily integrate useful snippets directly into their projects, speeding up development while maintaining clarity and simplicity. Whether you're a beginner or an experienced developer, **PySnippets** provides a robust set of tools to enhance your workflow.
 
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+
 <!-- Added Hacktoberfest 2024 and GSSoC Extended 2024 banners -->
 ### This project is now OFFICIALLY accepted for
 
@@ -10,6 +13,9 @@ Welcome to **PySnippets**, a Python package that offers a collection of reusable
   <img src="https://cdn.discordapp.com/attachments/657543125190967316/1294560786114674748/Screenshot_2024-10-12_122347.png?ex=670b752f&is=670a23af&hm=26ddd7f41740b8b19ee4985e7568b3892091384b3b85e7165770a4b10f4d1050&" alt="Hacktoberfest 2024" width="80%">
 </div>
 <br>
+
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## Table of Contents
 
@@ -23,7 +29,8 @@ Welcome to **PySnippets**, a Python package that offers a collection of reusable
 - [Contact](#contact)
 - [Acknowledgments](#acknowledgments)
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## Features
 
@@ -35,7 +42,8 @@ Welcome to **PySnippets**, a Python package that offers a collection of reusable
 - **Unit Tests**: Each snippet comes with unit tests, ensuring its reliability and functionality.
 - **Active Community**: Contributors are welcome to submit new snippets, fix bugs, or improve existing code, fostering a collaborative and open-source environment.
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## Getting Started
 
@@ -85,7 +93,8 @@ Explore other categories and snippets, such as file handling, math utilities, an
 
 Check the full documentation for details on each snippet's functionality and usage examples.
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## Contributing
 
@@ -113,13 +122,15 @@ We also encourage users to add their own projects or larger contributions that b
 
 If you find any bugs or issues, please submit an issue on GitHub with detailed information about the problem and steps to reproduce it.
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## 👥 Team
 
@@ -130,7 +141,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For any inquiries or feedback, please contact. Happy Contributing 🫡
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 <div>
   <h2 align = "center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" width="35" height="35">Our Contributors</h2>
@@ -142,11 +154,15 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
 ### Show some ❤️ by starring this awesome repository!
 </div>
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## Acknowledgments
 
 A special thanks to all contributors and the open-source community for their support and valuable contributions to this project!
+
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## ⭐️ Support the Project
 If you find this project helpful, please consider giving it a ⭐ on GitHub! Your support helps to grow the project and reach more contributors.
