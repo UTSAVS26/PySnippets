@@ -150,6 +150,9 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
 
 A special thanks to all contributors and the open-source community for their support and valuable contributions to this project!
 
+## ⭐️ Support the Project
+If you find this project helpful, please consider giving it a ⭐ on GitHub! Your support helps to grow the project and reach more contributors.
+
 ---
 
 Happy coding! 🚀
