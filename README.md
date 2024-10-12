@@ -132,16 +132,14 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
 
 ---
 
-## 👀 Our Contributors
+<div>
+  <h2 align = "center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" width="35" height="35">Our Contributors</h2>
+  <div align = "center">
+ <h3>Thank you for contributing to our repository</h3>
 
-- We extend our heartfelt gratitude for your invaluable contribution to our project! Your efforts play a pivotal role in elevating PySnippets to greater heights.
-- Make sure you show some love by giving ⭐ to our repository.
+![Contributors](https://contrib.rocks/image?repo=UTSAVS26/PySnippets&v=1)
 
-<div align="center">
-
-  <a href="https://github.com/UTSAVS26/PySnippets">
-    <img src="https://contrib.rocks/image?repo=UTSAVS26/PySnippets&&max=1000" />
-  </a>
+### Show some ❤️ by starring this awesome repository!
 </div>
 
 ---
