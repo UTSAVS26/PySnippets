@@ -1,5 +1,5 @@
 import unittest
-from pysnippets.maths.matrix_operations import matrix_multiplication, matrix_addition, matrix_transpose
+from pysnippets.math.matrix_operations import matrix_multiplication, matrix_addition, matrix_transpose
 
 class TestMatrixOperations(unittest.TestCase):
 
