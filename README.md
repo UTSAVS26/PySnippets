@@ -121,12 +121,14 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-## Contact
+## 👥 Team
 
-For questions, suggestions, or feedback, feel free to contact the project maintainer:
+| ![UTSAV SINGHAL](https://avatars.githubusercontent.com/u/119779889?v=4&s=80) |
+|:--:|
+| **UTSAV SINGHAL** <br> <sub>Project Admin</sub> | 
+| [![LinkedIn](https://img.icons8.com/fluency/32/000000/linkedin.png)](https://www.linkedin.com/in/utsavsinghal2604/) |
 
-- **Name**: Utsav Singhal
-- **Email**: utsavsinghal26@gmail.com
+For any inquiries or feedback, please contact. Happy Contributing 🫡
 
 ---
 
