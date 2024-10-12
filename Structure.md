@@ -8,6 +8,14 @@ PySnippets
 │   │   ├── strings.md
 │   │   ├── list_to_comma_string.py
 │   │   ├── string_manipulation.py
+│   ├── system/
+│   │   ├── __init__.py
+│   │   ├── system.md
+│   │   ├── process_manager.py
+│   │   ├── system_resource_monitor.py
+│   │   ├── disk_space_checker.py
+│   │   ├── temporary_file_handler.py
+│   │   ├── environment_variable_manager.py
 │   ├── stats/
 │   │   ├── __init__.py
 │   │   ├── stats.md
@@ -38,6 +46,23 @@ PySnippets
 │   │   ├── datautils.py
 │   │   ├── modelutils.md
 │   │   ├── modelutils.py
+│   ├── database/
+│   │   ├── __init__.py
+│   │   ├── database.md
+│   │   │   ├── mysql/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── sql_transaction_handling.py
+│   │   │   │   ├── sql_data_insertion.py
+│   │   │   │   ├── sql_schema_creation.py
+│   │   │   │   ├── sql_connection_manager.py
+│   │   │   │   ├── sql_query_executor.py
+│   │   │   ├── mongodb/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── mongo_connection_manager.py
+│   │   │   │   ├── mongo_document_insertion.py
+│   │   │   │   ├── mongo_document_query.py
+│   │   │   │   ├── mongo_document_update.py
+│   │   │   │   ├── mongo_index_management.py
 ├── Tests
 │   ├── __init__.py 
 │   ├── analysis/
@@ -56,6 +81,12 @@ PySnippets
 │   ├── strings/
 │   │   ├── test_string_manipulation.py
 │   │   ├── test_list_to_comma_string.py
+│   ├── system/
+│   │   ├── test_process_manager.py
+│   │   ├── test_system_resource_monitor.py
+│   │   ├── test_disk_space_checker.py
+│   │   ├── test_environment_variable_manager.py
+├───│   ├── test_temporary_file_handler.py
 ├── LICENSE
 ├── setup.py
 ├── README.md
