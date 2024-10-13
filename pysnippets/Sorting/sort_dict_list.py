@@ -28,6 +28,72 @@ def sort_dict_list(dict_list, key, reverse=False):
     return sorted(dict_list, key=lambda x: x[key], reverse=reverse)
 
 
+def bubble_sort(dict_list, key, reverse=False):
+    """Bubble sort implementation."""
+    n = len(dict_list)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if (dict_list[j][key] > dict_list[j+1][key]) != reverse:
+                dict_list[j], dict_list[j+1] = dict_list[j+1], dict_list[j]
+    return dict_list
+
+
+def merge_sort(dict_list, key):
+    """Merge sort implementation."""
+    if len(dict_list) > 1:
+        mid = len(dict_list) // 2
+        left_half = dict_list[:mid]
+        right_half = dict_list[mid:]
+
+        merge_sort(left_half, key)
+        merge_sort(right_half, key)
+
+        i = j = k = 0
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i][key] < right_half[j][key]:
+                dict_list[k] = left_half[i]
+                i += 1
+            else:
+                dict_list[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            dict_list[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            dict_list[k] = right_half[j]
+            j += 1
+            k += 1
+
+    return dict_list
+
+
+def quick_sort(dict_list, key):
+    """Quick sort implementation."""
+    if len(dict_list) <= 1:
+        return dict_list
+    pivot = dict_list[len(dict_list) // 2][key]
+    left = [x for x in dict_list if x[key] < pivot]
+    middle = [x for x in dict_list if x[key] == pivot]
+    right = [x for x in dict_list if x[key] > pivot]
+    return quick_sort(left, key) + middle + quick_sort(right, key)
+
+
+def insertion_sort(dict_list, key, reverse=False):
+    """Insertion sort implementation."""
+    for i in range(1, len(dict_list)):
+        key_item = dict_list[i]
+        j = i - 1
+        while j >= 0 and (key_item[key] < dict_list[j][key]) != reverse:
+            dict_list[j + 1] = dict_list[j]
+            j -= 1
+        dict_list[j + 1] = key_item
+    return dict_list
+
+
 if __name__ == "__main__":
     data = [
         {"name": "Alice", "age": 30},
