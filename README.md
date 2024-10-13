@@ -114,6 +114,8 @@ We welcome contributions! You can help improve **PySnippets** by submitting new 
    ```
 5. Open a pull request on GitHub to merge your changes into the main repository.
 
+We welcome all contributions to improve **PySnippets**! If you would like to contribute, please follow the [Contributing.md](./CONTRIBUTING.md) to know how to get started.
+
 ### Adding Your Project
 
 We also encourage users to add their own projects or larger contributions that build upon or extend **PySnippets**. Feel free to reach out or submit your project through a pull request.
