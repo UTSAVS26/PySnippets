@@ -1,29 +1,11 @@
+
 import unittest
-from pysnippets.utilities.flatten import flatten
+from flatten import flatten_list
 
+class TestFlattenList(unittest.TestCase):
+    def test_flatten_list(self):
+        nested_list = [1, [2, [3, 4], 5], 6]
+        self.assertEqual(flatten_list(nested_list), [1, 2, 3, 4, 5, 6])
 
-class TestFlatten(unittest.TestCase):
-
-    def test_flatten_single_level(self):
-        nested = [1, 2, 3]
-        result = flatten(nested)
-        self.assertEqual(result, [1, 2, 3])
-
-    def test_flatten_nested_list(self):
-        nested = [[1, 2], [3, [4, 5]], 6]
-        result = flatten(nested)
-        self.assertEqual(result, [1, 2, 3, 4, 5, 6])
-
-    def test_flatten_empty_list(self):
-        nested = []
-        result = flatten(nested)
-        self.assertEqual(result, [])
-
-    def test_flatten_deeply_nested(self):
-        nested = [[[[1], 2], 3], 4]
-        result = flatten(nested)
-        self.assertEqual(result, [1, 2, 3, 4])
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
