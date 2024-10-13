@@ -47,16 +47,25 @@ class Trie:
     # return True if word is found in the trie and is the end of a word
     return current_node.is_end_of_word
       
-  def starts_with(self, prefix:str) -> bool:
+  def starts_with(self, prefix:str) -> List[str]:
     # fucntion to search for a given pattern in the trie
     # return a boolean value
+    def _collect_words(node:TrieNode, prefix: str) -> List[str]:
+      # return a list of words that starts with given prefix
+      words = []
+      if node.is_end_of_word:
+        words.append(prefix)
+      for char, child_node in node.children.items():
+        words.extend(_collect_words(child_node, prefix+char))
+      return words
+    
     current_node = self.root
     for char in prefix:
       if char not in current_node.children:
-        return False
+        return []
 
       current_node = current_node.children[char]
-    return True
+    return _collect_words(current_node, prefix)
   
   def delete(self, word:str) -> None:
     # function to delete a word from trie

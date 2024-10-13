@@ -103,7 +103,7 @@ trie.insert_list(words)
 
 ### Starts With
 
-This method checks if any word in the trie starts with a given prefix.
+This function returns all the words in the Trie that start with the given prefix.
 
 ```python
 trie.starts_with(prefix)
@@ -113,11 +113,11 @@ trie.starts_with(prefix)
   - `prefix` (str): The prefix to check for.
   
 - **Returns**: 
-  - `bool`: `True`  if any word starts with the prefix, `False` otherwise.
+  - `List`: A list of words from trie which starts with given prefix
   
 - **Example**:
   ```python
-  exists = trie.starts_with("app")  # returns True if "apple" or "apply" or "application"... is in the trie
+  exists = trie.starts_with("app")  # returns a list of words from tries that matches the prefix
   ```
 
 
@@ -135,7 +135,9 @@ if __name__ == "__main__":
     
     print(trie.search("apple"))   # Output: True
     print(tries.search("app"))    # Output: False
-    print(trie.starts_with("app"))      # Output: True
+    trie.insert("apply")
+    trie.insert("app")
+    print(trie.starts_with("app"))    # output a list of words matching the prefix : ['apple', 'apply', 'app']
     
     trie.delete("apple")
     print(trie.search("apple"))  # Output: False
@@ -149,6 +151,7 @@ if __name__ == "__main__":
 ```
 True
 False
+["apple", "apply", "app"]
 True
 False
 True

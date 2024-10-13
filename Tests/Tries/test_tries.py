@@ -31,8 +31,32 @@ class TestTrie(unittest.TestCase):
         
         self.trie.insert("apple")
         self.trie.insert("app")
-        self.assertTrue(self.trie.starts_with("app"), "Should return True for prefix 'app'")
-        self.assertFalse(self.trie.starts_with("bat"), "Should return False for prefix 'bat'")
+        self.trie.insert("ape")
+        self.trie.insert("bat")
+        self.trie.insert("ball")
+
+        result = self.trie.starts_with("app")
+        expected = ["apple", "app"]
+        self.assertListEqual(sorted(result), sorted(expected), "Should return all words starting with 'app'")
+
+    def test_starts_with_prefix_no_match(self):
+        self.trie.insert("apple")
+        self.trie.insert("app")
+        self.trie.insert("ape")
+        self.trie.insert("bat")
+        self.trie.insert("ball")
+
+        result = self.trie.starts_with("ba")
+        expected = ["bat", "ball"]
+        self.assertListEqual(sorted(result), sorted(expected), "Should return all words starting with 'ba'")
+
+    def test_starts_with_prefix_not_found(self):
+        self.trie.insert("apple")
+        self.trie.insert("app")
+        self.trie.insert("ape")
+
+        result = self.trie.starts_with("zoo")
+        self.assertListEqual(result, [], "Should return an empty list if no words match the prefix")
 
     def test_delete_word(self):
         # Test deletion of a word from the Trie.
