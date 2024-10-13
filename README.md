@@ -153,7 +153,6 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
 
 ![Contributors](https://contrib.rocks/image?repo=UTSAVS26/PySnippets&v=1)
 
-### Show some ❤️ by starring this awesome repository!
 </div>
 
 <!--Line-->
