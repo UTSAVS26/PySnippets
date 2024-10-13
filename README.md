@@ -225,6 +225,13 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/pavitraag">
+                    <img src="https://avatars.githubusercontent.com/u/100479594?v=4" width="100;" alt="pavitraag"/>
+                    <br />
+                    <sub><b>Pavitraa G</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/priyanka350">
                     <img src="https://avatars.githubusercontent.com/u/113467723?v=4" width="100;" alt="priyanka350"/>
                     <br />
@@ -245,6 +252,8 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
                     <sub><b>Su-creator-spec</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/yashksaini-coder">
                     <img src="https://avatars.githubusercontent.com/u/115717039?v=4" width="100;" alt="yashksaini-coder"/>
@@ -252,8 +261,6 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
                     <sub><b>Yash Kumar Saini</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/AashishNandakumar">
                     <img src="https://avatars.githubusercontent.com/u/98106129?v=4" width="100;" alt="AashishNandakumar"/>
@@ -289,6 +296,8 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
                     <sub><b>Shariq</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/softcreations01">
                     <img src="https://avatars.githubusercontent.com/u/93330349?v=4" width="100;" alt="softcreations01"/>
@@ -296,8 +305,6 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
                     <sub><b>Gwhiz</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/PavanTeja2005">
                     <img src="https://avatars.githubusercontent.com/u/98730339?v=4" width="100;" alt="PavanTeja2005"/>
@@ -333,6 +340,8 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
                     <sub><b>ShudarsanReg-me</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/ShudarsanRegmi">
                     <img src="https://avatars.githubusercontent.com/u/65646203?v=4" width="100;" alt="ShudarsanRegmi"/>
@@ -340,8 +349,6 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
                     <sub><b>Shudarsan Regmi</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/anirudh-248">
                     <img src="https://avatars.githubusercontent.com/u/147091465?v=4" width="100;" alt="anirudh-248"/>
