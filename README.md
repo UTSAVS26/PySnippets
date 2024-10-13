@@ -207,6 +207,172 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
 - Make sure you show some love by giving ⭐ to our repository.
 
 <!-- readme: contributors -start -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/UTSAVS26">
+                    <img src="https://avatars.githubusercontent.com/u/119779889?v=4" width="100;" alt="UTSAVS26"/>
+                    <br />
+                    <sub><b>UTSAV SINGHAL</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/SpreadSheets600">
+                    <img src="https://avatars.githubusercontent.com/u/115402296?v=4" width="100;" alt="SpreadSheets600"/>
+                    <br />
+                    <sub><b>Soham Maity</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/priyanka350">
+                    <img src="https://avatars.githubusercontent.com/u/113467723?v=4" width="100;" alt="priyanka350"/>
+                    <br />
+                    <sub><b>Priyanka Kumari</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/rishikaa1">
+                    <img src="https://avatars.githubusercontent.com/u/131283498?v=4" width="100;" alt="rishikaa1"/>
+                    <br />
+                    <sub><b>Rishika Hazarika</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/Su-creator-spec">
+                    <img src="https://avatars.githubusercontent.com/u/148456570?v=4" width="100;" alt="Su-creator-spec"/>
+                    <br />
+                    <sub><b>Su-creator-spec</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/yashksaini-coder">
+                    <img src="https://avatars.githubusercontent.com/u/115717039?v=4" width="100;" alt="yashksaini-coder"/>
+                    <br />
+                    <sub><b>Yash Kumar Saini</b></sub>
+                </a>
+            </td>
+		</tr>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/AashishNandakumar">
+                    <img src="https://avatars.githubusercontent.com/u/98106129?v=4" width="100;" alt="AashishNandakumar"/>
+                    <br />
+                    <sub><b>Aashish Nandakumar</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/ananyag309">
+                    <img src="https://avatars.githubusercontent.com/u/145869907?v=4" width="100;" alt="ananyag309"/>
+                    <br />
+                    <sub><b>Ananya Gupta</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/DarshAgrawal14">
+                    <img src="https://avatars.githubusercontent.com/u/138677724?v=4" width="100;" alt="DarshAgrawal14"/>
+                    <br />
+                    <sub><b>Darsh Agrawal</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/mehul-m-prajapati">
+                    <img src="https://avatars.githubusercontent.com/u/7879392?v=4" width="100;" alt="mehul-m-prajapati"/>
+                    <br />
+                    <sub><b>Mehul Prajapati</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/Shariq2003">
+                    <img src="https://avatars.githubusercontent.com/u/109452033?v=4" width="100;" alt="Shariq2003"/>
+                    <br />
+                    <sub><b>Shariq</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/softcreations01">
+                    <img src="https://avatars.githubusercontent.com/u/93330349?v=4" width="100;" alt="softcreations01"/>
+                    <br />
+                    <sub><b>Gwhiz</b></sub>
+                </a>
+            </td>
+		</tr>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/PavanTeja2005">
+                    <img src="https://avatars.githubusercontent.com/u/98730339?v=4" width="100;" alt="PavanTeja2005"/>
+                    <br />
+                    <sub><b>PavanTeja2005</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/anurags10">
+                    <img src="https://avatars.githubusercontent.com/u/54910091?v=4" width="100;" alt="anurags10"/>
+                    <br />
+                    <sub><b>Anurag Singh</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/Kritika75">
+                    <img src="https://avatars.githubusercontent.com/u/142504516?v=4" width="100;" alt="Kritika75"/>
+                    <br />
+                    <sub><b>Kritika Singh </b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/PeroxideParadox">
+                    <img src="https://avatars.githubusercontent.com/u/118070626?v=4" width="100;" alt="PeroxideParadox"/>
+                    <br />
+                    <sub><b>PeroxideParadox</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/ShudarsanReg-me">
+                    <img src="https://avatars.githubusercontent.com/u/155873228?v=4" width="100;" alt="ShudarsanReg-me"/>
+                    <br />
+                    <sub><b>ShudarsanReg-me</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/ShudarsanRegmi">
+                    <img src="https://avatars.githubusercontent.com/u/65646203?v=4" width="100;" alt="ShudarsanRegmi"/>
+                    <br />
+                    <sub><b>Shudarsan Regmi</b></sub>
+                </a>
+            </td>
+		</tr>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/anirudh-248">
+                    <img src="https://avatars.githubusercontent.com/u/147091465?v=4" width="100;" alt="anirudh-248"/>
+                    <br />
+                    <sub><b>Anirudh P S</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/patiltrupti6105">
+                    <img src="https://avatars.githubusercontent.com/u/181590429?v=4" width="100;" alt="patiltrupti6105"/>
+                    <br />
+                    <sub><b>Trupti Patil</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/htanmo">
+                    <img src="https://avatars.githubusercontent.com/u/145841395?v=4" width="100;" alt="htanmo"/>
+                    <br />
+                    <sub><b>Omnath Mandal</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/nicolejorn">
+                    <img src="https://avatars.githubusercontent.com/u/86332096?v=4" width="100;" alt="nicolejorn"/>
+                    <br />
+                    <sub><b>nicolejorn</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 <!-- readme: contributors -end -->
 
 ---
