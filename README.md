@@ -34,6 +34,21 @@
 </div>
 <br>
 
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+
+<!-- Added Hacktoberfest 2024 and GSSoC Extended 2024 banners -->
+### This project is now OFFICIALLY accepted for
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/SwanandD121/FeatherPerfect_fe/refs/heads/main/Untitled%20design.png" alt="GSSoC 2024 Extd" width="80%">
+  <img src="https://cdn.discordapp.com/attachments/657543125190967316/1294560786114674748/Screenshot_2024-10-12_122347.png?ex=670b752f&is=670a23af&hm=26ddd7f41740b8b19ee4985e7568b3892091384b3b85e7165770a4b10f4d1050&" alt="Hacktoberfest 2024" width="80%">
+</div>
+<br>
+
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+
 ## Table of Contents
 
 - [Features](#features)
@@ -46,7 +61,8 @@
 - [Contact](#contact)
 - [Acknowledgments](#acknowledgments)
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## Features
 
@@ -58,7 +74,8 @@
 - **Unit Tests**: Each snippet comes with unit tests, ensuring its reliability and functionality.
 - **Active Community**: Contributors are welcome to submit new snippets, fix bugs, or improve existing code, fostering a collaborative and open-source environment.
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## Getting Started
 
@@ -110,7 +127,8 @@ Explore other categories and snippets, such as file handling, math utilities, an
 
 Check the full documentation for details on each snippet's functionality and usage examples.
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## Contributing
 
@@ -176,6 +194,8 @@ We welcome contributions from the community! Follow these steps to contribute to
 Thank you for your contribution! Your efforts help make **PySnippets** better for everyone.
 
 
+We welcome all contributions to improve **PySnippets**! If you would like to contribute, please follow the [Contributing.md](./CONTRIBUTING.md) to know how to get started.
+
 ### Adding Your Project
 
 We also encourage users to add their own projects or larger contributions that build upon or extend **PySnippets**. Feel free to reach out or submit your project through a pull request.
@@ -184,27 +204,32 @@ We also encourage users to add their own projects or larger contributions that b
 
 If you find any bugs or issues, please submit an issue on GitHub with detailed information about the problem and steps to reproduce it.
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
-## Contact
+## 👥 Team
 
-For questions, suggestions, or feedback, feel free to contact the project maintainer:
+| ![Utsav Singhal](https://avatars.githubusercontent.com/u/119779889?v=4&s=80) |
+|:--:|
+| **Utsav Singhal** <br> <sub>Project Admin</sub> | 
+| [![LinkedIn](https://img.icons8.com/fluency/32/000000/linkedin.png)](https://www.linkedin.com/in/utsavsinghal2604/) [![Gmail](https://img.icons8.com/fluency/32/000000/gmail.png)](mailto:utsavsinghal26@gmail.com)|
 
-- **Name**: Utsav Singhal
-- **Email**: utsavsinghal26@gmail.com
+For any inquiries or feedback, please contact. Happy Contributing 🫡
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
-## 👀 Our Contributors
-
-- We extend our heartfelt gratitude for your invaluable contribution to our project! Your efforts play a pivotal role in elevating PySnippets to greater heights.
-- Make sure you show some love by giving ⭐ to our repository.
+<div>
+  <h2 align = "center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" width="35" height="35">Our Contributors</h2>
+  <h3 align = "center">Thank you for contributing to our repository</h3>
+</div>
 
 <!-- readme: contributors -start -->
 <table>
@@ -382,11 +407,18 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
 </table>
 <!-- readme: contributors -end -->
 
----
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ## Acknowledgments
 
 A special thanks to all contributors and the open-source community for their support and valuable contributions to this project!
+
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+
+## ⭐️ Support the Project
+If you find this project helpful, please consider giving it a ⭐ on GitHub! Your support helps to grow the project and reach more contributors.
 
 ---
 

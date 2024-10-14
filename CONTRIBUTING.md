@@ -94,8 +94,13 @@ This project is governed by a [Code of Conduct](CODE_OF_CONDUCT.md). By particip
 
 ---
 
-## Contact
+## 👥 Team
 
-For questions, suggestions, or general inquiries, please reach out to us at [utsavsinghal26@gmail.com](mailto:utsavsinghal26@gmail.com).
+| ![Utsav Singhal](https://avatars.githubusercontent.com/u/119779889?v=4&s=80) |
+|:--:|
+| **Utsav Singhal** <br> <sub>Project Admin</sub> | 
+| [![LinkedIn](https://img.icons8.com/fluency/32/000000/linkedin.png)](https://www.linkedin.com/in/utsavsinghal2604/) [![Gmail](https://img.icons8.com/fluency/32/000000/gmail.png)](mailto:utsavsinghal26@gmail.com)|
+
+For questions, suggestions, or general inquiries, please feel free to reach out.
 
 Thank you for contributing to **PyVerse**!
