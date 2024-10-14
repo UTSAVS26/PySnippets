@@ -280,6 +280,13 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
 		</tr>
 		<tr>
             <td align="center">
+                <a href="https://github.com/rajdeepchakraborty-rc">
+                    <img src="https://avatars.githubusercontent.com/u/68934988?v=4" width="100;" alt="rajdeepchakraborty-rc"/>
+                    <br />
+                    <sub><b>Rajdeep Chakraborty</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/Su-creator-spec">
                     <img src="https://avatars.githubusercontent.com/u/148456570?v=4" width="100;" alt="Su-creator-spec"/>
                     <br />
@@ -314,6 +321,8 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
                     <sub><b>Mehul Prajapati</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/Shariq2003">
                     <img src="https://avatars.githubusercontent.com/u/109452033?v=4" width="100;" alt="Shariq2003"/>
@@ -321,8 +330,6 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
                     <sub><b>Shariq</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/anurags10">
                     <img src="https://avatars.githubusercontent.com/u/54910091?v=4" width="100;" alt="anurags10"/>
@@ -358,6 +365,8 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
                     <sub><b>PeroxideParadox</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/ShudarsanReg-me">
                     <img src="https://avatars.githubusercontent.com/u/155873228?v=4" width="100;" alt="ShudarsanReg-me"/>
@@ -365,8 +374,6 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
                     <sub><b>ShudarsanReg-me</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/ShudarsanRegmi">
                     <img src="https://avatars.githubusercontent.com/u/65646203?v=4" width="100;" alt="ShudarsanRegmi"/>
