@@ -280,23 +280,6 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
 		</tr>
 		<tr>
             <td align="center">
-                <a href="https://github.com/rajdeepchakraborty-rc">
-                    <img src="https://avatars.githubusercontent.com/u/68934988?v=4" width="100;" alt="rajdeepchakraborty-rc"/>
-                    <br />
-                    <sub><b>Rajdeep Chakraborty</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/Shariq2003">
-                    <img src="https://avatars.githubusercontent.com/u/109452033?v=4" width="100;" alt="Shariq2003"/>
-                    <br />
-                    <sub><b>Shariq</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/Su-creator-spec">
-                    <img src="https://avatars.githubusercontent.com/u/148456570?v=4" width="100;" alt="Su-creator-spec"/>
-                    <br />
                     <sub><b>Su-creator-spec</b></sub>
                 </a>
             </td>
