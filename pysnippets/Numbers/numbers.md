@@ -7,6 +7,10 @@ Welcome to the **Number Formatting** module! This lightweight utility provides f
 - [Introduction](#introduction)
 - [Functionality](#functionality)
   - [Format Number](#format-number)
+  - [Format To 2 Decimal Places](#formatting-to-2-decimal-places)
+  - [Pad With Zeros](#pad-with-zeros)
+  - [Percentage Format](#percentage-format)
+  - [Prime Factoriztion](#prime-factorization)
 - [Usage Example](#usage-example)
 
 ---
@@ -27,21 +31,74 @@ This function takes a number as input and returns it as a formatted string with 
 format_number(num)
 ```
 
-- **Args**: 
+- **Args**:
   - `num` (int, float): The number to format.
-  
-- **Returns**: 
+- **Returns**:
   - `str`: The formatted number as a string.
-  
 - **Example**:
   ```python
   >>> format_number(1234567)
   '1,234,567'
   ```
 
-
-You can replace `1234567` with any integer or float value that you wish to format with comma separators.
-
 ---
 
-Feel free to reach out if you have any questions about how to use the Number Formatting module!
+### Formatting to 2 Decimal Places
+
+This module provides a function to format a number to two decimal places.
+
+- **Args**:
+  - `num` (float or int): The number to format.
+- **Returns**:
+  - `str`: The formatted number as a string with two decimal places.
+- **Example**:
+  ```python
+  >>> format_to_2_decimal(123.456)
+  '123.46'
+  ```
+
+### pad_with_zeros
+
+- **Args**:
+  - `num` (int): The number to pad.
+  - `width` (int): The total width of the output string.
+- **Returns**:
+  - `str`: The padded number as a string.
+- **Example**:
+
+  ```python
+  from pad_with_zeros import pad_with_zeros
+
+  print(pad_with_zeros(123, 6)) # Outputs: 000123
+  ```
+
+### percentage_format
+
+- **Args**:
+  - `num` (float or int): The part value.
+  - `total` (float or int): The total value.
+  - `decimals` (int, optional): The number of decimal places.
+- **Returns**:
+  - `str`: The formatted percentage as a string.
+- **Example**:
+
+  ```python
+  from percentage_format import percentage_format
+
+  print(percentage_format(50, 200)) # Outputs: 25.00%
+  ```
+
+### prime_factorization
+
+- **Args**:
+
+  - `num` (int): The number to factorize.
+
+- **Returns**:
+  - `list`: A list of prime factors.
+- **Example**:
+
+  ```python
+  >>> prime_factorization(28)
+  [2, 2, 7]
+  ```

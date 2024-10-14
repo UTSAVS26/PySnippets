@@ -8,7 +8,7 @@ import unittest
 import logging
 import matplotlib.pyplot as plt
 import numpy as np
-from pysnippets.graphing_snippets.advanced_graphing import (
+from pysnippets.graphing.advanced_graphing import (
     set_config,
     apply_config,
     reset_config,

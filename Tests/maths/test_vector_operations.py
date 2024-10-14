@@ -1,5 +1,5 @@
 import unittest
-from pysnippets.maths.vector_operations import vector_addition, vector_subtraction, scalar_multiplication, dot_product, vector_magnitude, vector_normalization, cross_product, angle_between_vectors, projection
+from pysnippets.math.vector_operations import vector_addition, vector_subtraction, scalar_multiplication, dot_product, vector_magnitude, vector_normalization, cross_product, angle_between_vectors, projection
 
 class TestVectorOperations(unittest.TestCase):
 

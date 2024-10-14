@@ -19,6 +19,18 @@ Wellcome To PySnippet's Mathematics Module Section, This Section Contains The Do
 - [Complex Numbers](#complex-numbers)
   - [Complex Addition](#complex-addition)
   - [Complex Conjugate](#complex-conjugate)
+  - [Complex Substraction](#complex-substraction)
+  - [Complex Multiplication](#complex-multiplication)
+- [Vectors](#vectors)
+  - [Vector Addition](#vector-addition)
+  - [Vector Substraction](#vector-substraction)
+  - [Scalar Multipication](#scalar-multipication)
+  - [Dot Product](#dot-product)
+  - [Cross Product](#cross-product)
+  - [Vector Magnitude](#vector-magnitude)
+  - [Vector Normalization](#vector-normalization)
+  - [Angle Between Vectors](#angle-between-vectors)
+  - [Projection](#projection)
 
 ---
 
@@ -182,6 +194,23 @@ complex_addition(complex_a, complex_b)
   (4+6j)
   ```
 
+### Complex Substraction
+
+Subtract the second complex number from the first.
+
+- **Args**:
+  c1 (tuple): The first complex number as (real, imag).
+  c2 (tuple): The second complex number as (real, imag).
+
+- **Returns**:
+  tuple: The difference of the two complex numbers as (real, imag).
+
+- **Example**:
+  ```python
+  >>> subtract_complex((5, 7), (2, 3))
+  (3, 4)
+  ```
+
 ### Complex Conjugate
 
 Finds the conjugate of a complex number.
@@ -198,4 +227,172 @@ complex_conjugate(complex_number)
   (3-4j)
   ```
 
+### Complex Multiplication
+
+Multiply two complex numbers.
+
+- **Args**:
+  c1 (tuple): The first complex number as (real, imag).
+  c2 (tuple): The second complex number as (real, imag).
+
+- **Returns**:
+  tuple: The product of the two complex numbers as (real, imag).
+
+- **Example**:
+  ```python
+    >>> multiply_complex((1, 2), (3, 4))
+    (-5, 10)
+  ```
+
 ---
+
+## Vectors
+
+### Vector Addition
+
+Adds two vectors element-wise.
+
+```python
+vector_addition(vector1, vector2)
+```
+
+- **Args**:
+  v1 (list of int/float): First vector.
+  v2 (list of int/float): Second vector.
+- **Returns**:
+  list: The sum of the two vectors.
+- **Example**:
+  ```python
+  >>> vector_addition([1, 2, 3], [4, 5, 6])
+  [5, 7, 9]
+  ```
+
+### Vector Substraction
+
+Subsract vector v2 from v1
+
+- **Args**:
+  v1 (list of int/float): First vector.
+  v2 (list of int/float): Second vector.
+- **Returns**:
+  list: The difference of the two vectors.
+- **Example**:
+  ```python
+  >>> vector_substraction([1, 2, 3], [4, 5, 6])
+  [-3, -3, -3]
+  ```
+
+### Scalar Multipication
+
+Multiply a vector v by a scalar
+
+- **Args**:
+  v (list of int/float): The vector.
+  scalar (int/float): The scalar to multiply by.
+- **Returns**:
+  list: The resulting vector after scalar multiplication.
+- **Example**:
+  ```python
+  >>> scalar_multiplication([1,2,3],3)
+  [3,6,9]
+  ```
+
+### Dot Product
+
+Comuter the dot product of two vectors v1 nd v2
+
+- **Args**:
+  v1 (list of int/float): First vector.
+  v2 (list of int/float): Second vector.
+
+- **Returns**:
+  int/float: The dot product of the two vectors.
+
+- **Examle**:
+  ```python
+  >>>dot_product([1,2,3],[4,5,6])
+  32
+  ```
+
+### Cross Product
+
+compute the cross product of two 3D vector
+
+- **Args**:
+  v1 (list of int/float): First vector (3D).
+  v2 (list of int/float): Second vector (3D).
+
+- **Returns**:
+  List of int/flowt: The resulting vector of v1 and v2
+
+- **Example**:
+  ```python
+  cross_product([1,0,0],[0,1,0])
+  [0,0,1]
+  ```
+
+### Vector Magnitude
+
+compute the magnitude (length) of a vector
+
+- **Args**:
+  v (list of int/float): The vector.
+
+- **Returns**:
+  float: The magnitude of the vector
+
+- **Example**:
+  ```python
+  >>> vector_magnitude([3,4])
+  5.0
+  ```
+
+### Vector Normalization
+
+Normalize a vector (i.e., scale it to have a magnitude of 1).
+
+- **Args**:
+  v (list of int/float): The vector.
+
+- **Returns**:
+  list of float: The normalized vector.
+
+- **Example**:
+  ```
+  >>> vector_normalization([3,4])
+  [0.6, 0.8]
+  ```
+
+### Angle Between Vectors
+
+Calculate the angle (in radians) between two vectors.
+
+- **Args**:
+  v1 (list of int/float): First vector.
+  v2 (list of int/float): Second vector.
+
+- **Returns**:
+  float: The angle in radians between the two vectors.
+
+- **Example**:
+  ```python
+      >>> angle_between_vectors(v1, v2)
+      1.5707963267948966  # (90 degrees in radians)
+  ```
+
+### Projection
+
+Project vector v1 onto vector v2.
+
+- **Args**:
+  v1 (list of int/float): First vector.
+  v2 (list of int/float): Second vector.
+
+- **Returns**:
+  list of float: The projection of v1 onto v2.
+
+- **Example**:
+  ```python
+  >>> projection(v1, v2)
+  [0.6623376623376623, 0.827922077922078, 0.9935064935064936]
+  ```
