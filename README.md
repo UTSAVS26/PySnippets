@@ -236,17 +236,17 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
 	<tbody>
 		<tr>
             <td align="center">
-                <a href="https://github.com/UTSAVS26">
-                    <img src="https://avatars.githubusercontent.com/u/119779889?v=4" width="100;" alt="UTSAVS26"/>
-                    <br />
-                    <sub><b>UTSAV SINGHAL</b></sub>
-                </a>
-            </td>
-            <td align="center">
                 <a href="https://github.com/SpreadSheets600">
                     <img src="https://avatars.githubusercontent.com/u/115402296?v=4" width="100;" alt="SpreadSheets600"/>
                     <br />
                     <sub><b>Soham Maity</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/UTSAVS26">
+                    <img src="https://avatars.githubusercontent.com/u/119779889?v=4" width="100;" alt="UTSAVS26"/>
+                    <br />
+                    <sub><b>UTSAV SINGHAL</b></sub>
                 </a>
             </td>
             <td align="center">
