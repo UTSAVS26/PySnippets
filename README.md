@@ -287,6 +287,13 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/Shariq2003">
+                    <img src="https://avatars.githubusercontent.com/u/109452033?v=4" width="100;" alt="Shariq2003"/>
+                    <br />
+                    <sub><b>Shariq</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/Su-creator-spec">
                     <img src="https://avatars.githubusercontent.com/u/148456570?v=4" width="100;" alt="Su-creator-spec"/>
                     <br />
@@ -314,20 +321,13 @@ For any inquiries or feedback, please contact. Happy Contributing 🫡
                     <sub><b>Darsh Agrawal</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/mehul-m-prajapati">
                     <img src="https://avatars.githubusercontent.com/u/7879392?v=4" width="100;" alt="mehul-m-prajapati"/>
                     <br />
                     <sub><b>Mehul Prajapati</b></sub>
-                </a>
-            </td>
-		</tr>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/Shariq2003">
-                    <img src="https://avatars.githubusercontent.com/u/109452033?v=4" width="100;" alt="Shariq2003"/>
-                    <br />
-                    <sub><b>Shariq</b></sub>
                 </a>
             </td>
             <td align="center">
