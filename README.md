@@ -246,19 +246,19 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/Su-creator-spec">
-                    <img src="https://avatars.githubusercontent.com/u/148456570?v=4" width="100;" alt="Su-creator-spec"/>
+                <a href="https://github.com/yashksaini-coder">
+                    <img src="https://avatars.githubusercontent.com/u/115717039?v=4" width="100;" alt="yashksaini-coder"/>
                     <br />
-                    <sub><b>Su-creator-spec</b></sub>
+                    <sub><b>Yash Kumar Saini</b></sub>
                 </a>
             </td>
 		</tr>
 		<tr>
             <td align="center">
-                <a href="https://github.com/yashksaini-coder">
-                    <img src="https://avatars.githubusercontent.com/u/115717039?v=4" width="100;" alt="yashksaini-coder"/>
+                <a href="https://github.com/Su-creator-spec">
+                    <img src="https://avatars.githubusercontent.com/u/148456570?v=4" width="100;" alt="Su-creator-spec"/>
                     <br />
-                    <sub><b>Yash Kumar Saini</b></sub>
+                    <sub><b>Su-creator-spec</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -299,10 +299,10 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
 		</tr>
 		<tr>
             <td align="center">
-                <a href="https://github.com/softcreations01">
-                    <img src="https://avatars.githubusercontent.com/u/93330349?v=4" width="100;" alt="softcreations01"/>
+                <a href="https://github.com/anurags10">
+                    <img src="https://avatars.githubusercontent.com/u/54910091?v=4" width="100;" alt="anurags10"/>
                     <br />
-                    <sub><b>Gwhiz</b></sub>
+                    <sub><b>Anurag Singh</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -313,10 +313,10 @@ For questions, suggestions, or feedback, feel free to contact the project mainta
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/anurags10">
-                    <img src="https://avatars.githubusercontent.com/u/54910091?v=4" width="100;" alt="anurags10"/>
+                <a href="https://github.com/softcreations01">
+                    <img src="https://avatars.githubusercontent.com/u/93330349?v=4" width="100;" alt="softcreations01"/>
                     <br />
-                    <sub><b>Anurag Singh</b></sub>
+                    <sub><b>Gwhiz</b></sub>
                 </a>
             </td>
             <td align="center">
