@@ -1,4 +1,4 @@
-# statistics.py (continued)
+# quantile.py
 
 def quantile(data, q):
     """
@@ -17,8 +17,14 @@ def quantile(data, q):
     """
     if not data:
         raise ValueError("List is empty")
+    
     if not (0 <= q <= 1):
         raise ValueError("Quantile must be between 0 and 1")
+    
+    # Ensure all elements in the list are numeric
+    if not all(isinstance(x, (int, float)) for x in data):
+        raise ValueError("All elements in the data list must be numeric")
+    
     sorted_data = sorted(data)
     index = int(q * (len(sorted_data) - 1))
     return sorted_data[index]

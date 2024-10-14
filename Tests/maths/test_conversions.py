@@ -3,7 +3,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from pysnippets.maths import polar_rectangular_conversion as prc
+from pysnippets.math import polar_rectangular_conversion as prc
 
 
 r = 5

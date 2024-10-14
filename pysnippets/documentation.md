@@ -4,11 +4,25 @@ Welcome to **PySnippets**, a Python package that offers a collection of reusable
 
 ## Modules
 
+- [Algorithms](algorithms/algorithms.md)
+- [Analysis](analysis/analysis.md)
+- [Communication](communication/communication.md)
+- [Database](database/database.md)
+- [Date Utilites](date_utils/date_utils.md)
+- [File Handling](files/files.md)
+- [Graphing](graphing/graphing.md)
+- [Hashing](hashing/hashing.md)
+- [List](list/list_manipulation.md)
 - [Math](math/math.md)
-- [Files](files/files.md)
-- [System](system/system.md)
 - [Numbers](numbers/numbers.md)
-- [Strings](strings/strings.md)
-- [Statistics](statistics/statistics.md)
+- [Performance](performance/performance.md)
+- [QRCode](qrcode/qrcode.md)
+- [Sorting](sorting/sorting.md)
+- [Stats](stats/stats.md)
+- [String](string/string.md)
+- [System](system/system.md)
+- [Utilities](utilities/utilities.md)
+- [Web](web/web.md)
+- [WebScrape](webscrape/webscrape.md)
 
 ---
