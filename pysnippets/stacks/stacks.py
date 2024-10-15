@@ -17,9 +17,8 @@ class Stack:
     def peek(self):
         if self.top == -1:
             raise Exception("Stack is empty")
-<<<<<<< HEAD
+         
         return self.stack[self.top]
    
-=======
         return self.stack[self.top]
->>>>>>> be797d9d9eba22a9335bece9edf267297725b79a
+
