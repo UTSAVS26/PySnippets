@@ -1,14 +1,26 @@
 import unittest
-from pysnippets.queues import queues
+from pysnippets.queues import queues  # Assuming queues.py defines the Queue class
 
+class QueueFullError(Exception):
+    """Custom exception for when the queue is full."""
+    pass
+
+class QueueEmptyError(Exception):
+    """Custom exception for when the queue is empty."""
+    pass
 
 class TestQueue(unittest.TestCase):
     def setUp(self):
-        """Create a Queue instance for testing."""
-        self.queue = Queue(5)  # Capacity of 5
+        """
+        This method is called before every test case.
+        Here, we initialize an empty queue.
+        """
+        self.queue = queues.Queue(5)  # Use the actual Queue class
 
     def test_enqueue_and_dequeue(self):
-        """Test enqueue and dequeue functionality."""
+        """
+        Tests enqueueing and dequeueing elements from the queue.
+        """
         self.queue.enqueue(1)
         self.queue.enqueue(2)
         self.queue.enqueue(3)
@@ -17,28 +29,30 @@ class TestQueue(unittest.TestCase):
         self.assertEqual(self.queue.dequeue(), 2)
 
     def test_full_queue(self):
-        """Test that enqueuing into a full queue raises QueueFullError."""
-        self.queue.enqueue(1)
-        self.queue.enqueue(2)
-        self.queue.enqueue(3)
-        self.queue.enqueue(4)
-        self.queue.enqueue(5)
+        """
+        Tests enqueueing to a full queue and raising QueueFullError.
+        """
+        for i in range(1, 6):
+            self.queue.enqueue(i)
 
         with self.assertRaises(QueueFullError) as context:
             self.queue.enqueue(6)
         self.assertEqual(str(context.exception), "The queue is full")
 
     def test_empty_queue(self):
-        """Test that dequeuing from an empty queue raises QueueEmptyError."""
+        """
+        Tests dequeueing from an empty queue and raising QueueEmptyError.
+        """
         with self.assertRaises(QueueEmptyError) as context:
             self.queue.dequeue()
         self.assertEqual(str(context.exception), "The queue is empty")
 
     def test_print_queue(self):
-        """Test printing the queue's elements."""
-        self.queue.enqueue(1)
-        self.queue.enqueue(2)
-        self.queue.enqueue(3)
+        """
+        Tests printing the contents of the queue.
+        """
+        for i in range(1, 4):
+            self.queue.enqueue(i)
 
         from io import StringIO
         import sys
@@ -54,7 +68,9 @@ class TestQueue(unittest.TestCase):
         self.assertEqual(output, "1 2 3")
 
     def test_is_empty_and_full(self):
-        """Test is_empty and is_full methods."""
+        """
+        Tests the is_empty() and is_full() methods of the queue.
+        """
         self.assertTrue(self.queue.is_empty())
         self.queue.enqueue(1)
         self.assertFalse(self.queue.is_empty())

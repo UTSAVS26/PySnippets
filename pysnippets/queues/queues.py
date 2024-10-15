@@ -1,3 +1,5 @@
+# pysnippets/queues.py
+
 class QueueFullError(Exception):
     """Custom exception for when the queue is full."""
     pass
@@ -6,14 +8,13 @@ class QueueEmptyError(Exception):
     """Custom exception for when the queue is empty."""
     pass
 
-class Queue:
+class Queue:  # Ensure this is named Queue
     def __init__(self, k: int):
         self.k = k
         self.queue = [None] * k
         self.head = self.tail = -1
 
     def enqueue(self, data) -> None:
-        """Adds an element to the end of the queue."""
         if (self.tail + 1) % self.k == self.head:
             raise QueueFullError("The queue is full")
         else:
@@ -23,7 +24,6 @@ class Queue:
                 self.head = 0
 
     def dequeue(self):
-        """Removes and returns the front element of the queue."""
         if self.head == -1:
             raise QueueEmptyError("The queue is empty")
         else:
@@ -34,16 +34,7 @@ class Queue:
                 self.head = (self.head + 1) % self.k
             return temp
 
-    def is_empty(self) -> bool:
-        """Checks if the queue is empty."""
-        return self.head == -1
-
-    def is_full(self) -> bool:
-        """Checks if the queue is full."""
-        return (self.tail + 1) % self.k == self.head
-
     def printQueue(self) -> None:
-        """Prints the elements of the queue."""
         if self.head == -1:
             print("No element in the queue")
         else:
@@ -55,15 +46,8 @@ class Queue:
                 i = (i + 1) % self.k
             print()
 
-    def __str__(self) -> str:
-        """String representation of the queue."""
-        if self.is_empty():
-            return "[]"
-        elements = []
-        i = self.head
-        while True:
-            elements.append(self.queue[i])
-            if i == self.tail:
-                break
-            i = (i + 1) % self.k
-        return "[" + ", ".join(map(str, elements)) + "]"
+    def is_empty(self) -> bool:
+        return self.head == -1
+
+    def is_full(self) -> bool:
+        return (self.tail + 1) % self.k == self.head
