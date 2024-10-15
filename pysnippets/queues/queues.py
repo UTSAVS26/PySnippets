@@ -1,28 +1,34 @@
-class Queue:
+# pysnippets/queues.py
 
+class QueueFullError(Exception):
+    """Custom exception for when the queue is full."""
+    pass
+
+class QueueEmptyError(Exception):
+    """Custom exception for when the queue is empty."""
+    pass
+
+class Queue:
     def __init__(self, k):
         self.k = k
         self.queue = [None] * k
         self.head = self.tail = -1
 
-    # Insert an element into the queue
     def enqueue(self, data):
-        if (self.tail + 1) % self.k == self.head:  # Corrected condition for full queue
-            print("The queue is full\n")
+        if (self.tail + 1) % self.k == self.head:
+            raise QueueFullError("The queue is full")
         else:
             self.tail = (self.tail + 1) % self.k
             self.queue[self.tail] = data
-            if self.head == -1:  # If queue was empty
+            if self.head == -1:
                 self.head = 0
 
-    # Delete an element from the queue
     def dequeue(self):
-        if self.head == -1:  # If queue is empty
-            print("The queue is empty\n")
-            return None
+        if self.head == -1:
+            raise QueueEmptyError("The queue is empty")
         else:
             temp = self.queue[self.head]
-            if self.head == self.tail:  # Queue becomes empty after this dequeue
+            if self.head == self.tail:
                 self.head = self.tail = -1
             else:
                 self.head = (self.head + 1) % self.k
@@ -39,17 +45,3 @@ class Queue:
                     break
                 i = (i + 1) % self.k
             print()
-
-# Your Queue object will be instantiated and called as such:
-#obj = Queue(5)  # Pass the size of the queue as an argument
-#obj.enqueue(1)
-#obj.enqueue(2)
-#obj.enqueue(3)
-#obj.enqueue(4)
-#obj.enqueue(5)
-#print("Initial queue")
-#obj.printQueue()
-
-#obj.dequeue()
-#print("After removing an element from the queue")
-#obj.printQueue()
