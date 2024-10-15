@@ -1,7 +1,7 @@
 # tests/test_queue.py
 
 import unittest
-from pysnippets.queues import queues, QueueFullError, QueueEmptyError
+from pysnippets.queues import Queue, QueueFullError, QueueEmptyError
 
 class TestQueue(unittest.TestCase):
     def setUp(self):
