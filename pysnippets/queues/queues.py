@@ -41,15 +41,15 @@ class Queue:
             print()
 
 # Your Queue object will be instantiated and called as such:
-obj = Queue(5)  # Pass the size of the queue as an argument
-obj.enqueue(1)
-obj.enqueue(2)
-obj.enqueue(3)
-obj.enqueue(4)
-obj.enqueue(5)
-print("Initial queue")
-obj.printQueue()
+#obj = Queue(5)  # Pass the size of the queue as an argument
+#obj.enqueue(1)
+#obj.enqueue(2)
+#obj.enqueue(3)
+#obj.enqueue(4)
+#obj.enqueue(5)
+#print("Initial queue")
+#obj.printQueue()
 
-obj.dequeue()
-print("After removing an element from the queue")
-obj.printQueue()
+#obj.dequeue()
+#print("After removing an element from the queue")
+#obj.printQueue()
