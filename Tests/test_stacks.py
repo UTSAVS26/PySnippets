@@ -1,5 +1,5 @@
 import unittest
-from pysnippets.stacks import Stack  # Correct import for your Stack class
+from pysnippets.stacks import stacks  # Correct import for your Stack class
 
 
 # Custom exceptions for the Stack class
