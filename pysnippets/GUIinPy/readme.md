@@ -30,38 +30,3 @@ This project is a simple graphical user interface (GUI) application developed us
 
 7. **Style (ttk.Style)**: A way to customize the appearance of widgets. We used it to style the button and ensure it has a modern look.
 
-### Code Overview
-
-```python
-import tkinter as tk
-from tkinter import messagebox, ttk
-
-def show_input():
-    user_input = entry.get()  # Get the text from the entry field
-    if user_input:
-        messagebox.showinfo("Your Input", f"You entered: {user_input}")
-    else:
-        messagebox.showwarning("Input Error", "Please enter some text!")
-
-# Create the main window
-root = tk.Tk()
-root.title("Modern Python GUI")
-
-# Create a frame for styling
-frame = ttk.Frame(root, padding="20")
-frame.grid(row=0, column=0)
-
-# Add a label
-label = ttk.Label(frame, text="Welcome to the Modern Python GUI!", font=("Helvetica", 16))
-label.grid(row=0, column=0, padx=10, pady=10)
-
-# Add an entry widget
-entry = ttk.Entry(frame, width=30)
-entry.grid(row=1, column=0, padx=10, pady=10)
-
-# Add a button
-button = ttk.Button(frame, text="Submit", command=show_input)
-button.grid(row=2, column=0, padx=10, pady=10)
-
-# Start the main event loop
-root.mainloop()
