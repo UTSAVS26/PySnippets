@@ -197,11 +197,6 @@ Thank you for your contribution! Your efforts help make **PySnippets** better fo
 
 We welcome all contributions to improve **PySnippets**! If you would like to contribute, please follow the [Contributing.md](./CONTRIBUTING.md) to know how to get started.
 
-## Ethical Code of Conduct for Contributors
-1. **Respect for Ownership of Issues**: Contributors are encouraged to refrain from solving problems or issues identified by someone who is fully capable of solving the problem themselves. If a user has raised an issue and is capable of addressing it, please allow them the opportunity to resolve it.
-
-2. **Issue Ownership and Assignment**: Contributors should focus on finding or creating new issues that are not already assigned. Before starting work on an issue, check the assignment status and avoid taking up tasks that are actively being addressed by others.
-
 ### Adding Your Project
 
 We also encourage users to add their own projects or larger contributions that build upon or extend **PySnippets**. Feel free to reach out or submit your project through a pull request.
@@ -209,6 +204,13 @@ We also encourage users to add their own projects or larger contributions that b
 ### Reporting Issues
 
 If you find any bugs or issues, please submit an issue on GitHub with detailed information about the problem and steps to reproduce it.
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+
+## Ethical Code of Conduct for Contributors
+1. **Respect for Ownership of Issues**: Contributors are encouraged to refrain from solving problems or issues identified by someone who is fully capable of solving the problem themselves. If a user has raised an issue and is capable of addressing it, please allow them the opportunity to resolve it.
+
+2. **Issue Ownership and Assignment**: Contributors should focus on finding or creating new issues that are not already assigned. Before starting work on an issue, check the assignment status and avoid taking up tasks that are actively being addressed by others.
 
 <!--Line-->
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
