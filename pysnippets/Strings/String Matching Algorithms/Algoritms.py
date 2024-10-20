@@ -97,6 +97,43 @@ def rabin_karp(text,pattern,q):
 
     return indices
 
+def BadCharHeuristic(string,size):
+    '''
+    the preprocessing function for boyer moore's bad character heuristic
+    '''
+    no_of_char = 256
+    badChar = [-1]*no_of_char #initialising all occirencs as -1
+
+    for i in range(size):
+        badChar[ord(string[i])] = i
+
+    return badChar
+
+def Boyer_Moore(pattern,text):
+    '''
+    A pattern searching function that uses Bad Character
+    Heuristic of Boyer Moore Algorithm
+    '''
+    m = len(pattern)
+    n = len(text)
+    #creating bad character list
+    badChar = BadCharHeuristic(pattern,m)
+    indices = []
+    s = 0
+    while(s <= n-m):
+        j = m-1 
+        while j>=0 and pattern[j] == text[s+j]:
+           j -= 1
+
+        if j<0:
+            indices.append(s)
+            s += (m-badChar[ord(text[s+m])] if s+m < n else 1)
+        else:
+            s += max(1,j-badChar[ord(text[s+j])])  
+    
+    return indices
+
+
 if __name__ == "__main__":
     # Example usage
     text = "ababcababcabc"
@@ -106,3 +143,4 @@ if __name__ == "__main__":
     print("Naive String Matching:", naive_string_matching(text, pattern))  # Output: [2, 7, 12]
     print("KMP String Matching:", kmp_string_matching(text, pattern))      # Output: [2, 7, 12]
     print("rabin karp algorithm:", rabin_karp(text,pattern,q))
+    print("boyer moore string matching using bad heuristic: ", Boyer_Moore(pattern,text))
