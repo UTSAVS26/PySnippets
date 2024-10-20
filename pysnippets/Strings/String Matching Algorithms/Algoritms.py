@@ -56,10 +56,53 @@ def kmp_string_matching(text, pattern):
 
     return indices
 
+def rabin_karp(text,pattern,q):
+    '''this algorithm uses a rolling hash function which generates hash value for text and pattern
+    and it matches all the text hash value with the pattern value and checks the string only when the hash is same'''
+    
+    #d is the number of characters in the input alphabet
+    d = 256
+    n = len(text)
+    m = len(pattern)
+    i = 0  #index for text
+    j = 0  #index for pattern
+    hashp = 0 #hash value for pattern
+    hasht = 0 #hash value for text
+    h = 1
+    indices = []
+    #the value of h would be "pow(d,m-1)%q"
+    for i in range(m-1):
+        h = (h*d)%q
+
+    '''Calculate the hash value of pattern and first window of text'''
+    for i in range(m):
+        hashp = (d*hashp + ord(pattern[i]))%q
+        hasht = (d*hasht + ord(text[i]))%q
+
+    for i in range(n-m+1):
+        if hashp==hasht:
+            for j in range(m):
+                if text[i+j] != pattern[j]:
+                    break
+                else:
+                    j += 1
+
+            if j == m:
+                indices.append(i)
+        
+        if i<n-m:
+            hasht = (d*(hasht-ord(text[i])*h)+ord(text[i+m]))%q
+            if hasht<0:
+                hasht = hasht + q
+
+    return indices
+
 if __name__ == "__main__":
     # Example usage
     text = "ababcababcabc"
     pattern = "abc"
 
+    q = 101 # a prime number
     print("Naive String Matching:", naive_string_matching(text, pattern))  # Output: [2, 7, 12]
     print("KMP String Matching:", kmp_string_matching(text, pattern))      # Output: [2, 7, 12]
+    print("rabin karp algorithm:", rabin_karp(text,pattern,q))
