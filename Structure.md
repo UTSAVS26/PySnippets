@@ -2,6 +2,12 @@
 └── 📁PySnippets
     └── 📁pysnippets
         └── 📁algorithms
+            └── 📁Encryption algorithm
+                └── advanced_encryption_standard.py
+                └── asymmetric_encryption_algorithm.py
+                └── elliptic_curve_cryptography.py
+                └── hashing.py
+                └── symmetric_encryption_algorithm.py
             └── __init__.py
             └── algorithms.md
             └── astar.py
@@ -50,6 +56,23 @@
             └── __init__.py
             └── date_utils.md
             └── date_utils.py
+        └── 📁Dynamic Programming
+            └── approaches.md
+            └── coin_change.py
+            └── dynamic-programming-optimizations.md
+            └── edit_distance.py
+            └── how-to-identify.md
+            └── longest_common_subsequence.md
+            └── longest_common_subsequence.py
+            └── maximum_subarray_sum.py
+            └── practice-problems-different-patterns.md
+            └── two_city_scheduling.py
+            └── Two-City-Scheduling-3D-DP.md
+            └── unique_paths.py
+        └── 📁encryption
+            └── __init__.py
+            └── encryption.md
+            └── encryption.py
         └── 📁files
             └── __init__.py
             └── file_organizer.py
@@ -64,6 +87,22 @@
             └── __init__.py
             └── hashing.md
             └── hashing.py
+        └── 📁IDT_library
+            └── __init__.py
+            └── interactive_decision_tree.py
+            └── README.md
+            └── sankey_template.html
+            └── test.ipynb
+            └── test.py
+            └── titanic-sankey.html
+            └── titanic-tree.html
+            └── tree_template.html
+        └── 📁Image_Processing
+            └── __init__.py
+            └── image_augmentation_module.py
+            └── ImageAugmentation.md
+            └── test_image.webp
+            └── usage.py
         └── 📁list
             └── __init__.py
             └── list_manipulation.md
@@ -76,6 +115,24 @@
             └── matrix_operations.py
             └── polar_rectangular_conversion.py
             └── vector_operations.py
+        └── 📁Memoisation
+            └── __init__.py
+            └── fibonacci.py
+            └── Importance-of-memoisation copy.md
+            └── knapsack.py
+            └── lcs.py
+            └── Memoisation.md
+        └── 📁models
+            └── __init__.py
+            └── Catboost.py
+            └── CV_means.py
+            └── Ensemble.py
+            └── Grid_search.py
+            └── KMeans.py
+            └── LightGBM.py
+            └── Linear_regression.py
+            └── Logistic_regression.py
+            └── XGB.py
         └── 📁numbers
             └── __init__.py
             └── format_to_2_decimal.py
@@ -94,14 +151,29 @@
             └── generate_qr_code.py
             └── qrcode.md
             └── scan_qr_code.py
+        └── 📁Searching
+            └── __init__.py
+            └── iterative binary search.py
+            └── Linear Search.py
+            └── recursive binary search.py
+            └── searching.md
         └── 📁sorting
             └── __init__.py
+            └── bubble_sort.py
+            └── insertion_sort.py
+            └── merge_sort.py
+            └── quick_sort.py
             └── sort_dict_list.py
             └── sorting.md
         └── 📁stats
             └── __init__.py
+            └── coeffecient_variation.py
+            └── correlation.py
+            └── iqr.py
+            └── kurtosis.py
             └── mean_median_mode.py
             └── quantile.py
+            └── skewness.py
             └── standard_deviation.py
             └── stats.md
             └── variance.py
@@ -124,6 +196,10 @@
             └── temporary_file_handler.py
         └── 📁utilities
             └── __init__.py
+            └── caching.md
+            └── caching.py
+            └── deep_copy.md
+            └── deep_copy.py
             └── flatten.py
             └── retry.py
             └── timer.py
@@ -142,7 +218,9 @@
         └── documentation.md
     └── 📁Tests
         └── 📁algorithms
+            └── test_advanced_encryption_standard.py
             └── test_astar.py
+            └── test_asymmetric_encryption_algorithm.py
             └── test_bellman_ford.py
             └── test_bfs.py
             └── test_binary_search.py
@@ -151,11 +229,14 @@
             └── test_dfs.py
             └── test_dijkstra.py
             └── test_dijkstras.py
+            └── test_elliptic_curve_cryptography.py
             └── test_fibonacci.py
             └── test_floyds.py
+            └── test_hashing.py
             └── test_kruskals.py
             └── test_prim.py
             └── test_prims.py
+            └── test_symmetric_encryption_algorithm.py
             └── test_topological_ordering.py
             └── test_warshalls.py
         └── 📁analysis
@@ -168,14 +249,38 @@
         └── 📁date_utils
             └── __init__.py
             └── test_date_utils.py
+        └── 📁encryption
+            └── test_encryption.py
         └── 📁files
             └── test_file_organizer.py
             └── test_file_reader.py
         └── 📁graphing
             └── __init__.py
             └── test_advanced_graphing.py
+        └── 📁IDT_library
+            └── interactive_decision_tree.py
+            └── sankey_template.html
+            └── test_IDT.py
+            └── titanic_sankey.html
+            └── titanic_tree.html
+            └── tree_template.html
+        └── 📁image_processing
+            └── __intit.py
+            └── test_image_augmentation.py
+            └── test_image.webp
         └── 📁lists
             └── test_list_manipulation.py
+        └── 📁machine-learning-test
+            └── __init__.py
+            └── test_Catboost.py
+            └── test_CV_means.py
+            └── test_Ensemble.py
+            └── test_Grid_search.py
+            └── test_KMeans.py
+            └── test_LightGBM.py
+            └── test_Linear.py
+            └── test_Logistic.py
+            └── test_XGB.py
         └── 📁maths
             └── test_complex_number.py
             └── test_conversions.py
@@ -194,9 +299,14 @@
             └── test_generate_qr_code.py
             └── test_scan_qr_code.py
         └── 📁Sorting
+            └── test_bubble_sort.py
+            └── test_insertion_sort.py
+            └── test_merge_sort.py
+            └── test_quick_sort.py
             └── test_sort_dict_list.py
         └── 📁stats
             └── test_data_distribution.py
+            └── test_quantile.py
             └── test_statistics.py
         └── 📁strings
             └── test_list_to_comma_string.py
@@ -209,6 +319,8 @@
             └── test_resource_manager.py
             └── test_temporary_file_handler.py
         └── 📁utilities
+            └── test_caching.py
+            └── test_deep_copy.py
             └── test_flatten.py
             └── test_retry.py
             └── test_time_execution.py
