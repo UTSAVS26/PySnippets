@@ -31,6 +31,7 @@ Wellcome To PySnippet's Mathematics Module Section, This Section Contains The Do
   - [Vector Normalization](#vector-normalization)
   - [Angle Between Vectors](#angle-between-vectors)
   - [Projection](#projection)
+- [Polynomial Addition](#polynomial-addition)
 
 ---
 
@@ -396,3 +397,25 @@ Project vector v1 onto vector v2.
   >>> projection(v1, v2)
   [0.6623376623376623, 0.827922077922078, 0.9935064935064936]
   ```
+  
+## Polynomial Addition
+
+### Introduction
+The Polynomial Addition feature in the PySnippets Mathematics Module allows users to easily perform addition of polynomials. This functionality is essential for various mathematical computations involving polynomial expressions.
+
+### Function Overview
+The following functions and classes are available for handling polynomial addition.
+
+#### Polynomial Class
+The `Polynomial` class is designed to handle polynomial terms and provide methods for polynomial operations.
+
+##### Methods:
+- **add_term(coefficient, power)**: Adds a term to the polynomial.
+- **display()**: Returns a string representation of the polynomial.
+
+### Adding Polynomials
+The `add_polynomials` function combines multiple polynomials into a single polynomial.
+
+#### Function Signature
+```python
+def add_polynomials(polynomials: List[Polynomial]) -> Polynomial:
