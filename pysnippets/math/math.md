@@ -410,6 +410,7 @@ The following functions and classes are available for handling polynomial additi
 The `Polynomial` class is designed to handle polynomial terms and provide methods for polynomial operations.
 
 ##### Methods:
+
 - **add_term(coefficient, power)**: Adds a term to the polynomial.
 - **display()**: Returns a string representation of the polynomial.
 
