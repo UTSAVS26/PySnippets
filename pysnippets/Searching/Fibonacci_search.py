@@ -5,6 +5,8 @@ def fibonacci_search(arr, target):
     :param target: The element to search for.
     :return: The index of the element if found, else -1.
     """
+    if not arr:  # Check for empty array
+        return -1
     n = len(arr)
     fib_mm2 = 0  # (m-2)'th Fibonacci number
     fib_mm1 = 1  # (m-1)'th Fibonacci number
@@ -46,4 +48,3 @@ if __name__ == "__main__":
         print("Element is not present in array")
     else:
         print("Element is present at index", result)
-

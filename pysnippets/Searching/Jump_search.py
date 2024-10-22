@@ -7,6 +7,8 @@ def jump_search(arr, target):
     :param target: The element to search for.
     :return: The index of the element if found, else -1.
     """
+    if not arr:  # Check for empty array
+        return -1
     n = len(arr)
     step = int(math.sqrt(n))
     prev = 0
@@ -31,5 +33,6 @@ if __name__ == "__main__":
         print("Element is not present in array")
     else:
         print("Element is present at index", result)
+
 
 
