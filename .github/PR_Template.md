@@ -12,62 +12,24 @@ Closes: #issue_number that will be closed through this PR
 
 ---
 
-## Snippet Details 📃
+### Describe your change:
 
-- **Snippet Name**: `<snippet_name>`
-- **Category**: `<category>` (e.g., strings, numbers, files)
-- **Function Name**: `<function_name>`
 
-### Summary of Changes
 
-- Briefly describe what this snippet does and why it is useful.
-- Mention any important details or considerations for users.
+* [ ] Add an algorithm?
+* [ ] Fix a bug or typo in an existing algorithm?
+* [ ] Add or change doctests? -- Note: Please avoid changing both code and tests in a single pull request.
+* [ ] Documentation change?
 
-### Code Changes
-
-- Provide a summary of the changes made in the code (if applicable).
-
-### Example Usage
-
-```python
-# Provide an example of how to use the snippet.
-result = <function_name>(<example_arguments>)
-print(result)
-```
-
----
-
-## Type of Change ☑️
-
-What sort of change have you made:
-<!--
-Example how to mark a checkbox:-
-- [x] My code follows the code style of this project.
--->
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Code style update (formatting, local variables)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
-
----
-
-## How Has This Been Tested? ⚙️
-
-- Describe how it has been tested.
-- Describe how you have verified the changes made.
-
----
-
-## Checklist ☑️
-<!--
-Example how to mark a checkbox:-
-- [x] My code follows the code style of this project.
--->
-- [ ] My code follows the guidelines of this project.
-- [ ] I have performed a self-review of my own code.
-- [ ] I have commented my code, particularly where it was hard to understand.
-- [ ] I have made corresponding changes to the documentation.
-- [ ] My changes generate no new warnings.
-- [ ] I have added tests that prove my fix is effective or that my feature works.
-- [ ] Any dependent changes have been merged and published in downstream modules.
+### Checklist:
+* [ ] I have read [CONTRIBUTING.md](https://github.com/UTSAVS26/PySnippets/blob/main/CONTRIBUTING.md).
+* [ ] This pull request is all my own work -- I have not plagiarized.
+* [ ] I know that pull requests will not be merged if they fail the automated tests.
+* [ ] This PR only changes one algorithm file.  To ease review, please open separate PRs for separate algorithms.
+* [ ] All new Python files are placed inside an existing directory.
+* [ ] All filenames are in all lowercase characters with no spaces or dashes.
+* [ ] All functions and variable names follow Python naming conventions.
+* [ ] All function parameters and return values are annotated with Python [type hints](https://docs.python.org/3/library/typing.html).
+* [ ] All functions have [doctests](https://docs.python.org/3/library/doctest.html) that pass the automated testing.
+* [ ] All new algorithms include at least one URL that points to Wikipedia or another similar explanation.
+* [ ] If this pull request resolves one or more open issues then the description above includes the issue number(s) with a [closing keyword](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue): "Fixes #ISSUE-NUMBER".
