@@ -1,100 +1,149 @@
-# Overview
+# Advanced Web Scraper
 
-This module provides functions to scrape quotes from a static web page and save the data into a CSV file.
+A robust, feature-rich web scraping tool built in Python for extracting quotes from websites. This scraper supports multiple scraping methods, data analysis, and various output formats.
 
-## Table of Contents
+## Features
 
-1. [Function: `scrape_static_quotes`](#function-scrape_static_quotes)
+- 🚀 Multiple scraping methods:
+  - Synchronous scraping with retry mechanism
+  - Threaded scraping for parallel execution
+  - Asynchronous scraping for improved performance
+- 📊 Data analysis capabilities
+- 💾 Multiple output formats (CSV, JSON, Excel)
+- 🔄 Automatic retry mechanism
+- 📝 Comprehensive logging
+- 🔍 Data validation and cleaning
+- 🎭 Random User-Agent rotation
 
-   - [Arguments](#arguments)
-   - [Returns](#returns)
-   - [Example Usage](#example-usage)
+## Installation
 
-2. [Function: `save_quotes_to_csv`](#function-save_quotes_to_csv)
+### Prerequisites
 
-   - [Arguments](#arguments-1)
-   - [Returns](#returns-1)
-   - [Example Usage](#example-usage-1)
+- Python 3.8+
+- pip package manager
 
-3. [Function: `scrape_multiple_pages`](#function-scrape_multiple_pages)
-   - [Arguments](#arguments-2)
-   - [Returns](#returns-2)
-   - [Example Usage](#example-usage-2)
+### Setup
 
----
-
-## Function: `scrape_static_quotes`
-
-```python
-scrape_static_quotes(url: str) -> list
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/web-scraper.git
+cd web-scraper
 ```
 
-Scrapes quotes from a static page.
-
-### Arguments
-
-- **url** (str): The URL of the page to scrape quotes from.
-
-### Returns
-
-- **list**: A list of dictionaries containing quotes, authors, and tags. Each dictionary has the keys `quote`, `author`, and `tags`.
-
-### Example Usage
-
-```python
-quotes = scrape_static_quotes("https://quotes.toscrape.com/page/1/")
-for quote in quotes:
-    print(quote)
+2. Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
----
-
-## Function: `save_quotes_to_csv`
-
-```python
-save_quotes_to_csv(quotes: list, file_name='quotes.csv')
+3. Install required packages:
+```bash
+pip install -r requirements.txt
 ```
 
-Saves scraped quotes data into a CSV file.
+## Usage
 
-### Arguments
-
-- **quotes** (list): A list of dictionaries containing quotes data to save.
-- **file_name** (str, optional): The name of the CSV file to save the data. Defaults to 'quotes.csv'.
-
-### Returns
-
-- **None**
-
-### Example Usage
+### Basic Usage
 
 ```python
-quotes = [{'quote': 'Life is what happens when you’re busy making other plans.', 'author': 'John Lennon', 'tags': ['life', 'misattributed-john-lennon']}]
-save_quotes_to_csv(quotes)
+from web_scraper import QuoteScraper
+
+# Initialize scraper
+scraper = QuoteScraper('https://quotes.toscrape.com')
+
+# Scrape with threading
+quotes = scraper.scrape_with_threading(num_pages=3)
+
+# Save results
+scraper.save_to_multiple_formats(quotes, 'quotes_output')
 ```
 
----
-
-## Function: `scrape_multiple_pages`
+### Async Scraping
 
 ```python
-scrape_multiple_pages(base_url: str, num_pages=3) -> list
+import asyncio
+
+# Scrape asynchronously
+quotes = asyncio.run(scraper.scrape_multiple_pages_async(num_pages=3))
 ```
 
-Scrapes quotes from multiple pages.
-
-### Arguments
-
-- **base_url** (str): The base URL of the quotes website.
-- **num_pages** (int, optional): The number of pages to scrape. Defaults to 3.
-
-### Returns
-
-- **list**: A combined list of all quotes scraped from the specified number of pages.
-
-### Example Usage
+### Data Analysis
 
 ```python
-base_url = 'https://quotes.toscrape.com'
-all_quotes = scrape_multiple_pages(base_url, num_pages=3)
+# Analyze scraped quotes
+analysis = scraper.analyze_quotes(quotes)
+print(analysis)
 ```
+
+## Configuration
+
+The scraper can be configured through the following parameters:
+
+- `base_url`: The target website URL
+- `output_dir`: Directory for saving output files (default: 'output')
+- `num_pages`: Number of pages to scrape
+- `max_workers`: Maximum number of threads for parallel scraping
+
+## Output Formats
+
+The scraper supports the following output formats:
+
+1. CSV: Comma-separated values file
+2. JSON: JavaScript Object Notation file
+3. Excel: Microsoft Excel spreadsheet
+
+## Testing
+
+Run the test suite:
+
+```bash
+python -m unittest test_web_scraper.py
+```
+
+## Project Structure
+
+```
+web-scraper/
+├── web_scraper.py       # Main scraper implementation
+├── test_web_scraper.py  # Test suite
+├── requirements.txt     # Project dependencies
+├── output/             # Output directory for scraped data
+└── logs/               # Logging directory
+```
+
+## Dependencies
+
+- requests: HTTP library for making requests
+- beautifulsoup4: HTML parsing
+- pandas: Data manipulation and analysis
+- aiohttp: Async HTTP client/server
+- fake-useragent: Random user agent generation
+- retry: Retry mechanism for failed requests
+- openpyxl: Excel file support
+
+## Error Handling
+
+The scraper includes comprehensive error handling for:
+
+- Network errors
+- Parsing errors
+- Invalid data
+- File I/O errors
+- Rate limiting
+
+## Logging
+
+Logs are written to `scraper.log` and include:
+
+- Info level: General operation information
+- Warning level: Non-critical issues
+- Error level: Critical failures
+- Debug level: Detailed debugging information
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
