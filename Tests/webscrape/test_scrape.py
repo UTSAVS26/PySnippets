@@ -1,64 +1,109 @@
 import unittest
-from unittest.mock import patch, MagicMock
-from pysnippets.webscrape.scraper import scrape_static_quotes, save_quotes_to_csv
-from colorama import Fore, Style
+from unittest.mock import Mock, patch
+import asyncio
+from bs4 import BeautifulSoup
+from pathlib import Path
+import requests
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+from pysnippets.webscrape.scraper import QuoteScraper
 
-class TestScraper(unittest.TestCase):
+class TestQuoteScraper(unittest.TestCase):
+    """Test cases for the QuoteScraper class."""
 
-    @patch('pysnippets.webscrape.scraper.requests.get')
-    def test_scrape_static_quotes_success(self, mock_get):
-        # Mock the response from requests.get
-        mock_response = MagicMock()
-        mock_response.status_code = 200
-        mock_response.text = '''
-        <div class="quote">
-            <span class="text">The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.</span>
-            <small class="author">Albert Einstein</small>
-            <a class="tag" href="/tag/change/">change</a>
-            <a class="tag" href="/tag/world/">world</a>
-        </div>
+    def setUp(self):
+        """Set up test fixtures before each test method."""
+        self.base_url = 'https://quotes.toscrape.com'
+        self.scraper = QuoteScraper(self.base_url)
+        self.sample_html = '''
+            <div class="quote">
+                <span class="text">Test quote</span>
+                <small class="author">Test Author</small>
+                <div class="tags">
+                    <a class="tag">test</a>
+                    <a class="tag">sample</a>
+                </div>
+            </div>
         '''
+        
+    def tearDown(self):
+        """Clean up after each test method."""
+        # Remove test output files
+        for file in Path('output').glob('test_*'):
+            file.unlink()
+
+    @patch('requests.Session.get')
+    def test_scrape_static_quotes(self, mock_get):
+        """Test the static quote scraping method."""
+        # Mock the response
+        mock_response = Mock()
+        mock_response.text = self.sample_html
+        mock_response.status_code = 200
         mock_get.return_value = mock_response
 
-        url = 'https://quotes.toscrape.com/page/1/'
-        quotes = scrape_static_quotes(url)
-
+        quotes = self.scraper.scrape_static_quotes(self.base_url)
+        
         self.assertEqual(len(quotes), 1)
-        self.assertEqual(quotes[0]['quote'], "The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.")
-        self.assertEqual(quotes[0]['author'], "Albert Einstein")
-        self.assertIn('change', quotes[0]['tags'])
-        self.assertIn('world', quotes[0]['tags'])
+        self.assertEqual(quotes[0]['quote'], 'Test quote')
+        self.assertEqual(quotes[0]['author'], 'Test Author')
+        self.assertEqual(quotes[0]['tags'], ['test', 'sample'])
 
-    @patch('pysnippets.webscrape.scraper.requests.get')
-    def test_scrape_static_quotes_non_200_response(self, mock_get):
-        # Mock the response from requests.get to return a non-200 status code
-        mock_response = MagicMock()
-        mock_response.status_code = 404
-        mock_get.return_value = mock_response
+    def test_parse_quote_element(self):
+        """Test parsing of individual quote elements."""
+        soup = BeautifulSoup(self.sample_html, 'html.parser')
+        quote_element = soup.find('div', class_='quote')
+        
+        result = self.scraper._parse_quote_element(quote_element)
+        
+        self.assertIsNotNone(result)
+        self.assertEqual(result['quote'], 'Test quote')
+        self.assertEqual(result['author'], 'Test Author')
+        self.assertIn('scraped_at', result)
 
-        url = 'https://quotes.toscrape.com/page/1/'
-        quotes = scrape_static_quotes(url)
+    def test_analyze_quotes(self):
+        """Test quote analysis functionality."""
+        test_quotes = [
+            {
+                'quote': 'Test quote 1',
+                'author': 'Author 1',
+                'tags': ['test', 'sample']
+            },
+            {
+                'quote': 'Test quote 2',
+                'author': 'Author 1',
+                'tags': ['test']
+            }
+        ]
+        
+        analysis = self.scraper.analyze_quotes(test_quotes)
+        
+        self.assertEqual(analysis['total_quotes'], 2)
+        self.assertEqual(analysis['unique_authors'], 1)
+        self.assertEqual(analysis['most_common_author'], 'Author 1')
 
-        self.assertEqual(quotes, [])
-        mock_get.assert_called_once_with(url)
+    @patch('requests.Session.get')
+    def test_error_handling(self, mock_get):
+        """Test error handling in scraping."""
+        mock_get.side_effect = requests.RequestException("Test error")
+        
+        with self.assertRaises(requests.RequestException):
+            self.scraper.scrape_static_quotes(self.base_url)
 
-    @patch('pysnippets.webscrape.scraper.pd.DataFrame.to_csv')
-    def test_save_quotes_to_csv(self, mock_to_csv):
-        quotes = [{'quote': 'Test quote', 'author': 'Test Author', 'tags': ['test']}]
-        save_quotes_to_csv(quotes, 'test_quotes.csv')
+    def test_get_headers(self):
+        """Test header generation."""
+        headers = self.scraper.get_headers()
+        
+        self.assertIn('User-Agent', headers)
+        self.assertIn('Accept', headers)
+        self.assertIn('Accept-Language', headers)
 
-        # Check if to_csv was called with the correct parameters
-        mock_to_csv.assert_called_once_with('test_quotes.csv', index=False)
+def async_test(coro):
+    """Decorator for running async tests."""
+    def wrapper(*args, **kwargs):
+        loop = asyncio.get_event_loop()
+        return loop.run_until_complete(coro(*args, **kwargs))
+    return wrapper
 
 if __name__ == '__main__':
     unittest.main()
-
-    # Custom output for test results
-    for test in unittest.TestLoader().loadTestsFromTestCase(TestScraper):
-        result = unittest.TextTestRunner().run(test)
-        if result.wasSuccessful():
-            print(Fore.GREEN + f"Test {test._testMethodName} passed!" + Style.RESET_ALL)
-        else:
-            print(Fore.RED + f"Test {test._testMethodName} failed!" + Style.RESET_ALL)
-            for failure in result.failures:
-                print(Fore.RED + f"Failure in {failure[0]}: {failure[1]}" + Style.RESET_ALL)
