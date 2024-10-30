@@ -1,6 +1,6 @@
 
 import unittest
-from dictionarywithlru import fibonacci
+from functoolslru_cache_AutomaticMemoization import fibonacci
 
 class TestFibonacciMemoization(unittest.TestCase):
     def test_fibonacci(self):
