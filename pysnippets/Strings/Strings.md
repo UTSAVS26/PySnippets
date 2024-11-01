@@ -77,3 +77,90 @@ dog, cat, hamster
 ```
 ##
 Feel free to reach out if you have any questions about how to use the List to Comma String module!
+
+
+# String manipulation - PySnippets
+ 
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Functionality](#functionality)
+  - [capitalize_first_word](#capitalize-forst-word)
+  - [capitalize_words](#capitalize_words)
+- [Usage Example](#usage-example)
+
+---
+## Introduction
+
+The String Manipulation Utility module simplifies common string operations, making it easier to work with textual data. Whether you need to format output, search within strings, or analyze content, this module provides efficient solutions.
+
+---
+## Functionality
+### capitalize first word
+This function capitalizes only the first word in a given string, leaving other words unchanged.
+```python
+def capitalize_first_word(s: str) -> str:
+```
+- **Args**: 
+  - `items` s (str): The input string.
+  
+- **Returns**: 
+  - `str`: str: The modified string with the first letter of the first word capitalized..
+  
+- **Example**:
+- - **Example**:
+  ```python
+  >>> capitalize_first_word("hi bye")
+'Hi bye'
+  
+  
+## Usage Example
+
+```python
+if __name__ == "__main__":
+    sample_string_capitalized = "a man a plan a canal Panama"
+    print("Capitalized Words:", capitalize_first_word(sample_string_capitalized))
+
+```
+
+### Expected Output
+
+```
+ A man a plan a canal Panama
+```
+
+## Functionality
+### capitalize  words
+Capitalizes the first letter of each word in the string.
+```python
+def capitalize_words(s: str) -> str:
+```
+- **Args**: 
+  - `items` s (str): The string whose words are to be capitalized.
+  
+- **Returns**: 
+  - `str`: str: The modified string with each word capitalized.
+  
+- **Example**:
+- - **Example**:
+  ```python
+  >>> capitalize_words("hello world")
+'Hellow World'
+  
+  
+## Usage Example
+
+```python
+if __name__ == "__main__":
+    sample_string_capitalized = "a man a plan a canal Panama"
+    print("Capitalized Words:", capitalize_words(sample_string_capitalized))
+ 
+```
+
+### Expected Output
+
+```
+ A Man A Plan A Canal Panama
+```
+

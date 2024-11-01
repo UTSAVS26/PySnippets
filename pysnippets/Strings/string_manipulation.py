@@ -9,6 +9,7 @@ def reverse_string(s: str) -> str:
     """
     return s[::-1]
 
+
 def count_vowels(s: str) -> int:
     """
     Returns the count of vowels (a, e, i, o, u) in the input string.
@@ -20,6 +21,7 @@ def count_vowels(s: str) -> int:
     vowels = "aeiouAEIOU"
     return sum(1 for char in s if char in vowels)
 
+
 def to_uppercase(s: str) -> str:
     """
     Converts the input string to uppercase.
@@ -29,6 +31,7 @@ def to_uppercase(s: str) -> str:
     """
     return s.upper()
 
+
 def to_lowercase(s: str) -> str:
     """
     Converts the input string to lowercase.
@@ -37,6 +40,7 @@ def to_lowercase(s: str) -> str:
     to_lowercase("HELLO") -> "hello"
     """
     return s.lower()
+
 
 def is_palindrome(s: str) -> bool:
     """
@@ -51,6 +55,7 @@ def is_palindrome(s: str) -> bool:
     s = ''.join(filter(str.isalnum, s)).lower()  # Ignore spaces, punctuation, and case
     return s == s[::-1]
 
+
 def swap_case(s: str) -> str:
     """
     Swaps the case of all characters (upper to lower and vice versa).
@@ -59,6 +64,7 @@ def swap_case(s: str) -> str:
     swap_case("Apple") -> "aPPLE"
     """
     return s.swapcase()
+
 
 def to_replace(s: str, old: str, new: str) -> str:
     """
@@ -69,6 +75,7 @@ def to_replace(s: str, old: str, new: str) -> str:
     """
     return s.replace(old, new)
 
+
 def to_split(s: str, delimiter: str) -> list:
     """
     Splits a string into a list of substrings based on a delimiter.
@@ -77,6 +84,7 @@ def to_split(s: str, delimiter: str) -> list:
     to_split("a,b,c", ",") -> ['a', 'b', 'c']
     """
     return s.split(delimiter)
+
 
 def to_strip(s: str) -> str:
     """
@@ -87,6 +95,7 @@ def to_strip(s: str) -> str:
     """
     return s.strip()
 
+
 def to_encode(s: str) -> bytes:
     """
     Encodes the string into a bytes object using a specified encoding.
@@ -96,6 +105,7 @@ def to_encode(s: str) -> bytes:
     """
     return s.encode("utf-8")
 
+
 def to_decode(s: bytes) -> str:
     """
     Decodes a bytes object back into a string.
@@ -104,6 +114,7 @@ def to_decode(s: bytes) -> str:
     to_decode(b'hello') -> 'hello'
     """
     return s.decode("utf-8")
+
 
 def word_count(s: str) -> dict:
     """
@@ -118,6 +129,7 @@ def word_count(s: str) -> dict:
         count[word] = count.get(word, 0) + 1
     return count
 
+
 def character_frequency(s: str) -> dict:
     """
     Returns a dictionary of character frequencies in the input string.
@@ -129,6 +141,7 @@ def character_frequency(s: str) -> dict:
     for char in s:
         frequency[char] = frequency.get(char, 0) + 1
     return frequency
+
 
 def substring_search(s: str, sub: str) -> list:
     """
@@ -149,11 +162,51 @@ def substring_search(s: str, sub: str) -> list:
         start += 1  # Move past the last found index
     return indices
 
+
+def capitalize_words(s: str) -> str:
+    """
+    Capitalizes the first letter of each word in the input string using a manual loop.
+
+    Example usage:
+    capitalize_words("hello world") -> "Hello World"
+    """
+    result = []
+    capitalize_next = True
+
+    for char in s:
+        if char.isspace():
+            capitalize_next = True
+            result.append(char)
+        elif capitalize_next:
+            result.append(char.upper())
+            capitalize_next = False
+        else:
+            result.append(char)
+
+    return ''.join(result)
+
+
+def capitalize_first_word(s: str) -> str:
+    """
+    Capitalizes the first letter of the first word in the input string.
+
+    Example usage:
+    capitalize_first_word("hi bye") -> "Hi bye"
+    """
+
+    words = s.split(' ', 1)  # Split into two parts: first word and the rest
+    if words:
+        words[0] = words[0].capitalize()  # Capitalize the first word
+
+    return ' '.join(words)  # Join back the parts
+
+
 # Example usage of the functions in the script
 if __name__ == "__main__":
     sample_string = "A man a plan a canal Panama"
+    sample_string_capitalized = "a man a plan a canal Panama"
     substring = "a"
-    
+
     print("Original String:", sample_string)
     print("Reversed String:", reverse_string(sample_string))
     print("Vowel Count:", count_vowels(sample_string))
@@ -163,4 +216,5 @@ if __name__ == "__main__":
     print("Word Count:", word_count(sample_string))
     print("Character Frequency:", character_frequency(sample_string))
     print("Substring Indices for '{}':".format(substring), substring_search(sample_string, substring))
-
+    print("Capitalized Words:", capitalize_words(sample_string_capitalized))
+    print("Capitalized The First Words:", capitalize_first_word(sample_string_capitalized))
