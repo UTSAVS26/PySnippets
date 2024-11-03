@@ -1,5 +1,8 @@
 from collections import deque
 def bidirectional_search(graph, start, target):
+    if start == target:
+        return [start]
+
     queue_start = deque([start])
     queue_target = deque([target])
 
@@ -8,6 +11,18 @@ def bidirectional_search(graph, start, target):
 
     parents_start = {start: None}
     parents_target = {target: None}
+
+    while queue_start and queue_target:
+        path = bfs(graph, visited_start, queue_start, parents_start, visited_target)
+        if path:
+            path_start = _remake_path_start(parents_start, path)
+            path_target = _remake_path_target(parents_target, path)
+            return path_start + path_target[1:]
+        path = bfs(graph, visited_target, queue_target, parents_target, visited_start)
+        if path:
+            path_start = _remake_path_start(parents_start, path)
+            path_target = _remake_path_target(parents_target, path)
+            return path_start + path_target[1:]
 
 def bfs(graph, visited, queue, parents, other_visited):
     current_node = queue.popleft()
@@ -37,4 +52,3 @@ def _remake_path_target(parents_target, meeting_node):
         path_target.append(node)
         node = parents_target[node]
     return path_target
-
