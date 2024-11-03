@@ -1,30 +1,52 @@
 import hashlib
+from typing import Any, List, Optional, Tuple
 
 class HashTable:
-    def __init__(self, size=10):
+    def __init__(self, size: int = 10) -> None:
         self.size = size
-        self.table = [[] for _ in range(self.size)]
+        self.table: List[List[Tuple[int, Any]]] = [[] for _ in range(self.size)]
 
-    def _hash_function(self, key):
+    def _hash_function(self, key: int) -> int:
         # Using simple modulo hash function
         return key % self.size
 
-    def insert(self, key, value):
+    def _resize(self) -> None:
+        old_table = self.table
+        self.size *= 2
+        self.table = [[] for _ in range(self.size)]
+        
+        for bucket in old_table:
+            for key, value in bucket:
+                self.insert(key, value)
+
+    def load_factor(self) -> float:
+        num_elements = sum(len(bucket) for bucket in self.table)
+        return num_elements / self.size
+
+    def insert(self, key: int, value: Any) -> None:
+        if not isinstance(key, int):
+            raise TypeError("Key must be an integer.")
+        if self.load_factor() > 0.7:  # Check load factor
+            self._resize()
         hash_key = self._hash_function(key)
         for pair in self.table[hash_key]:
             if pair[0] == key:
                 pair[1] = value
                 return
-        self.table[hash_key].append([key, value])
+        self.table[hash_key].append((key, value))
 
-    def search(self, key):
+    def search(self, key: int) -> Optional[Any]:
+        if not isinstance(key, int):
+            raise TypeError("Key must be an integer.")
         hash_key = self._hash_function(key)
         for pair in self.table[hash_key]:
             if pair[0] == key:
                 return pair[1]
         return None
 
-    def delete(self, key):
+    def delete(self, key: int) -> bool:
+        if not isinstance(key, int):
+            raise TypeError("Key must be an integer.")
         hash_key = self._hash_function(key)
         for i, pair in enumerate(self.table[hash_key]):
             if pair[0] == key:
@@ -32,19 +54,17 @@ class HashTable:
                 return True
         return False
 
-    def display(self):
+    def display(self) -> None:
         for index, bucket in enumerate(self.table):
-            print(f"Index {index}: {bucket}")
+            print(f"Index {index} ({len(bucket)} entries): {bucket}")
 
     @staticmethod
-    def string_hash(s, table_size):
-        hash_value = 0
-        for char in s:
-            hash_value += ord(char)
+    def string_hash(s: str, table_size: int) -> int:
+        hash_value = sum(ord(char) for char in s)
         return hash_value % table_size
 
     @staticmethod
-    def check_collisions(keys, table_size):
+    def check_collisions(keys: List[int], table_size: int) -> List[int]:
         hash_table = {}
         collisions = []
 
@@ -58,7 +78,7 @@ class HashTable:
         return collisions
 
     @staticmethod
-    def sha256_hash(string):
+    def sha256_hash(string: str) -> str:
         return hashlib.sha256(string.encode()).hexdigest()
 
 
