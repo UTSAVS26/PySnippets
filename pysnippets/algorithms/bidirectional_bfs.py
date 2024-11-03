@@ -13,10 +13,13 @@ def bidirectional_search(graph, start, target):
         Returns:
             list: A list representing the shortest path from `start` to `target`. If no path exists, returns `None`.
     '''
+    if not isinstance(graph, dict):
+        raise TypeError("Ensure graph is a dictionary with nodes as keys and lists of neighbors as values.")
     if start == target:
         return [start]
     if start not in graph or target not in graph:
         raise ValueError(f"Start ({start}) and target ({target}) nodes must exist in the graph.")
+
 
     queue_start = deque([start])
     queue_target = deque([target])

@@ -41,4 +41,10 @@ class TestBidirectionalBFS(unittest.TestCase):
         path = bidirectional_search(single_node_graph, 'A', 'A')
         self.assertEqual(path, ['A'])
 
+    def test_graph_is_dictionary(self):
+        invalid_graph = ['hello']
+        with self.assertRaises(TypeError):
+            bidirectional_search(invalid_graph, 'hello', 'hello')
+
+
 
