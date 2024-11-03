@@ -56,6 +56,9 @@
             └── __init__.py
             └── date_utils.md
             └── date_utils.py
+        └── 📁divide and conquer
+            └── strassens_mult.md
+            └── strassens_mult.py
         └── 📁Dynamic Programming
             └── approaches.md
             └── coin_change.py
@@ -69,6 +72,8 @@
             └── two_city_scheduling.py
             └── Two-City-Scheduling-3D-DP.md
             └── unique_paths.py
+            └── n_queen.py
+            └── n_queen.md
         └── 📁encryption
             └── __init__.py
             └── encryption.md
