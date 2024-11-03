@@ -15,6 +15,8 @@ def bidirectional_search(graph, start, target):
     '''
     if start == target:
         return [start]
+    if start not in graph or target not in graph:
+        raise ValueError(f"Start ({start}) and target ({target}) nodes must exist in the graph.")
 
     queue_start = deque([start])
     queue_target = deque([target])

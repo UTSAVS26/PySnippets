@@ -26,14 +26,15 @@ class TestBidirectionalBFS(unittest.TestCase):
     def test_path(self):
         path = bidirectional_search(self.graph, 'A', 'G')
         self.assertEqual(path, ['A', 'C', 'F', 'G'])
+
     def test_disconnected_graph(self):
         two_node_graph = {'A': [], 'B': []}
         path = bidirectional_search(two_node_graph, 'A', 'B')
         self.assertIsNone(path)
 
-    def test_invalid_node(self): #currently fails
-        path = bidirectional_search(self.graph, 'A', 'Z')
-        self.assertIsNone(path)
+    def test_invalid_node(self):
+        with self.assertRaises(ValueError):
+            bidirectional_search(self.graph, 'A', 'Z')
 
     def test_single_node_graph(self):
         single_node_graph = {'A': []}
