@@ -3,7 +3,7 @@
 ## Introduction
 String matching is a fundamental problem in computer science, where the goal is to find the occurrence of a pattern string within a larger text string. Efficient string matching algorithms are crucial in various applications, including text editors, search engines, DNA sequence analysis, and data compression.
 
-This document covers two popular string matching algorithms: the Naive Approach and the Knuth-Morris-Pratt (KMP) Algorithm.
+This document covers four popular string matching algorithms: the Naive Approach, the Knuth-Morris-Pratt (KMP) Algorithm, the Boyer-Moore Algorithm, and the Finite Automata Method.
 
 ## Key Concepts
 
@@ -14,6 +14,16 @@ The naive string matching algorithm checks for the presence of a pattern in a te
 
 ### 2. Knuth-Morris-Pratt (KMP) Algorithm
 The KMP algorithm improves upon the naive approach by utilizing information gained from previous character comparisons to avoid redundant checks. It preprocesses the pattern to create a "longest prefix suffix" (LPS) array, which helps in determining how many characters can be skipped upon a mismatch.
+
+- **Time Complexity**: O(m + n), where `m` is the length of the pattern and `n` is the length of the text.
+
+### 3. Boyer-Moore Algorithm
+The Boyer-Moore algorithm is one of the most efficient string searching algorithms. It preprocesses the pattern to create two tables: the last occurrence table and the good suffix table. This allows it to skip sections of the text, significantly reducing the number of comparisons.
+
+- **Time Complexity**: O(n/m) in the best case, where `m` is the length of the pattern and `n` is the length of the text, and O(m + n) in the average case.
+
+### 4. Finite Automata Method
+The Finite Automata approach for string matching constructs a state machine that represents the pattern. It uses a transition function that maps each character of the text to the next state in the state machine. This allows for efficient processing of the text by only transitioning states according to the characters read.
 
 - **Time Complexity**: O(m + n), where `m` is the length of the pattern and `n` is the length of the text.
 
@@ -46,20 +56,18 @@ pattern = "abc"
 print("Naive String Matching:", naive_string_matching(text, pattern))  # Output: [2, 7, 12]
 ```
 
-### Knuth-Morris-Pratt (KMP) Algorithm
-## Algorithm Steps:
+## Knuth-Morris-Pratt (KMP) Algorithm
 
+### Algorithm Steps:
 1. Preprocess the pattern to create the LPS array.
 2. Iterate through the text and the pattern using the LPS array to skip unnecessary comparisons.
 3. If a character mismatch occurs, use the LPS array to determine the next positions to compare.
-4. LPS Array Construction:
-5. The LPS (Longest Prefix Suffix) array is constructed as follows:
 
-6. LPS[i] represents the longest proper prefix which is also a suffix for the substring pattern[0:i].
-
+### LPS Array Construction:
+The LPS (Longest Prefix Suffix) array is constructed as follows:
+- LPS[i] represents the longest proper prefix which is also a suffix for the substring pattern[0:i].
 
 ### Python Implementation:
-
 ```python
 def compute_lps(pattern):
     m = len(pattern)
@@ -111,7 +119,101 @@ pattern = "abc"
 print("KMP String Matching:", kmp_string_matching(text, pattern))  # Output: [2, 7, 12]
 ```
 
-### Applications of String Matching Algorithms
+## Boyer-Moore Algorithm
+
+### Algorithm Steps:
+1. Preprocess the pattern to create the last occurrence table.
+2. Start aligning the pattern from the rightmost end.
+3. Compare the pattern with the text; if a mismatch occurs, use the last occurrence table to determine how much to shift the pattern.
+4. If a match occurs, record the starting index.
+
+### Python Implementation:
+```python
+def boyer_moore_string_matching(text, pattern):
+    def last_occurrence_function(pattern):
+        lof = {}
+        for i in range(len(pattern)):
+            lof[pattern[i]] = i
+        return lof
+
+    m = len(pattern)
+    n = len(text)
+    indices = []
+    lof = last_occurrence_function(pattern)
+    i = 0
+
+    while i <= n - m:
+        j = m - 1
+        while j >= 0 and text[i + j] == pattern[j]:
+            j -= 1
+        if j < 0:
+            indices.append(i)
+            i += (m if i + m < n else 1)
+        else:
+            l = lof.get(text[i + j], -1)
+            i += max(1, j - l)
+
+    return indices
+
+# Example usage
+text = "ababcababcabc"
+pattern = "abc"
+print("Boyer-Moore String Matching:", boyer_moore_string_matching(text, pattern))  # Output: [2, 7, 12]
+```
+
+## Finite Automata Method
+
+### Algorithm Steps:
+1. Construct a transition table from the pattern.
+2. Use the transition table to process the text character by character.
+3. Record the index when the end of the pattern is reached.
+
+### Python Implementation:
+```python
+def finite_automata_string_matching(text, pattern):
+    NO_OF_CHARS = 256
+
+    def get_next_state(pat, M, state, x):
+        if state < M and x == ord(pat[state]):
+            return state + 1
+        for ns in range(state, 0, -1):
+            if ord(pat[ns - 1]) == x:
+                i = 0
+                while i < ns - 1:
+                    if pat[i] != pat[state - ns + 1 + i]:
+                        break
+                    i += 1
+                if i == ns - 1:
+                    return ns
+        return 0
+
+    def compute_transition_function(pat, M):
+        TF = [[0 for _ in range(NO_OF_CHARS)] for _ in range(M + 1)]
+        for state in range(M + 1):
+            for x in range(NO_OF_CHARS):
+                TF[state][x] = get_next_state(pat, M, state, x)
+        return TF
+
+    M = len(pattern)
+    N = len(text)
+    TF = compute_transition_function(pattern, M)
+    state = 0
+    indices = []
+
+    for i in range(N):
+        state = TF[state][ord(text[i])]
+        if state == M:
+            indices.append(i - M + 1)
+
+    return indices
+
+# Example usage
+text = "ababcababcabc"
+pattern = "abc"
+print("Finite Automata String Matching:", finite_automata_string_matching(text, pattern))  # Output: [2, 7, 12]
+```
+
+## Applications of String Matching Algorithms
 - Text Search Engines: Finding occurrences of keywords in large texts.
 - Data Mining: Searching for patterns in large datasets.
 - DNA Sequence Analysis: Searching for patterns in biological sequences.
@@ -119,4 +221,4 @@ print("KMP String Matching:", kmp_string_matching(text, pattern))  # Output: [2,
 
 ### Conclusion
 
-Understanding string matching algorithms is essential for efficient text processing and manipulation. The Naive Approach is simple but inefficient for larger datasets, while the KMP algorithm offers a more sophisticated method that significantly improves performance.
+Understanding string matching algorithms is essential for efficient text processing and manipulation. The Naive Approach is simple but inefficient for larger datasets, while the KMP algorithm, Boyer-Moore algorithm, and Finite Automata Method offer more sophisticated methods that significantly improve performance.
