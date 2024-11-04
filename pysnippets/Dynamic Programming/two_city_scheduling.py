@@ -1,4 +1,8 @@
 def two_city_scheduling(costs):
+    # Input validation
+    if not isinstance(costs, list) or len(costs) % 2 != 0:
+        raise ValueError("Input must be a list of pairs with an even length.")
+    
     n = len(costs) // 2
     dp = [[0] * (n + 1) for _ in range(n + 1)]
 
@@ -14,4 +18,5 @@ def two_city_scheduling(costs):
 
 if __name__ == "__main__":
     costs = [[10, 20], [30, 200], [50, 30], [200, 500]]
-    print(two_city_scheduling(costs))  # Output: 370
+    min_cost = two_city_scheduling(costs)  # Output: 370
+    print(f"The minimum cost to schedule people to two cities is: {min_cost}")
