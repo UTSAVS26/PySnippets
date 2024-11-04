@@ -20,9 +20,10 @@ To use this module, you need Python's built-in `smtplib` and `email` libraries. 
 send_email(
     sender_email,
     sender_password,
-    recepient_email,
+    recipient_email,
     subject,
     body,
+    content_type="plain",
     smtp_server="smtp.gmail.com",
     smtp_port=587,
 )
@@ -34,9 +35,10 @@ Sends an email using the provided SMTP server.
 
 - **sender_email** (str): The email address of the sender.
 - **sender_password** (str): The password for the sender's email account.
-- **recepient_email** (str): The email address of the recipient.
+- **recipient_email** (str): The email address of the recipient.
 - **subject** (str): The subject of the email.
 - **body** (str): The body of the email.
+- **content_type** (str, optional): The format of the email body, either 'plain' or 'html'. Defaults to 'plain'.
 - **smtp_server** (str, optional): The SMTP server to use. Defaults to `'smtp.gmail.com'`.
 - **smtp_port** (int, optional): The port to use for the SMTP server. Defaults to `587`.
 
@@ -44,6 +46,7 @@ Sends an email using the provided SMTP server.
 
 - **smtplib.SMTPAuthenticationError**: Raised if authentication fails.
 - **smtplib.SMTPException**: Raised if there's an error sending the email.
+- **ValueError**: Raised if any required parameters are missing.
 
 ### Example Usage
 
@@ -56,5 +59,6 @@ if __name__ == "__main__":
         "receiver@gmail.com",
         "Test Subject",
         "This is a test Email",
+        content_type="html"
     )
 ```

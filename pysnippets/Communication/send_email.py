@@ -1,9 +1,11 @@
 import smtplib
 import os
+import logging
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from typing import Optional
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
 
 def send_email(
     sender_email: str,
@@ -31,6 +33,11 @@ def send_email(
     Returns:
         bool: True if the email is sent successfully, False otherwise.
     """
+    # Validate input parameters
+    if not all([sender_email, sender_password, recipient_email, subject, body]):
+        logging.error("All parameters must be provided.")
+        return False
+
     # create the email message
     message = MIMEMultipart()
     message["From"] = sender_email
@@ -48,21 +55,20 @@ def send_email(
             server.login(sender_email, sender_password)
             # send the email
             server.send_message(message)
-        print("Email sent successfully!")
+        logging.info("Email sent successfully!")
         return True
     except smtplib.SMTPAuthenticationError:
-        print("SMTP Authentication Error: Please check your credentials.")
+        logging.error("SMTP Authentication Error: Please check your credentials.")
     except smtplib.SMTPConnectError:
-        print("SMTP Connection Error: Unable to connect to the SMTP server.")
+        logging.error("SMTP Connection Error: Unable to connect to the SMTP server.")
     except smtplib.SMTPServerDisconnected:
-        print("SMTP Disconnection Error: The server unexpectedly disconnected.")
+        logging.error("SMTP Disconnection Error: The server unexpectedly disconnected.")
     except smtplib.SMTPException as e:
-        print(f"SMTP Error: An error occurred while sending the email: {str(e)}")
+        logging.error(f"SMTP Error: An error occurred while sending the email: {str(e)}")
     except Exception as e:
-        print(f"Network Error: A network-related error occurred: {str(e)}")
+        logging.error(f"Network Error: A network-related error occurred: {str(e)}")
     
     return False
-
 
 if __name__ == "__main__":
     # Load credentials from environment variables for security
@@ -71,7 +77,7 @@ if __name__ == "__main__":
 
     # Ensure credentials are provided
     if not sender_email or not sender_password:
-        print("Error: Please set the SENDER_EMAIL and SENDER_PASSWORD environment variables.")
+        logging.error("Error: Please set the SENDER_EMAIL and SENDER_PASSWORD environment variables.")
     else:
         send_email(
             sender_email=sender_email,
