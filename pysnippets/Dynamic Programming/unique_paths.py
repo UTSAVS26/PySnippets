@@ -11,7 +11,18 @@ def unique_paths(m, n):
 
     return dp[-1]  # The last element contains the number of unique paths
 
+# Test cases
 if __name__ == "__main__":
-    m, n = 3, 7
-    num_paths = unique_paths(m, n)  # Output: 28
-    print(f"The number of unique paths in a grid of size {m} x {n} is: {num_paths}")
+    test_cases = [
+        (3, 7),  # Output: 28
+        (3, 2),  # Output: 3
+        (1, 1),  # Output: 1
+        (5, 5),  # Output: 70
+        (2, 3),  # Output: 3
+        (7, 3),  # Output: 28
+        (10, 10) # Output: 48620
+    ]
+    
+    for m, n in test_cases:
+        num_paths = unique_paths(m, n)
+        print(f"The number of unique paths in a grid of size {m} x {n} is: {num_paths}")

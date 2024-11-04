@@ -28,9 +28,18 @@ def longest_common_subsequence(x, y):
     lcs.reverse()  # Reverse the list to get the correct order
     return dp[len(x)][len(y)], ''.join(lcs)
 
+# Test cases
 if __name__ == "__main__":
-    x = "AGGTAB"
-    y = "GXTXAYB"
-    length, sequence = longest_common_subsequence(x, y)  # Output: (4, "GTAB")
-    print(f"The length of the longest common subsequence is: {length}")
-    print(f"The longest common subsequence is: '{sequence}'")
+    test_cases = [
+        ("AGGTAB", "GXTXAYB"),  # Output: (4, "GTAB")
+        ("ABCBDAB", "BDCAB"),   # Output: (4, "BCAB")
+        ("", ""),                # Output: (0, "")
+        ("ABC", "AC"),          # Output: (2, "AC")
+        ("", "A"),              # Output: (0, "")
+        ("ABCDEF", "AEBDF"),    # Output: (4, "ABDF")
+        ("AGGTAB", "GXTXAYB")   # Output: (4, "GTAB")
+    ]
+    
+    for x, y in test_cases:
+        length, sequence = longest_common_subsequence(x, y)
+        print(f"The length of the longest common subsequence between '{x}' and '{y}' is: {length}, Sequence: '{sequence}'")

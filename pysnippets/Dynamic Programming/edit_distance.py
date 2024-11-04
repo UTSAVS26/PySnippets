@@ -21,8 +21,18 @@ def edit_distance(s1, s2):
 
     return dp[m][n]
 
+# Test cases
 if __name__ == "__main__":
-    s1 = "horse"
-    s2 = "ros"
-    distance = edit_distance(s1, s2)  # Output: 3
-    print(f"The edit distance between '{s1}' and '{s2}' is: {distance}")
+    test_cases = [
+        ("horse", "ros"),  # Output: 3
+        ("intention", "execution"),  # Output: 5
+        ("", ""),  # Output: 0
+        ("a", "b"),  # Output: 1
+        ("abc", "yabd"),  # Output: 2
+        ("kitten", "sitting"),  # Output: 3
+        ("flaw", "lawn")  # Output: 2
+    ]
+    
+    for s1, s2 in test_cases:
+        distance = edit_distance(s1, s2)
+        print(f"The edit distance between '{s1}' and '{s2}' is: {distance}")
