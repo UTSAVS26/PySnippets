@@ -31,7 +31,7 @@ def split_pdf_chunks(input_path, pages_per_chunk):
         for page_num in range(chunk_start, chunk_end):
             writer.add_page(reader.pages[page_num])
         
-        output_path = f"chunk_{chunk_start//pages_per_chunk + 1}.pdf"
+        output_path = f"chunk_{chunk_start // pages_per_chunk + 1}.pdf"
         with open(output_path, "wb") as output_file:
             writer.write(output_file)
         output_files.append(output_path)
