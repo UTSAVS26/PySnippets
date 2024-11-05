@@ -14,8 +14,12 @@ A **Hash Function** is a function that takes input data (such as strings, files,
 - **Efficient**: The computation of the hash value should be fast.
 - **Uniform distribution**: The hash values should be uniformly distributed to minimize collisions.
 
+![Hash Function Diagram](https://media.geeksforgeeks.org/wp-content/uploads/20240508162701/Components-of-Hashing.webp)
+
 ### 2. Hash Table
 A **Hash Table** is a data structure that stores key-value pairs. The key is processed by a hash function, and its output determines where the value is stored in the table. Hash tables allow for average-case constant time complexity, O(1), for lookup, insertion, and deletion operations.
+
+![Hash Table Structure](https://www.tutorialspoint.com/data_structures_algorithms/images/hash_function.jpg) 
 
 ### 3. Collisions and Collision Resolution
 In practice, different inputs might produce the same hash value; this is known as a **collision**. A good hashing algorithm minimizes collisions, but when they occur, they are handled using **collision resolution techniques**:
@@ -25,6 +29,8 @@ In practice, different inputs might produce the same hash value; this is known a
   - **Linear Probing**: Finds the next open slot by moving sequentially.
   - **Quadratic Probing**: Searches for an empty slot with increasing intervals (e.g., 1, 4, 9).
   - **Double Hashing**: Uses a second hash function to calculate the next available slot.
+
+![Collision Resolution Techniques](https://www.gatevidyalay.com/wp-content/uploads/2018/06/Collision-Resolution-Techniques-1.png) 
 
 ### 4. Load Factor
 The **Load Factor** is defined as the ratio of the number of elements stored in the hash table to the total number of slots. A high load factor increases the chance of collisions.
@@ -83,6 +89,5 @@ The **Load Factor** is defined as the ratio of the number of elements stored in 
 
     # Example usage
     print(check_collisions([1, 2, 12, 22, 32], 10))  # Output: [12, 22]
-
    ```
 
