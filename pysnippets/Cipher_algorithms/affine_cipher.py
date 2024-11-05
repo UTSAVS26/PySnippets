@@ -13,12 +13,12 @@ class AffineCipher:
         - a (int): The multiplicative key (must be coprime with ALPHABET_LENGTH).
         - b (int): The additive key.
         """
+        self.m = self.ALPHABET_LENGTH  # Initialize m here
         if not self.is_valid_key(a):
-            raise ValueError(f"The value of 'a' ({a}) must be coprime with {self.ALPHABET_LENGTH}.")
+            raise ValueError(f"The value of 'a' ({a}) must be coprime with {self.m}.")
         
         self.a = a
         self.b = b
-        self.m = self.ALPHABET_LENGTH  # Length of the alphabet
 
     def is_valid_key(self, a):
         """
