@@ -26,12 +26,16 @@ def coin_change(coins, amount):
 
     return dp[amount], result_coins
 
+# Test cases
 if __name__ == "__main__":
-    coins = [1, 2, 5]
-    amount = 11
-    min_coins, used_coins = coin_change(coins, amount)  # Output: (3, [5, 5, 1])
-    if min_coins != -1:
-        print(f"Minimum coins needed: {min_coins}")
-        print(f"Coins used: {used_coins}")
-    else:
-        print("Amount cannot be formed with the given coins.")
+    test_cases = [
+        ([1, 2, 5], 11),  # Output: (3, [5, 5, 1])
+        ([2], 3),         # Output: -1
+        ([1], 0),         # Output: (0, [])
+        ([1, 2, 3], 4),   # Output: (2, [1, 1, 2] or [2, 2])
+        ([1, 5, 10, 25], 30)  # Output: (2, [25, 5])
+    ]
+    
+    for coins, amount in test_cases:
+        min_coins, used_coins = coin_change(coins, amount)
+        print(f"Coins: {coins}, Amount: {amount} => Minimum coins needed: {min_coins}, Coins used: {used_coins}")
