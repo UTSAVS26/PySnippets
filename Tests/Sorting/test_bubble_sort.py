@@ -1,6 +1,7 @@
 import unittest
 from pysnippets.Sorting.bubble_sort import bubble_sort
 
+
 class TestBubbleSort(unittest.TestCase):
     # Add test cases for bubble sort
     def test_sort_by_age(self):
