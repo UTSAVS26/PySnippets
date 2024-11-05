@@ -1,8 +1,10 @@
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
+from Crypto.Protocol.KDF import PBKDF2
 import os
 import base64
-
+import hashlib
+import secrets
 
 class AESCipher:
     """
@@ -20,6 +22,20 @@ class AESCipher:
             key (bytes): The AES key (should be either 16, 24, or 32 bytes long).
         """
         self.key = key
+
+    @staticmethod
+    def generate_key(passphrase: str, salt: bytes) -> bytes:
+        """
+        Generates a secure AES key from a passphrase and salt using PBKDF2.
+
+        Args:
+            passphrase (str): The user's passphrase.
+            salt (bytes): A unique salt for the key derivation.
+
+        Returns:
+            bytes: The derived AES key.
+        """
+        return PBKDF2(passphrase, salt, dkLen=32, count=1000000)
 
     def pad(self, data):
         """
@@ -74,9 +90,9 @@ class AESCipher:
             str: The decrypted data.
         """
         enc_data = base64.b64decode(enc_data)
-        iv = enc_data[: AES.block_size]
+        iv = enc_data[:AES.block_size]
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
-        data = cipher.decrypt(enc_data[AES.block_size :])
+        data = cipher.decrypt(enc_data[AES.block_size:])
         return self.unpad(data).decode("utf-8")
 
 
@@ -97,10 +113,35 @@ def encrypt_file(file_path, cipher):
         encrypted_data = cipher.encrypt(file_data)
         with open(file_path, "wb") as file:
             file.write(encrypted_data.encode())
+        print(f"Successfully encrypted: {file_path}")
     except FileNotFoundError:
         print(f"File {file_path} not found.")
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred while encrypting {file_path}: {e}")
+
+
+def decrypt_file(file_path, cipher):
+    """
+    Decrypts the contents of a file.
+
+    Args:
+        file_path (str): The path to the file to decrypt.
+        cipher (AESCipher): The AESCipher instance used for decryption.
+
+    Raises:
+        FileNotFoundError: If the specified file does not exist.
+    """
+    try:
+        with open(file_path, "rb") as file:
+            encrypted_data = file.read()
+        decrypted_data = cipher.decrypt(encrypted_data.decode())
+        with open(file_path, "wb") as file:
+            file.write(decrypted_data.encode())
+        print(f"Successfully decrypted: {file_path}")
+    except FileNotFoundError:
+        print(f"File {file_path} not found.")
+    except Exception as e:
+        print(f"An error occurred while decrypting {file_path}: {e}")
 
 
 def encrypt_folder(folder_path, cipher):
@@ -122,22 +163,62 @@ def encrypt_folder(folder_path, cipher):
     except FileNotFoundError:
         print(f"Folder {folder_path} not found.")
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred while encrypting files in {folder_path}: {e}")
+
+
+def decrypt_folder(folder_path, cipher):
+    """
+    Decrypts all files in a specified folder.
+
+    Args:
+        folder_path (str): The path to the folder containing files to decrypt.
+        cipher (AESCipher): The AESCipher instance used for decryption.
+
+    Raises:
+        FileNotFoundError: If the specified folder does not exist.
+    """
+    try:
+        for root, _, files in os.walk(folder_path):
+            for file in files:
+                file_path = os.path.join(root, file)
+                decrypt_file(file_path, cipher)
+    except FileNotFoundError:
+        print(f"Folder {folder_path} not found.")
+    except Exception as e:
+        print(f"An error occurred while decrypting files in {folder_path}: {e}")
 
 
 def main():
     """
-    The main function that initializes the AESCipher and encrypts specified files and folders.
+    The main function that initializes the AESCipher and encrypts/decrypts specified files and folders.
     """
-    key = get_random_bytes(16)  # AES-128
+    # User input for passphrase
+    passphrase = input("Enter a passphrase for encryption/decryption: ")
+    
+    # Generate a random salt for key derivation
+    salt = get_random_bytes(16)  # This should be securely stored to decrypt later
+
+    # Generate the AES key from the passphrase
+    key = AESCipher.generate_key(passphrase, salt)
     cipher = AESCipher(key)
 
     # Example usage
-    file_path = "path/to/your/file.txt"
-    folder_path = "path/to/your/folder"
-
-    encrypt_file(file_path, cipher)
-    encrypt_folder(folder_path, cipher)
+    operation = input("Would you like to (e)ncrypt or (d)ecrypt? ").strip().lower()
+    
+    if operation == 'e':
+        file_path = input("Enter the path to the file to encrypt: ")
+        folder_path = input("Enter the path to the folder to encrypt (or leave blank): ")
+        encrypt_file(file_path, cipher)
+        if folder_path:
+            encrypt_folder(folder_path, cipher)
+    elif operation == 'd':
+        file_path = input("Enter the path to the file to decrypt: ")
+        folder_path = input("Enter the path to the folder to decrypt (or leave blank): ")
+        decrypt_file(file_path, cipher)
+        if folder_path:
+            decrypt_folder(folder_path, cipher)
+    else:
+        print("Invalid operation selected.")
 
 
 if __name__ == "__main__":
