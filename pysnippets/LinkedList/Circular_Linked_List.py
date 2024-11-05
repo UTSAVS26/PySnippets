@@ -1,59 +1,63 @@
+from dataclasses import dataclass
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
+@dataclass
 class Node:
-    def __init__(self, data):
-        self.data = data  # Assign data to the node
-        self.next = None  # Initialize next as null
+    data: any
+    next: 'Node' = None  # Type hint for forward reference
 
-# Function to insert a node at the end of the circular linked list
-def insert_end(head, data):
-    new_node = Node(data)  # Create a new node
-    if head is None:  # If the list is empty
-        new_node.next = new_node  # Point it to itself
-        return new_node  # Return the new node as the head
+def insert_end(head: Node, data: any) -> Node:
+    """Insert a node at the end of the circular linked list."""
+    new_node = Node(data)
+    if head is None:
+        new_node.next = new_node
+        return new_node
 
-    temp = head
-    while temp.next != head:  # Traverse to the last node
-        temp = temp.next
-    temp.next = new_node  # Link the new node after the last node
-    new_node.next = head  # Complete the circle
-    return head  # Return the head of the list
+    last_node = head
+    while last_node.next != head:
+        last_node = last_node.next
+    last_node.next = new_node
+    new_node.next = head
+    return head
 
-# Function to delete a node with a specific value
-def delete_node(head, key):
-    if head is None:  # If the list is empty
+def delete_node(head: Node, key: any) -> Node:
+    """Delete a node with a specific value from the circular linked list."""
+    if head is None:
+        logging.warning("Attempted to delete from an empty list.")
         return None
-    
-    temp = head
-    prev = None
 
-    # If the head node holds the key
-    if temp.data == key:
-        if temp.next == head:  # Only one node in the list
-            return None  # List becomes empty
-        else:
-            while temp.next != head:  # Find the last node
-                temp = temp.next
-            temp.next = head.next  # Link last node to the second node
-            return head.next  # Return the new head
+    current_node = head
+    previous_node = None  # noqa: F841
 
-    # Search for the key to be deleted
-    while temp.next != head:
-        if temp.next.data == key:
-            temp.next = temp.next.next  # Unlink the node
+    if current_node.data == key:
+        if current_node.next == head:
+            return None
+        while current_node.next != head:
+            current_node = current_node.next
+        current_node.next = head.next
+        return head.next
+
+    while current_node.next != head:
+        if current_node.next.data == key:
+            current_node.next = current_node.next.next
             return head
-        temp = temp.next
+        current_node = current_node.next
 
-    return head  # Return the head of the list
+    logging.warning(f"Key {key} not found in the list.")
+    return head
 
-# Function to display the circular linked list
-def display(head):
-    if head is None:  # If the list is empty
+def display(head: Node) -> list:
+    """Display the circular linked list."""
+    if head is None:
         return []
-    
+
     result = []
-    temp = head
+    current_node = head
     while True:
-        result.append(temp.data)  # Collect data from each node
-        temp = temp.next
-        if temp == head:  # Stop when we reach back to the head
+        result.append(current_node.data)
+        current_node = current_node.next
+        if current_node == head:
             break
-    return result  # Return the list of node values
+    return result
