@@ -1,43 +1,46 @@
+from dataclasses import dataclass
+import logging
 
+logging.basicConfig(level=logging.DEBUG)
+
+@dataclass
 class Node:
-    def __init__(self, data):
-        self.data = data  # Assign data to the node
-        self.next = None  # Initialize next as null
+    data: any
+    next: 'Node' = None
 
-# Function to insert a node at the end of the singly linked list
-def insert_end(head, data):
-    new_node = Node(data)  # Create a new node
-    if head is None:  # If the list is empty
-        return new_node  # Return the new node as the head
-    temp = head
-    while temp.next:  # Traverse to the end of the list
-        temp = temp.next
-    temp.next = new_node  # Link the new node at the end
-    return head  # Return the head of the list
+def insert_end(head: Node, data: any) -> Node:
+    """Insert a node at the end of the singly linked list."""
+    new_node = Node(data)
+    if head is None:
+        return new_node
 
-# Function to delete a node with a specific value
-def delete_node(head, key):
-    temp = head
+    last_node = head
+    while last_node.next:
+        last_node = last_node.next
+    last_node.next = new_node
+    return head
 
-    # If the head node holds the key
-    if temp is not None and temp.data == key:
-        head = temp.next  # Change head
-        return head
+def delete_node(head: Node, key: any) -> Node:
+    """Delete a node with a specific value from the singly linked list."""
+    current_node = head
 
-    # Search for the key to be deleted
-    while temp is not None and temp.next is not None:
-        if temp.next.data == key:
-            temp.next = temp.next.next  # Unlink the node
+    if current_node is not None and current_node.data == key:
+        return current_node.next
+
+    while current_node is not None and current_node.next is not None:
+        if current_node.next.data == key:
+            current_node.next = current_node.next.next
             return head
-        temp = temp.next
+        current_node = current_node.next
 
-    return head  # Return the head of the list
+    logging.warning(f"Key {key} not found in the list.")
+    return head
 
-# Function to display the singly linked list
-def display(head):
+def display(head: Node) -> list:
+    """Display the singly linked list."""
     result = []
-    temp = head
-    while temp:
-        result.append(temp.data)  # Collect data from each node
-        temp = temp.next
-    return result  # Return the list of node values
+    current_node = head
+    while current_node:
+        result.append(current_node.data)
+        current_node = current_node.next
+    return result

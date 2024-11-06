@@ -1,4 +1,5 @@
-# __init__.py
+import Circular_Linked_List
+import Doubly_Linked_List
+import Singly_Linked_List
 
-# This file allows the snippets folder to be treated as a package.
-# It can be empty or used to expose certain functions for easy imports.
+__all__ = ["Circular_Linked_List", "Doubly_Linked_List", "Singly_Linked_List"]

@@ -1,56 +1,83 @@
-# doubly_linked_list.py
+# Linked List Implementations
 
-# Node structure for the doubly linked list
-class Node:
-    def __init__(self, data):
-        self.data = data  # Assign data to the node
-        self.next = None  # Initialize next as null
-        self.prev = None  # Initialize prev as null
+This directory contains implementations of various types of linked lists in Python, including:
 
-# Function to insert a node at the end of the doubly linked list
-def insert_end(head, data):
-    new_node = Node(data)  # Create a new node
-    if head is None:  # If the list is empty
-        return new_node  # Return the new node as the head
-    temp = head
-    while temp.next:  # Traverse to the end of the list
-        temp = temp.next
-    temp.next = new_node  # Link the new node at the end
-    new_node.prev = temp  # Set the previous of new node
-    return head  # Return the head of the list
+- Circular Linked List
+- Doubly Linked List
+- Singly Linked List
 
-# Function to delete a node with a specific value
-def delete_node(head, key):
-    temp = head
+## Overview
 
-    # If the head node holds the key
-    if temp is not None and temp.data == key:
-        head = temp.next  # Change head
-        if head:
-            head.prev = None  # Update previous head's previous node
-        return head
+Linked lists are a fundamental data structure that consist of nodes, where each node contains data and a reference (or link) to the next node in the sequence. This allows for efficient insertion and deletion of elements, as opposed to arrays where elements must be shifted.
 
-    # Search for the key to be deleted
-    while temp is not None and temp.data != key:
-        temp = temp.next
+### Types of Linked Lists
 
-    # If key was not present in the doubly linked list
-    if temp is None:
-        return head
+1. **Singly Linked List**: Each node points to the next node, and the last node points to `None`.
+2. **Doubly Linked List**: Each node points to both the next and the previous nodes, allowing traversal in both directions.
+3. **Circular Linked List**: The last node points back to the first node, forming a circle.
 
-    # Unlink the node from linked list
-    if temp.next:  # If the node to be deleted is not the last node
-        temp.next.prev = temp.prev
-    if temp.prev:  # If the node to be deleted is not the first node
-        temp.prev.next = temp.next
-        
-    return head  # Return the head of the list
+## Features
 
-# Function to display the doubly linked list
-def display(head):
-    result = []
-    temp = head
-    while temp:
-        result.append(temp.data)  # Collect data from each node
-        temp = temp.next
-    return result  # Return the list of node values
+Each linked list implementation includes the following functions:
+
+- **Insert a Node at the End**: Adds a new node with the specified data at the end of the list.
+- **Delete a Node by Value**: Removes the first node that contains the specified value.
+- **Display the Linked List**: Returns a list of all node values in the linked list.
+
+## Function Descriptions
+
+### 1. `insert_end(head: Node, data: any) -> Node`
+- **Purpose**: Inserts a new node with the given data at the end of the linked list.
+- **Parameters**:
+  - `head`: The head node of the linked list.
+  - `data`: The data to be stored in the new node.
+- **Returns**: The head of the linked list.
+
+### 2. `delete_node(head: Node, key: any) -> Node`
+- **Purpose**: Deletes the first node that contains the specified key.
+- **Parameters**:
+  - `head`: The head node of the linked list.
+  - `key`: The value of the node to be deleted.
+- **Returns**: The head of the linked list after deletion.
+
+### 3. `display(head: Node) -> list`
+- **Purpose**: Returns a list of all node values in the linked list.
+- **Parameters**:
+  - `head`: The head node of the linked list.
+- **Returns**: A list containing the data of each node.
+
+## Usage
+
+You can import the linked list classes and functions into your Python scripts. Each implementation uses a `Node` class defined with `dataclasses` for better readability and maintainability.
+
+### Example Usage
+
+```python
+from Circular_Linked_List import insert_end, delete_node, display
+head = None
+head = insert_end(head, 1)
+head = insert_end(head, 2)
+head = insert_end(head, 3)
+print(display(head)) # Output: [1, 2, 3]
+head = delete_node(head, 2)
+print(display(head)) # Output: [1, 3]
+```
+
+```bash
+python -m unittest test_linked_lists.py
+```
+
+## Explanation of the Approach
+The approach taken in the linked list implementations focuses on:
+
+- Clarity and Readability: Each function is clearly defined with descriptive names and docstrings, making it easy for users to understand the purpose and usage of each function.
+
+- Data Classes: The use of dataclasses for the Node class simplifies the code and enhances readability by automatically generating special methods like __init__() and __repr__().
+
+- Logging: The inclusion of logging provides a way to track operations and catch potential issues, such as attempting to delete from an empty list or trying to delete a non-existent key.
+
+- Testing: A dedicated test file ensures that all functionalities are covered and work as expected, promoting reliability and maintainability.
+
+- Modularity: Each linked list type is implemented in its own file, allowing for easy extension and modification without affecting other implementations.
+This structured approach not only enhances the usability of the linked list implementations but also serves as a solid foundation for further development and learning. If you have any more requests or need further modifications, feel free to ask!
+

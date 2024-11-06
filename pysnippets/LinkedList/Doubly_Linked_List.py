@@ -1,54 +1,56 @@
+from dataclasses import dataclass
+import logging
 
+logging.basicConfig(level=logging.DEBUG)
+
+@dataclass
 class Node:
-    def __init__(self, data):
-        self.data = data  # Assign data to the node
-        self.next = None  # Initialize next as null
-        self.prev = None  # Initialize prev as null
+    data: any
+    next: 'Node' = None
+    prev: 'Node' = None
 
-# Function to insert a node at the end of the doubly linked list
-def insert_end(head, data):
-    new_node = Node(data)  # Create a new node
-    if head is None:  # If the list is empty
-        return new_node  # Return the new node as the head
-    temp = head
-    while temp.next:  # Traverse to the end of the list
-        temp = temp.next
-    temp.next = new_node  # Link the new node at the end
-    new_node.prev = temp  # Set the previous of new node
-    return head  # Return the head of the list
+def insert_end(head: Node, data: any) -> Node:
+    """Insert a node at the end of the doubly linked list."""
+    new_node = Node(data)
+    if head is None:
+        return new_node
 
-# Function to delete a node with a specific value
-def delete_node(head, key):
-    temp = head
+    last_node = head
+    while last_node.next:
+        last_node = last_node.next
+    last_node.next = new_node
+    new_node.prev = last_node
+    return head
 
-    # If the head node holds the key
-    if temp is not None and temp.data == key:
-        head = temp.next  # Change head
+def delete_node(head: Node, key: any) -> Node:
+    """Delete a node with a specific value from the doubly linked list."""
+    current_node = head
+
+    if current_node is not None and current_node.data == key:
+        head = current_node.next
         if head:
-            head.prev = None  # Update previous head's previous node
+            head.prev = None
         return head
 
-    # Search for the key to be deleted
-    while temp is not None and temp.data != key:
-        temp = temp.next
+    while current_node is not None and current_node.data != key:
+        current_node = current_node.next
 
-    # If key was not present in the doubly linked list
-    if temp is None:
+    if current_node is None:
+        logging.warning(f"Key {key} not found in the list.")
         return head
 
-    # Unlink the node from linked list
-    if temp.next:  # If the node to be deleted is not the last node
-        temp.next.prev = temp.prev
-    if temp.prev:  # If the node to be deleted is not the first node
-        temp.prev.next = temp.next
-        
-    return head  # Return the head of the list
+    if current_node.next:
+        current_node.next.prev = current_node.prev
+    if current_node.prev:
+        current_node.prev.next = current_node.next
 
-# Function to display the doubly linked list
-def display(head):
+    return head
+
+def display(head: Node) -> list:
+    """Display the doubly linked list."""
     result = []
-    temp = head
-    while temp:
-        result.append(temp.data)  # Collect data from each node
-        temp = temp.next
-    return result  # Return the list of node values
+    current_node = head
+    while current_node:
+        result.append(current_node.data)
+        current_node = current_node.next
+    return result
