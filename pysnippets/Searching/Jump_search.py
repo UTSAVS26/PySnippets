@@ -1,27 +1,40 @@
+import logging
 import math
+from typing import List
 
-def jump_search(arr, target):
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+
+def jump_search(arr: List[int], target: int) -> int:
     """
     Jump search algorithm.
-    :param arr: Sorted list of elements to search through.
-    :param target: The element to search for.
-    :return: The index of the element if found, else -1.
+
+    Args:
+        arr (List[int]): Sorted list of elements to search through.
+        target (int): The element to search for.
+
+    Returns:
+        int: The index of the target if found, else -1.
     """
-    if not arr:  # Check for empty array
+    logging.info("Starting jump search")
+    if not arr:
+        logging.error("Empty array provided for search.")
         return -1
     n = len(arr)
     step = int(math.sqrt(n))
     prev = 0
-
-    while arr[min(step, n) - 1] < target:
+    while prev < n and arr[min(step, n) - 1] < target:
+        logging.debug(f"Jumping from index {prev} to {step}")
         prev = step
         step += int(math.sqrt(n))
         if prev >= n:
+            logging.warning(f"Element {target} is not present in array")
             return -1
-
     for i in range(prev, min(step, n)):
+        logging.debug(f"Checking index {i}, value={arr[i]}")
         if arr[i] == target:
+            logging.info(f"Target {target} found at index {i}")
             return i
+    logging.warning(f"Element {target} is not present in array")
     return -1
 
 # Driver Code
@@ -30,9 +43,6 @@ if __name__ == "__main__":
     target = 10
     result = jump_search(arr, target)
     if result == -1:
-        print("Element is not present in array")
+        logging.info("Element is not present in array")
     else:
-        print("Element is present at index", result)
-
-
-
+        logging.info(f"Element is present at index {result}")

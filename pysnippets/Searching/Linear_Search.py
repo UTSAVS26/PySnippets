@@ -1,13 +1,19 @@
-def linear_search(arr, target):
+from typing import List
+
+def linear_search(arr: List[int], target: int) -> int:
     """
-    Linear search algorithm.
-    :param arr: List of elements to search through.
-    :param target: The element to search for.
-    :return: The index of the element if found, else -1.
+    Executes a linear search on a list to find a target element.
+
+    Args:
+        arr (List[int]): The list of elements to search through.
+        target (int): The element to search for within the list.
+
+    Returns:
+        int: The index of the target element if found; otherwise, -1.
     """
-    for i in range(len(arr)):
-        if arr[i] == target:
-            return i
+    for index, element in enumerate(arr):
+        if element == target:
+            return index
     return -1
 
 # Driver Code
@@ -20,4 +26,4 @@ if __name__ == "__main__":
     if result == -1:
         print("Element is not present in array")
     else:
-        print("Element is present at index", result)
+        print(f"Element is present at index {result}")

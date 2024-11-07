@@ -8,14 +8,10 @@ def fibonacci_search(arr, target):
     if not arr:  # Check for empty array
         return -1
     n = len(arr)
-    fib_mm2 = 0  # (m-2)'th Fibonacci number
-    fib_mm1 = 1  # (m-1)'th Fibonacci number
-    fib_m = fib_mm2 + fib_mm1  # m'th Fibonacci number
+    fib_mm2, fib_mm1, fib_m = 0, 1, 1  # (m-2)'th, (m-1)'th, m'th Fibonacci numbers
 
     while fib_m < n:
-        fib_mm2 = fib_mm1
-        fib_mm1 = fib_m
-        fib_m = fib_mm2 + fib_mm1
+        fib_mm2, fib_mm1, fib_m = fib_mm1, fib_m, fib_mm2 + fib_mm1
 
     offset = -1
 
@@ -23,14 +19,9 @@ def fibonacci_search(arr, target):
         i = min(offset + fib_mm2, n - 1)
 
         if arr[i] < target:
-            fib_m = fib_mm1
-            fib_mm1 = fib_mm2
-            fib_mm2 = fib_m - fib_mm1
-            offset = i
+            fib_m, fib_mm1, fib_mm2, offset = fib_mm1, fib_mm2, fib_m - fib_mm1, i
         elif arr[i] > target:
-            fib_m = fib_mm2
-            fib_mm1 -= fib_mm2
-            fib_mm2 = fib_m - fib_mm1
+            fib_m, fib_mm1, fib_mm2 = fib_mm2, fib_mm1 - fib_mm2, fib_m - fib_mm1
         else:
             return i
 
