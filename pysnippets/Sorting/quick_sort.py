@@ -1,6 +1,6 @@
 import logging
-
 from typing import List, Dict, Any
+import random
 
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -32,7 +32,8 @@ def quick_sort(dict_list: List[Dict[str, Any]], key: str) -> List[Dict[str, Any]
     if len(dict_list) <= 1:
         return dict_list
 
-    pivot = dict_list[len(dict_list) // 2][key]
+    # Choosing a random pivot to improve performance in case of sorted data
+    pivot = random.choice(dict_list)[key]
     logging.debug(f"Pivot chosen: {pivot}")
 
     left = [x for x in dict_list if x[key] < pivot]
@@ -44,4 +45,3 @@ def quick_sort(dict_list: List[Dict[str, Any]], key: str) -> List[Dict[str, Any]
     logging.debug(f"Right partition: {right}")
 
     return quick_sort(left, key) + middle + quick_sort(right, key)
-

@@ -1,5 +1,4 @@
 import logging
-
 from typing import List, Dict, Any
 
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -17,10 +16,16 @@ def counting_sort(dict_list: List[Dict[str, Any]], key: str, reverse: bool = Fal
         List[Dict[str, Any]]: The sorted list of dictionaries.
 
     Raises:
-        ValueError: If the list is empty or if the specified key is not present in all dictionaries.
-        ValueError: If an unsupported sorting method is specified.
+        KeyError: If the specified key is not present in all dictionaries.
+        TypeError: If dict_list is not a list of dictionaries.
         ValueError: If the key values are not non-negative integers.
+
+    Time Complexity:
+        O(n + k), where n is the number of elements in the list and k is the range of the key values.
     """
+    if not dict_list:
+        logging.info("Empty list provided. Returning empty list.")
+        return []
 
     if not isinstance(dict_list, list) or not all(isinstance(item, dict) for item in dict_list):
         logging.error("Input must be a list of dictionaries.")
@@ -30,28 +35,24 @@ def counting_sort(dict_list: List[Dict[str, Any]], key: str, reverse: bool = Fal
         logging.error(f"The key '{key}' is not present in all dictionaries.")
         raise KeyError(f"The key '{key}' is not present in all dictionaries.")
 
-    # Ensure all key values are integers
+    # Ensure all key values are non-negative integers
     if not all(isinstance(item[key], int) and item[key] >= 0 for item in dict_list):
         logging.error("All key values must be non-negative integers for Counting Sort.")
         raise ValueError("All key values must be non-negative integers for Counting Sort.")
 
     logging.debug(f"Starting Counting Sort with n={len(dict_list)}, key='{key}', reverse={reverse}")
 
-    if not dict_list:
-        logging.info("Empty list provided. Returning empty list.")
-        return []
-
     max_val = max(item[key] for item in dict_list)
     count = [0] * (max_val + 1)
     output = [None] * len(dict_list)
 
-    # Store the count of each key
+    # Count occurrences of each key value
     for item in dict_list:
         count[item[key]] += 1
 
     logging.debug(f"Count array: {count}")
 
-    # Modify the count array for sorted positions
+    # Modify the count array to store positions
     for i in range(1, len(count)):
         count[i] += count[i - 1]
 
@@ -59,19 +60,19 @@ def counting_sort(dict_list: List[Dict[str, Any]], key: str, reverse: bool = Fal
 
     # Build the output array
     for item in reversed(dict_list):
-        logging.debug(f"Placing {item} at position {count[item[key]] - 1}")
-        output[count[item[key]] - 1] = item
+        position = count[item[key]] - 1
+        output[position] = item
         count[item[key]] -= 1
 
     if reverse:
+        logging.debug("Reversing the sorted list for descending order.")
         output.reverse()
-        logging.debug("Reversed the sorted list for descending order.")
 
     logging.info("Counting Sort completed.")
     return output
 
-# Example usage
-# dict_list = [{"name": "Alice", "age": 30}, {"name": "Bob", "age": 25}, {"name": "Charlie", "age": 35}]
-# sorted_dict = SortableDict(dict_list, key="age", reverse=True)
-# sorted_list = sorted_dict.sort()
-# print(sorted_list)
+# Example usage:
+if __name__ == "__main__":
+    dict_list = [{"name": "Alice", "age": 30}, {"name": "Bob", "age": 25}, {"name": "Charlie", "age": 35}]
+    sorted_list = counting_sort(dict_list, key="age", reverse=True)
+    print("Sorted List:", sorted_list)

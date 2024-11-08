@@ -1,5 +1,4 @@
 import logging
-
 from typing import List, Any
 
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -16,6 +15,10 @@ def cocktail_shaker_sort(arr: List[Any]) -> List[Any]:
 
     Raises:
         TypeError: If arr is not a list.
+
+    Time Complexity:
+        Worst and Average Case: O(n^2)
+        Best Case: O(n) if the list is already sorted.
     """
     if not isinstance(arr, list):
         logging.error("Input must be a list.")
@@ -39,6 +42,7 @@ def cocktail_shaker_sort(arr: List[Any]) -> List[Any]:
                 swapped = True
 
         if not swapped:
+            logging.debug("No swaps made in the forward pass, list might be sorted already.")
             break
 
         end -= 1
@@ -50,6 +54,9 @@ def cocktail_shaker_sort(arr: List[Any]) -> List[Any]:
                 logging.debug(f"Swapping indices {i - 1} and {i}: {arr[i - 1]} <-> {arr[i]}")
                 arr[i], arr[i - 1] = arr[i - 1], arr[i]
                 swapped = True
+
+        if not swapped:
+            logging.debug("No swaps made in the backward pass, list might be sorted already.")
 
         start += 1
 
