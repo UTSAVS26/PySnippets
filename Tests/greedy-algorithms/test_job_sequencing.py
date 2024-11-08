@@ -1,5 +1,5 @@
 import unittest
-from pysnippets.greedyalgorithm.job_sequencing import Job, job_sequencing
+from pysnippets.greedyalgorithms.job_sequencing import Job, job_sequencing
 
 class TestJobSequencing(unittest.TestCase):
     def test_max_profit_sequence(self):
