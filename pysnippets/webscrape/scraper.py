@@ -15,6 +15,8 @@ from dataclasses import dataclass
 from typing import Any
 import time
 import argparse
+import random
+import pickle
 
 logging.basicConfig(
     filename='scraper.log',
@@ -33,15 +35,31 @@ class Quote:
 class QuoteScraper:
     """A class to handle quote scraping with enhanced readability and performance."""
     
-    def __init__(self, base_url: str, output_dir: str = 'output') -> None:
+    def __init__(self, base_url: str, output_dir: str = 'output', cache_file: str = 'cache.pkl') -> None:
         self.base_url = base_url
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True)
+        self.cache_file = Path(cache_file)
         self.session = requests.Session()
         self.ua = UserAgent()
-        self.quotes_cache: Dict[str, List[Quote]] = {}
+        self.quotes_cache: Dict[str, List[Quote]] = self.load_cache()
         logging.debug("Initialized QuoteScraper with base_url: %s and output_dir: %s", base_url, output_dir)
         
+    def load_cache(self) -> Dict[str, List[Quote]]:
+        """Load cached data from a file if available."""
+        if self.cache_file.exists():
+            with open(self.cache_file, 'rb') as f:
+                cache = pickle.load(f)
+                logging.info("Loaded cache with %d entries", len(cache))
+                return cache
+        return {}
+
+    def save_cache(self) -> None:
+        """Save cached data to a file."""
+        with open(self.cache_file, 'wb') as f:
+            pickle.dump(self.quotes_cache, f)
+        logging.info("Cache saved to %s", self.cache_file)
+
     def get_headers(self) -> Dict[str, str]:
         """Generate random headers for each request."""
         headers = {
@@ -67,15 +85,7 @@ class QuoteScraper:
             raise
 
     def scrape_static_quotes(self, url: str) -> List[Dict[str, Any]]:
-        """
-        Scrape quotes from a static page with retries and error handling.
-        
-        Args:
-            url (str): The URL of the page to scrape.
-        
-        Returns:
-            List[Dict[str, Any]]: A list of scraped quotes.
-        """
+        """Scrape quotes from a static page with retries and error handling."""
         response = self.fetch_page(url)
         soup = BeautifulSoup(response.text, 'html.parser')
         quotes = [self._parse_quote_element(quote) for quote in soup.find_all('div', class_='quote') if self._parse_quote_element(quote)]
@@ -180,7 +190,7 @@ class QuoteScraper:
                 'total_quotes': len(quotes),
                 'unique_authors': len(df['author'].unique()),
                 'most_common_author': df['author'].mode().iloc[0],
-                'average_quote_length': df['quote'].str.len().mean(),
+                'average_quote_length': df['text'].str.len().mean(),
                 'most_common_tags': pd.Series([
                     tag for tags in df['tags'] for tag in tags
                 ]).value_counts().head(5).to_dict(),
@@ -205,49 +215,9 @@ class QuoteScraper:
                 quotes = self.scrape_static_quotes(url)
                 self.quotes_cache[url] = quotes
                 all_quotes.extend(quotes)
-        return all_quotes
-
-    def scrape_with_rate_limiting(self, num_pages: int, delay: float = 1.0) -> List[Quote]:
-        """Scrape multiple pages with a delay between requests to respect rate limits."""
-        all_quotes = []
-        for page in range(1, num_pages + 1):
-            quotes = self.scrape_static_quotes(f"{self.base_url}/page/{page}/")
-            all_quotes.extend(quotes)
-            logging.debug("Sleeping for %.2f seconds to respect rate limits", delay)
-            time.sleep(delay)
-        return all_quotes
-
-def parse_arguments() -> argparse.Namespace:
-    """Parse command-line arguments."""
-    parser = argparse.ArgumentParser(description="Advanced Quote Scraper")
-    parser.add_argument('--base_url', type=str, default='https://quotes.toscrape.com', help='Base URL of the quotes website')
-    parser.add_argument('--num_pages', type=int, default=3, help='Number of pages to scrape')
-    parser.add_argument('--output_dir', type=str, default='output', help='Directory to save output files')
-    parser.add_argument('--mode', type=str, choices=['sync', 'async', 'thread'], default='thread', help='Scraping mode')
-    return parser.parse_args()
-
-def main():
-    """Main execution function with multiple scraping options."""
-    args = parse_arguments()
-    scraper = QuoteScraper(args.base_url, args.output_dir)
-    
-    try:
-        logging.info("Starting scraping in %s mode", args.mode)
-        if args.mode == 'async':
-            quotes = asyncio.run(scraper.scrape_multiple_pages_async(args.num_pages))
-        elif args.mode == 'thread':
-            quotes = scraper.scrape_with_threading(args.num_pages)
-        else:
-            quotes = scraper.scrape_static_quotes(args.base_url)
+                
+            # Introduce random delay between requests to avoid triggering anti-scraping mechanisms
+            time.sleep(random.uniform(1, 3))
         
-        scraper.save_to_multiple_formats(quotes, 'quotes_output')
-        analysis = scraper.analyze_quotes([quote.__dict__ for quote in quotes])
-        logging.info("Analysis: %s", analysis)
-        print(f"Total unique quotes collected: {len(quotes)}")
-        
-    except Exception as e:
-        logging.error("Scraping failed: %s", e)
-        raise
-
-if __name__ == "__main__":
-    main()
+        self.save_cache()  # Save updated cache to disk after scraping
+        return all_quotes
