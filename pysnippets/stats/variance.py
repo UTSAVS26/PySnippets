@@ -1,13 +1,21 @@
 # statistics.py (continued)
 
+import logging
+from typing import List
 from mean_median_mode import mean
 
-def variance(data, population=True):
+# Configure logging
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
+def variance(data: List[float], population: bool = True) -> float:
     """
     Calculate the variance of a list of numbers.
 
     Args:
-        data (list): A list of numbers.
+        data (List[float]): A list of numbers.
         population (bool): If True, calculate population variance; otherwise, sample variance.
 
     Returns:
@@ -18,6 +26,11 @@ def variance(data, population=True):
         1.25
     """
     if not data:
+        logging.error("Input data list is empty.")
         raise ValueError("List is empty")
+    
     mean_value = mean(data)
-    return sum((x - mean_value) ** 2 for x in data) / (len(data) if population else len(data) - 1)
+    denominator = len(data) if population else len(data) - 1
+    variance_value = sum((x - mean_value) ** 2 for x in data) / denominator
+    logging.debug(f"Calculated variance: {variance_value}")
+    return variance_value
