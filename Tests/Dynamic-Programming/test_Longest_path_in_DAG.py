@@ -1,6 +1,6 @@
 import unittest
 from collections import defaultdict
-from pysnippets.Dynamic Programming.Longest_path_in_DAG import add_edge, find_longest_path
+from pysnippets.DynamicProgramming.Longest_path_in_DAG import add_edge, find_longest_path
 
 class TestLongestPath(unittest.TestCase):
 
