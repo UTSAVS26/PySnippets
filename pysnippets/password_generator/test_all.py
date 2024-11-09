@@ -24,7 +24,7 @@ class TestPasswordGenerator(unittest.TestCase):
     def test_password_hashing(self):
         password, hashed = self.pg.generate_password()
         self.assertTrue(len(hashed) > 0)
-
+        
 class TestPasswordValidator(unittest.TestCase):
     def setUp(self):
         self.validator = PasswordValidator()
