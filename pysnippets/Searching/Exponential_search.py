@@ -1,10 +1,12 @@
 import logging
 from typing import List
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s - %(levelname)s - %(message)s"
-)
+# Parameterized logging configuration
+def setup_logging(level=logging.INFO):
+    logging.basicConfig(
+        level=level,
+        format="%(asctime)s - %(levelname)s - %(message)s"
+    )
 
 def binary_search(arr: List[int], target: int, low: int, high: int) -> int:
     """Perform a binary search on a sorted array.
@@ -57,8 +59,28 @@ def exponential_search(arr: List[int], target: int) -> int:
         logging.info(f"Element {target} is not present in array")
     return result
 
+# Unit Tests for the Search Functions
+def run_tests():
+    test_cases = [
+        {"arr": [2, 3, 4, 10, 40], "target": 10, "expected": 3},
+        {"arr": [1, 2, 3, 4, 5], "target": 6, "expected": -1},
+        {"arr": [1, 3, 5, 7, 9, 11], "target": 1, "expected": 0},
+        {"arr": [], "target": 3, "expected": -1},
+        {"arr": [2, 4, 6, 8, 10], "target": 8, "expected": 3},
+    ]
+
+    for i, test_case in enumerate(test_cases, 1):
+        arr, target, expected = test_case["arr"], test_case["target"], test_case["expected"]
+        result = exponential_search(arr, target)
+        assert result == expected, f"Test case {i} failed: expected {expected}, got {result}"
+        logging.info(f"Test case {i} passed.")
+
 # Driver Code
 if __name__ == "__main__":
+    # Setup logging level
+    setup_logging(level=logging.DEBUG)
+
+    # Sample exponential search
     arr = [2, 3, 4, 10, 40]
     target = 10
     result = exponential_search(arr, target)
@@ -66,3 +88,8 @@ if __name__ == "__main__":
         logging.info("Element is not present in array")
     else:
         logging.info(f"Element is present at index {result}")
+
+    # Run unit tests
+    logging.info("Running unit tests...")
+    run_tests()
+    logging.info("All tests completed successfully.")
