@@ -1,20 +1,28 @@
-from functools import lru_cache
+import logging
+from dataclasses import dataclass
+from decorator import memoize
+from typing import Tuple
 
-@lru_cache(maxsize=None)
-def knapsack(weights, values, capacity, n):
-    if n == 0 or capacity == 0:
-        return 0
-    if weights[n - 1] > capacity:
-        return knapsack(weights, values, capacity, n - 1)
-    else:
-        return max(values[n - 1] + knapsack(weights, values, capacity - weights[n - 1], n - 1),
-                   knapsack(weights, values, capacity, n - 1))
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-if __name__ == "__main__":
-    weights = (1, 2, 3)
-    values = (10, 15, 40)
-    capacity = 6
-    n = len(values)
-    print(knapsack(weights, values, capacity, n))  # Output: 55
-    # New test cases
-    print(knapsack((1, 2, 3, 4), (10, 20, 30, 40), 6, 4))  # Output: 60
+@dataclass(frozen=True)
+class Item:
+    value: int
+    weight: int
+
+@dataclass
+class KnapsackSolver:
+    @staticmethod
+    @memoize
+    def knapsack(max_weight: int, items: Tuple[Item, ...], n: int) -> int:
+        if n == 0 or max_weight == 0:
+            return 0
+        current_item = items[n-1]
+        if current_item.weight > max_weight:
+            return KnapsackSolver.knapsack(max_weight, items, n-1)
+        else:
+            return max(
+                current_item.value + KnapsackSolver.knapsack(max_weight - current_item.weight, items, n-1),
+                KnapsackSolver.knapsack(max_weight, items, n-1)
+            ) 
