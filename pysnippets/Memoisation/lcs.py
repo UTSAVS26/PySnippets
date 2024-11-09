@@ -1,17 +1,18 @@
-from functools import lru_cache
+import logging
+from dataclasses import dataclass
+from decorator import memoize
 
-@lru_cache(maxsize=None)
-def lcs(x, y, m, n):
-    if m == 0 or n == 0:
-        return 0
-    if x[m - 1] == y[n - 1]:
-        return 1 + lcs(x, y, m - 1, n - 1)
-    else:
-        return max(lcs(x, y, m, n - 1), lcs(x, y, m - 1, n))
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-if __name__ == "__main__":
-    x = "AGGTAB"
-    y = "GXTXAYB"
-    print(lcs(x, y, len(x), len(y)))  # Output: 4
-    # New test cases
-    print(lcs("ABC", "AC", len("ABC"), len("AC")))  # Output: 2
+@dataclass
+class LCSSolver:
+    @staticmethod
+    @memoize
+    def lcs(X: str, Y: str, m: int, n: int) -> int:
+        if m == 0 or n == 0:
+            return 0
+        if X[m-1] == Y[n-1]:
+            return 1 + LCSSolver.lcs(X, Y, m-1, n-1)
+        else:
+            return max(LCSSolver.lcs(X, Y, m, n-1), LCSSolver.lcs(X, Y, m-1, n)) 
