@@ -1,16 +1,17 @@
-from functools import lru_cache
+import logging
+from dataclasses import dataclass
+from decorator import memoize
 
-@lru_cache(maxsize=None)
-def fibonacci(n):
-    """
-    Returns the nth Fibonacci number using automatic memoization with lru_cache.
-    """
-    if n < 2:
-        return n
-    return fibonacci(n - 1) + fibonacci(n - 2)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-if __name__ == "__main__":
-    print(fibonacci(10))  # Output: 55
-    # New test cases
-    print(fibonacci(20))  # Output: 6765
-    print(fibonacci(30))  # Output: 832040
+@dataclass
+class FibonacciCalculator:
+    @staticmethod
+    @memoize
+    def fibonacci(n: int) -> int:
+        if n <= 0:
+            raise ValueError("Input must be a positive integer.")
+        elif n == 1 or n == 2:
+            return 1
+        return FibonacciCalculator.fibonacci(n-1) + FibonacciCalculator.fibonacci(n-2) 
