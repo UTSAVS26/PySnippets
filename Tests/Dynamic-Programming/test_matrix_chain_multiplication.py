@@ -1,5 +1,5 @@
 import unittest
-from pysnippets.Dynamic Programming.Matrix_chain_multiplication import matrix_multiplication
+from pysnippets.Dynamic Programming.matrix_chain_multiplication import matrix_multiplication
 
 class TestMatrixChainMultiplication(unittest.TestCase):
 
