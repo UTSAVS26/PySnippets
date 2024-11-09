@@ -1,4 +1,3 @@
-
 import copy
 
 def deep_copy(obj):
