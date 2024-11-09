@@ -1,6 +1,6 @@
 import logging
 from dataclasses import dataclass
-from pysnippets.Memoisation.decorator import memoize
+from decorator import memoize
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

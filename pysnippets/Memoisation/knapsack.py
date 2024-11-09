@@ -1,12 +1,12 @@
 import logging
 from dataclasses import dataclass
-from pysnippets.Memoisation.decorator import memoize
-from typing import List, Tuple
+from decorator import memoize
+from typing import Tuple
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-@dataclass
+@dataclass(frozen=True)
 class Item:
     value: int
     weight: int
