@@ -11,6 +11,18 @@ def unique_paths(m, n):
 
     return dp[-1]  # The last element contains the number of unique paths
 
+# Example function definition for testing
+def test_unique_paths():
+    test_cases = [
+        (3, 7, 28),  # Example test case
+        (3, 2, 3),
+        (7, 3, 28)
+    ]
+    
+    for m, n, expected in test_cases:
+        result = unique_paths(m, n)
+        assert result == expected, f"Expected {expected}, got {result}"
+
 # Test cases
 if __name__ == "__main__":
     test_cases = [
