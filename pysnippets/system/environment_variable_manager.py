@@ -9,6 +9,15 @@ def get_env_variable(var_name):
     
     Returns:
         str: The value of the environment variable or None if not found.
+    
+    Raises:
+        TypeError: If var_name is not a string.
+        
+    Examples:
+        >>> get_env_variable('PATH')
+        '/usr/local/bin:/usr/bin:/bin'
+        >>> get_env_variable('NON_EXISTENT_VAR') 
+        None
     """
     value = os.environ.get(var_name)
     if value is None:
