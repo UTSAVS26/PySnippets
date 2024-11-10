@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
 import copy
@@ -285,4 +286,5 @@ def create_sankey(tree_model: Any,
     }
     
     save_path.write_text(template.render(render_result))
+    print(f'Saved to {save_path}')
     print(f'Saved to {save_path}')
