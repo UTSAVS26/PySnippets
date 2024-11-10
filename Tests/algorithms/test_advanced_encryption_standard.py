@@ -38,5 +38,10 @@ class TestAES(unittest.TestCase):
         decrypted_data = self.decrypt(encrypted_data)
         self.assertEqual(decrypted_data, self.data)  # Check if decrypted data matches original
 
+    def test_invalid_key_length(self):
+        with self.assertRaises(ValueError):
+            invalid_key = os.urandom(24)  # Invalid key length for AES-256
+            self.encrypt(self.data, invalid_key)
+
 if __name__ == '__main__':
     unittest.main()

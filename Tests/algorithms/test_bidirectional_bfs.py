@@ -46,5 +46,10 @@ class TestBidirectionalBFS(unittest.TestCase):
         with self.assertRaises(TypeError):
             bidirectional_search(invalid_graph, 'hello', 'hello')
 
+    def test_large_graph(self):
+        large_graph = {str(i): [str(i+1)] for i in range(1000)}
+        path = bidirectional_search(large_graph, '0', '999')
+        self.assertIsNotNone(path)
+
 
 

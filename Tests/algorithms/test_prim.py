@@ -32,5 +32,10 @@ class TestPrim(unittest.TestCase):
         result = prim(graph, 'A')  # Should handle gracefully
         self.assertEqual(result, [])
 
+    def test_single_node(self):
+        graph = {'A': []}
+        result = prim(graph, 'A')
+        self.assertEqual(result, [])
+
 if __name__ == '__main__':
     unittest.main()

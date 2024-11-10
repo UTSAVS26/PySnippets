@@ -28,5 +28,11 @@ class TestDFS(unittest.TestCase):
         graph = {}
         self.assertEqual(dfs(graph, 'A'), [])  # Should handle gracefully
 
+    def test_single_node(self):
+        graph = {'A': []}
+        dfs_result = dfs(graph, 'A')
+        expected_dfs_result = ['A']
+        self.assertEqual(dfs_result, expected_dfs_result)
+
 if __name__ == '__main__':
     unittest.main()
