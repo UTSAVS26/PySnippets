@@ -15,5 +15,11 @@ class TestBFSAlgorithm(unittest.TestCase):
         expected_bfs_result = ['A', 'B', 'C', 'D']
         self.assertEqual(bfs_result, expected_bfs_result)
 
+    def test_single_node(self):
+        graph = {'A': []}
+        bfs_result = bfs(graph, 'A')
+        expected_bfs_result = ['A']
+        self.assertEqual(bfs_result, expected_bfs_result)
+
 if __name__ == '__main__':
     unittest.main()

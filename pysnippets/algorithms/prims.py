@@ -1,11 +1,15 @@
 def prims(cost_matrix):
     n = len(cost_matrix)
-    visited = [False] * n
-    visited[0] = True
-    mincost = 0
-    ne = 0
+    if n == 0:
+        print("Empty graph, no edges to process.")
+        return
 
-    while ne < n - 1:
+    visited = [False] * n
+    visited[0] = True  # Start with vertex 0
+    mincost = 0
+    edges_in_mst = 0
+
+    while edges_in_mst < n - 1:
         min_edge = float('inf')
         a = b = -1
 
@@ -16,11 +20,12 @@ def prims(cost_matrix):
                         min_edge = cost_matrix[i][j]
                         a, b = i, j
 
-        print(f"Edge from vertex {a} to {b} with cost = {min_edge}")
-        visited[b] = True
-        mincost += min_edge
-        cost_matrix[a][b] = cost_matrix[b][a] = float('inf')
-        ne += 1
+        if a != -1 and b != -1:  # Valid edge found
+            print(f"Edge from vertex {a} to {b} with cost = {min_edge}")
+            visited[b] = True
+            mincost += min_edge
+            cost_matrix[a][b] = cost_matrix[b][a] = float('inf')  # Avoid reusing this edge
+            edges_in_mst += 1
 
     print(f"Cost of MST: {mincost}")
 

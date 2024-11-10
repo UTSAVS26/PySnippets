@@ -1,5 +1,3 @@
-# statistics.py (continued)
-
 import logging
 from typing import List
 from mean_median_mode import mean
@@ -29,8 +27,16 @@ def variance(data: List[float], population: bool = True) -> float:
         logging.error("Input data list is empty.")
         raise ValueError("List is empty")
     
+    if not all(isinstance(x, (int, float)) for x in data):
+        logging.error("Non-numeric value found in data list.")
+        raise ValueError("All elements in the data list must be numeric")
+    
     mean_value = mean(data)
     denominator = len(data) if population else len(data) - 1
     variance_value = sum((x - mean_value) ** 2 for x in data) / denominator
-    logging.debug(f"Calculated variance: {variance_value}")
+    
+    # Log the variance type and value
+    variance_type = "Population" if population else "Sample"
+    logging.debug(f"Calculated {variance_type} variance: {variance_value}")
+    
     return variance_value

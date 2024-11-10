@@ -1,4 +1,6 @@
 def levenshtein_distance(s1: str, s2: str) -> int:
+    if not isinstance(s1, str) or not isinstance(s2, str):
+        raise ValueError("Both inputs must be strings.")
     if len(s1) < len(s2):
         return levenshtein_distance(s2, s1)
 

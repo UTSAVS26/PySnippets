@@ -22,5 +22,9 @@ class TestECC(unittest.TestCase):
         decrypted_data = self.decrypt_message(self.private_key, encrypted_data)
         self.assertEqual(decrypted_data, self.data)  # Check if decrypted data matches original
 
+    def test_invalid_curve(self):
+        with self.assertRaises(ValueError):
+            ec.generate_private_key(ec.SECP192R1(), default_backend())  # Unsupported curve
+
 if __name__ == '__main__':
     unittest.main()
