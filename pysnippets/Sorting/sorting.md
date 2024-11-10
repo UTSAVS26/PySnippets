@@ -1,6 +1,6 @@
 # Overview
 
-This module provides multiple functions to sort a list of dictionaries by a specified key using various sorting algorithms.
+This module provides multiple functions to sort a list of dictionaries by a specified key using various sorting algorithms. The sorting algorithms implemented include Cocktail Sort, Heap Sort, and Counting Sort. Each function is designed to efficiently sort a list of dictionaries based on a specific key, with options for ascending or descending order.
 
 ## Table of Contents
 
