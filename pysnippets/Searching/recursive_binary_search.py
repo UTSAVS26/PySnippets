@@ -16,22 +16,23 @@ def binary_search_recursive(arr: List[int], low: int, high: int, target: int) ->
     Returns:
         int: The index of the target if found; otherwise, -1.
     """
+    # Base case: if low is greater than high, the element is not found.
+    if high < low:
+        logging.warning(f"Element {target} is not present in array")
+        return -1
+    
     logging.debug(f"Binary search recursive called with low={low}, high={high}")
 
-    if high >= low:
-        mid = low + (high - low) // 2
-        logging.debug(f"Checking middle index {mid}, value={arr[mid]}")
+    mid = low + (high - low) // 2
+    logging.debug(f"Checking middle index {mid}, value={arr[mid]}")
 
-        if arr[mid] == target:
-            logging.info(f"Target {target} found at index {mid}")
-            return mid
-        elif arr[mid] > target:
-            return binary_search_recursive(arr, low, mid - 1, target)
-        else:
-            return binary_search_recursive(arr, mid + 1, high, target)
-
-    logging.warning(f"Element {target} is not present in array")
-    return -1
+    if arr[mid] == target:
+        logging.info(f"Target {target} found at index {mid}")
+        return mid
+    elif arr[mid] > target:
+        return binary_search_recursive(arr, low, mid - 1, target)
+    else:
+        return binary_search_recursive(arr, mid + 1, high, target)
 
 # Driver Code
 if __name__ == '__main__':

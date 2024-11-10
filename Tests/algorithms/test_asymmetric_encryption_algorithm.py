@@ -42,5 +42,10 @@ class TestRSA(unittest.TestCase):
         decrypted_data = self.decrypt(self.private_key, encrypted_data)
         self.assertEqual(decrypted_data, self.data)  # Check if decrypted data matches original
 
+    def test_invalid_key_size(self):
+        with self.assertRaises(ValueError):
+            # Generating a key with an unsupported size
+            rsa.generate_private_key(public_exponent=65537, key_size=1024)
+
 if __name__ == '__main__':
     unittest.main()

@@ -27,5 +27,9 @@ class TestDijkstra(unittest.TestCase):
         graph = {}
         self.assertEqual(dijkstra(graph, 'A'), {})  # Should handle gracefully
 
+    def test_single_node(self):
+        graph = {'A': {}}
+        self.assertEqual(dijkstra(graph, 'A'), {'A': 0})
+
 if __name__ == '__main__':
     unittest.main()

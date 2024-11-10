@@ -9,6 +9,10 @@ logging.basicConfig(level=logging.INFO)
 class StringStatistics:
     text: str
 
+    def __post_init__(self):
+        if not isinstance(self.text, str):
+            raise ValueError("Text must be a string.")
+
     def word_count(self) -> Dict[str, int]:
         words = re.findall(r'\b\w+\b', self.text.lower())
         count = {}

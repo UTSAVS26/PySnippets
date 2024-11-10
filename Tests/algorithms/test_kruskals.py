@@ -19,5 +19,10 @@ class TestKruskalsAlgorithm(unittest.TestCase):
         ]
         self.assertEqual(sorted(mst), sorted(expected_mst))
 
+    def test_disconnected_graph(self):
+        graph = {'A': {}, 'B': {}}
+        mst = KruskalAlgorithm.kruskal(graph)
+        self.assertEqual(mst, [])
+
 if __name__ == '__main__':
     unittest.main()

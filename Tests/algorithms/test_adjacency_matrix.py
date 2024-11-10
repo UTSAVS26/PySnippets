@@ -26,5 +26,13 @@ class TestGraphAdjacency(unittest.TestCase):
 
         self.assertEqual(adj, expected_adj)
 
+    def test_empty_graph(self):
+        no_of_nodes = 0
+        adj = []
+        neighbors_info = {}
+        create_graph(adj, no_of_nodes, neighbors_info)
+        expected_adj = []
+        self.assertEqual(adj, expected_adj)
+
 if __name__ == "__main__":
     unittest.main()
