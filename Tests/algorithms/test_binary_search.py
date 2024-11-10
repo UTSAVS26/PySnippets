@@ -15,5 +15,8 @@ class TestBinarySearch(unittest.TestCase):
         # Test case for invalid input (empty array)
         self.assertEqual(binary_search([], 1), -1)
 
+    def test_repeated_elements(self):
+        self.assertEqual(binary_search([1, 2, 2, 2, 3], 2), 2)
+
 if __name__ == '__main__':
     unittest.main()

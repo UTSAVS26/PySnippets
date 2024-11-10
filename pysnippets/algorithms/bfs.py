@@ -1,18 +1,22 @@
 from collections import deque
+from typing import Dict, List
 
-def bfs(graph, start):
+def bfs(graph: Dict[str, List[str]], start: str) -> List[str]:
     visited = set()
     queue = deque([start])
     visited.add(start)
+    order_of_visit = []  # To store the order of visited nodes
 
     while queue:
         vertex = queue.popleft()
-        print(vertex, end=" ")
+        order_of_visit.append(vertex)
 
         for neighbor in graph[vertex]:
             if neighbor not in visited:
                 visited.add(neighbor)
                 queue.append(neighbor)
+
+    return order_of_visit
 
 # Example usage:
 if __name__ == "__main__":
@@ -24,4 +28,5 @@ if __name__ == "__main__":
         'E': ['F'],
         'F': []
     }
-    bfs(graph, 'A')
+    order = bfs(graph, 'A')
+    print("Order of visit:", order)

@@ -20,5 +20,11 @@ class TestFloydsAlgorithm(unittest.TestCase):
         }
         self.assertEqual(dist, expected_dist)
 
+    def test_single_node(self):
+        graph = {'A': {'A': 0}}
+        dist = floyds(graph)
+        expected_dist = {'A': {'A': 0}}
+        self.assertEqual(dist, expected_dist)
+
 if __name__ == '__main__':
     unittest.main()

@@ -12,9 +12,13 @@ def binary_search_iterative(arr: List[int], target: int) -> int:
         int: The index of the target element if found; otherwise, -1.
 
     Example:
-        >>> perform_iterative_binary_search([2, 3, 4, 10, 40], 10)
+        >>> binary_search_iterative([2, 3, 4, 10, 40], 10)
         3
     """
+    if not arr:  # Edge case for empty array
+        print("The array is empty.")
+        return -1
+
     low, high = 0, len(arr) - 1
 
     while low <= high:
@@ -35,12 +39,15 @@ def binary_search_iterative(arr: List[int], target: int) -> int:
 
 # Driver Code
 if __name__ == '__main__':
-    arr = [2, 3, 4, 10, 40]
-    target = 10
+    test_cases = [
+        ([2, 3, 4, 10, 40], 10, 3),   # Standard case
+        ([2, 3, 4, 10, 40], 5, -1),   # Target not in array
+        ([], 5, -1),                  # Empty array
+        ([10], 10, 0),                # Single-element array, found
+        ([10], 20, -1)                # Single-element array, not found
+    ]
 
-    # Function call
-    result = binary_search_iterative(arr, target)
-    if result != -1:
-        print(f"Element {target} is present at index {result}")
-    else:
-        print(f"Element {target} is not present in array")
+    for arr, target, expected in test_cases:
+        result = binary_search_iterative(arr, target)
+        print(f"Searching for {target} in {arr}: {'Found at index ' + str(result) if result != -1 else 'Not found'}")
+        assert result == expected, f"Test failed for array: {arr} and target: {target}"

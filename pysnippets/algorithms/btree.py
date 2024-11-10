@@ -5,8 +5,14 @@ class BTreeNode:
         self.children = []  # List of child pointers
         self.leaf = leaf  # Boolean to indicate if the node is a leaf
 
-    # Function to traverse all nodes in a subtree rooted with this node
+    def __str__(self):
+        """Visualize the node structure for easier debugging."""
+        return f"Keys: {self.keys}, Leaf: {self.leaf}"
+
     def traverse(self):
+        """
+        Traverses all nodes in a subtree rooted with this node and prints the keys.
+        """
         for i in range(len(self.keys)):
             if not self.leaf:
                 self.children[i].traverse()
@@ -14,8 +20,10 @@ class BTreeNode:
         if not self.leaf:
             self.children[len(self.keys)].traverse()
 
-    # Function to search a key in the subtree rooted with this node
     def search(self, k):
+        """
+        Search for a key in the subtree rooted with this node.
+        """
         i = 0
         while i < len(self.keys) and k > self.keys[i]:
             i += 1
@@ -31,20 +39,37 @@ class BTreeNode:
 
 class BTree:
     def __init__(self, t):
+        """
+        Initialize a BTree with the minimum degree `t`.
+        """
         self.root = None
         self.t = t  # Minimum degree
 
-    # Function to traverse the tree
+    def __str__(self):
+        """Visualize the whole tree structure for easier debugging."""
+        if self.root is not None:
+            return str(self.root)
+        return "Empty Tree"
+
     def traverse(self):
+        """
+        Traverses the whole tree.
+        """
         if self.root is not None:
             self.root.traverse()
 
-    # Function to search a key in this tree
     def search(self, k):
-        return self.root.search(k) if self.root else None
+        """
+        Search for a key `k` in the BTree.
+        """
+        if self.root is not None:
+            return self.root.search(k)
+        return None
 
-    # Function to insert a new key in this tree
     def insert(self, k):
+        """
+        Insert a key `k` into the BTree.
+        """
         if self.root is None:
             self.root = BTreeNode(self.t, leaf=True)
             self.root.keys = [k]
@@ -61,8 +86,10 @@ class BTree:
             else:
                 self.insert_non_full(self.root, k)
 
-    # Function to split the child of a node
     def split_child(self, parent, i):
+        """
+        Split the child `i` of `parent` node.
+        """
         t = self.t
         y = parent.children[i]
         z = BTreeNode(t, y.leaf)
@@ -75,8 +102,10 @@ class BTree:
             z.children = y.children[t:(2 * t)]
             y.children = y.children[0:t]
 
-    # Function to insert a new key into a non-full node
     def insert_non_full(self, node, k):
+        """
+        Insert a key `k` into a non-full node.
+        """
         i = len(node.keys) - 1
         if node.leaf:
             node.keys.append(None)
@@ -94,3 +123,20 @@ class BTree:
                     i += 1
             self.insert_non_full(node.children[i], k)
 
+# Example usage:
+if __name__ == "__main__":
+    btree = BTree(3)  # Create a B-tree with minimum degree 3
+    btree.insert(10)
+    btree.insert(20)
+    btree.insert(5)
+    btree.insert(6)
+    btree.insert(12)
+    btree.insert(30)
+    btree.insert(7)
+    btree.insert(17)
+
+    print("Traversal of the BTree:")
+    btree.traverse()  # Output the tree keys in sorted order
+    print("\nSearching for key 6 in the tree:")
+    result = btree.search(6)
+    print(f"Key {6} found: {result is not None}")

@@ -27,5 +27,10 @@ class TestBellmanFordAlgorithm(unittest.TestCase):
         self.assertEqual(distances, expected_distances)
         self.assertEqual(predecessors, expected_predecessors)
 
+    def test_negative_cycle(self):
+        self.graph['C']['A'] = -5  # Introducing a negative cycle
+        with self.assertRaises(ValueError):
+            Graph.bellman_ford(self.graph, 'A')
+
 if __name__ == '__main__':
     unittest.main()
