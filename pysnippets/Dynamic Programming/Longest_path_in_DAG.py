@@ -1,59 +1,65 @@
+from dataclasses import dataclass
 from collections import defaultdict
+import logging
 
-def add_edge(graph, u, v, weight):
-    graph[u].append((v, weight))
+@dataclass
+class Edge:
+    u: int
+    v: int
+    weight: int
 
+def add_edge(graph, edge: Edge):
+    graph[edge.u].append((edge.v, edge.weight))
 
 def topological_sort(v, visited, stack, graph):
-    visited[v] = True  # Mark the current node as visited
-
+    visited[v] = True
     for neighbor, _ in graph[v]:
         if not visited[neighbor]:
             topological_sort(neighbor, visited, stack, graph)
-    stack.append(v)  # Add the vertex to the stack once all adjacent vertices are visited
+    stack.append(v)
 
 def find_longest_path(graph, num_vertices, source):
-    # Initialize distances as negative infinity for all vertices, set source distance to 0
-    distances = [-float('inf')] * num_vertices
-    distances[source] = 0
-    stack = []  # Stack to store the topological order
-    visited = [False] * num_vertices  # Mark all vertices as not visited
+    try:
+        distances = [-float('inf')] * num_vertices
+        distances[source] = 0
+        stack = []
+        visited = [False] * num_vertices
 
-    # Perform topological sort on all vertices
-    for i in range(num_vertices):
-        if not visited[i]:
-            topological_sort(i, visited, stack, graph)
+        for i in range(num_vertices):
+            if not visited[i]:
+                topological_sort(i, visited, stack, graph)
 
-    # Process vertices in topological order to find longest path
-    while stack:
-        u = stack.pop()  
-        # Update distances of all adjacent vertices if a longer path is found
-        if distances[u] != -float('inf'):
-            for v, weight in graph[u]:
-                if distances[v] < distances[u] + weight:
-                    distances[v] = distances[u] + weight
+        while stack:
+            u = stack.pop()
+            if distances[u] != -float('inf'):
+                for v, weight in graph[u]:
+                    if distances[v] < distances[u] + weight:
+                        distances[v] = distances[u] + weight
 
-    return distances 
+        return distances
+    except Exception as e:
+        logging.error(f"Error in find_longest_path function: {e}")
+        return None
 
-# Example 
-if __name__ == "__main__":
-    # Define graph as a Directed Acyclic Graph (DAG) with weighted edges
+# Test cases
+def test_find_longest_path():
     graph = defaultdict(list)
-    add_edge(graph, 0, 1, 3)
-    add_edge(graph, 0, 2, 10)
-    add_edge(graph, 0, 3, 14)
-    add_edge(graph, 1, 3, 7)
-    add_edge(graph, 1, 4, 51)
-    add_edge(graph, 2, 3, 5)
-    add_edge(graph, 3, 4, 11)
-    
-    num_vertices = 5  
-    source = 0  
+    edges = [
+        Edge(0, 1, 3),
+        Edge(0, 2, 10),
+        Edge(0, 3, 14),
+        Edge(1, 3, 7),
+        Edge(1, 4, 51),
+        Edge(2, 3, 5),
+        Edge(3, 4, 11)
+    ]
+    for edge in edges:
+        add_edge(graph, edge)
 
-    
+    num_vertices = 5
+    source = 0
     longest_distances = find_longest_path(graph, num_vertices, source)
 
-    # Display the longest path distances from the source
     print(f"Longest distances from source vertex {source}:")
     for vertex, distance in enumerate(longest_distances):
         if distance == -float('inf'):
@@ -61,11 +67,5 @@ if __name__ == "__main__":
         else:
             print(f"Vertex {vertex} - Distance: {distance}")
 
-
-# Output:
-# Longest distances from source vertex 0:
-# Vertex 0 - Distance: 0
-# Vertex 1 - Distance: 3
-# Vertex 2 - Distance: 10
-# Vertex 3 - Distance: 15
-# Vertex 4 - Distance: 54
+if __name__ == "__main__":
+    test_find_longest_path()

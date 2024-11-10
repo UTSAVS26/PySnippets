@@ -1,5 +1,3 @@
-# statistics.py (continued)
-
 import logging
 from typing import List
 from mean_median_mode import mean
@@ -29,8 +27,18 @@ def z_score_normalization(data: List[float]) -> List[float]:
         logging.error("Input data list is empty.")
         raise ValueError("List is empty")
     
+    if not all(isinstance(x, (int, float)) for x in data):
+        logging.error("Non-numeric value found in data list.")
+        raise ValueError("All elements in the data list must be numeric")
+    
     mean_value = mean(data)
     std_dev = standard_deviation(data)
+
+    # Handle the case where standard deviation is zero
+    if std_dev == 0:
+        logging.warning("Standard deviation is zero; all values are identical.")
+        return [0] * len(data)  # Return zeros since all values are the same
+    
     normalized_data = [(x - mean_value) / std_dev for x in data]
     logging.debug(f"Calculated Z-score normalized data: {normalized_data}")
     return normalized_data

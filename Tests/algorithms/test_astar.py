@@ -21,5 +21,9 @@ class TestAStarAlgorithm(unittest.TestCase):
         expected_path = ['A', 'C', 'D']
         self.assertEqual(path, expected_path)
 
+    def test_unreachable_destination(self):
+        path = astar(self.graph, self.heuristics, 'A', 'Z')  # Non-existent node 'Z'
+        self.assertIsNone(path)
+
 if __name__ == '__main__':
     unittest.main()

@@ -7,6 +7,10 @@ logging.basicConfig(level=logging.INFO)
 class StringUtils:
     text: str
 
+    def __post_init__(self):
+        if not isinstance(self.text, str):
+            raise ValueError("Text must be a string.")
+
     def reverse_string(self) -> str:
         return self.text[::-1]
 
@@ -34,6 +38,8 @@ class StringUtils:
         return ''.join(self.text.split())
 
     def replace_substring(self, old: str, new: str) -> str:
+        if not isinstance(old, str) or not isinstance(new, str):
+            raise ValueError("Both old and new must be strings.")
         return self.text.replace(old, new)
 
 if __name__ == "__main__":

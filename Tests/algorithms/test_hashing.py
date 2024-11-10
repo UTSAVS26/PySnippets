@@ -27,5 +27,8 @@ class TestHashing(unittest.TestCase):
         expected_hash = "dd2a1abbe8a03437ec42ec95f74a9ee3"
         self.assertEqual(self.hash_md5(self.data), expected_hash)
 
+    def test_empty_data(self):
+        self.assertEqual(self.hash_sha256(b''), hashlib.sha256(b'').hexdigest())
+
 if __name__ == '__main__':
     unittest.main()
