@@ -11,6 +11,12 @@ import asyncio
 from fake_useragent import UserAgent
 import concurrent.futures
 from retry import retry
+from dataclasses import dataclass
+from typing import Any
+import time
+import argparse
+import random
+import pickle
 
 logging.basicConfig(
     filename='scraper.log',
@@ -18,111 +24,117 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
+@dataclass
+class Quote:
+    """Data class to represent a scraped quote."""
+    text: str
+    author: str
+    tags: List[str]
+    scraped_at: datetime
+
 class QuoteScraper:
-    """A class to handle quote scraping with advanced features."""
+    """A class to handle quote scraping with enhanced readability and performance."""
     
-    def __init__(self, base_url: str, output_dir: str = 'output'):
+    def __init__(self, base_url: str, output_dir: str = 'output', cache_file: str = 'cache.pkl') -> None:
         self.base_url = base_url
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True)
+        self.cache_file = Path(cache_file)
         self.session = requests.Session()
         self.ua = UserAgent()
-        self.quotes_cache = {}
+        self.quotes_cache: Dict[str, List[Quote]] = self.load_cache()
+        logging.debug("Initialized QuoteScraper with base_url: %s and output_dir: %s", base_url, output_dir)
         
+    def load_cache(self) -> Dict[str, List[Quote]]:
+        """Load cached data from a file if available."""
+        if self.cache_file.exists():
+            with open(self.cache_file, 'rb') as f:
+                cache = pickle.load(f)
+                logging.info("Loaded cache with %d entries", len(cache))
+                return cache
+        return {}
+
+    def save_cache(self) -> None:
+        """Save cached data to a file."""
+        with open(self.cache_file, 'wb') as f:
+            pickle.dump(self.quotes_cache, f)
+        logging.info("Cache saved to %s", self.cache_file)
+
     def get_headers(self) -> Dict[str, str]:
-        """Generating some random headers for each request."""
-        return {
+        """Generate random headers for each request."""
+        headers = {
             'User-Agent': self.ua.random,
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
             'Accept-Language': 'en-US,en;q=0.5',
             'Connection': 'keep-alive',
         }
+        logging.debug("Generated headers: %s", headers)
+        return headers
 
     @retry(tries=3, delay=2, backoff=2)
-    def scrape_static_quotes(self, url: str) -> List[Dict]:
-        """
-        Scraping quotes from a static page with retries and error handling code.
-        """
+    def fetch_page(self, url: str) -> requests.Response:
+        """Fetch a page with retries and return the response."""
         try:
-            response = self.session.get(
-                url,
-                headers=self.get_headers(),
-                timeout=10
-            )
+            logging.info("Fetching URL: %s", url)
+            response = self.session.get(url, headers=self.get_headers(), timeout=10)
             response.raise_for_status()
-            
-            soup = BeautifulSoup(response.text, 'html.parser')
-            quotes = []
-            
-            for quote in soup.find_all('div', class_='quote'):
-                try:
-                    quote_data = self._parse_quote_element(quote)
-                    if quote_data:
-                        quotes.append(quote_data)
-                        
-                except AttributeError as e:
-                    logging.error(f"Error parsing quote element: {e}")
-                    continue
-                    
-            return quotes
-            
+            logging.debug("Fetched URL successfully: %s", url)
+            return response
         except requests.RequestException as e:
-            logging.error(f"Error fetching the page {url}: {e}")
+            logging.error("Failed to fetch URL %s: %s", url, e)
             raise
-            
-    def _parse_quote_element(self, quote_element) -> Optional[Dict]:
-        """Parse a single quote element with validation."""
+
+    def scrape_static_quotes(self, url: str) -> List[Dict[str, Any]]:
+        """Scrape quotes from a static page with retries and error handling."""
+        response = self.fetch_page(url)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        quotes = [self._parse_quote_element(quote) for quote in soup.find_all('div', class_='quote') if self._parse_quote_element(quote)]
+        logging.info("Scraped %d quotes from %s", len(quotes), url)
+        return quotes
+
+    def _parse_quote_element(self, quote_element: Any) -> Optional[Quote]:
+        """Parse a single quote element and return a Quote object."""
         try:
-            text = quote_element.find('span', class_='text')
-            author = quote_element.find('small', class_='author')
-            tags = quote_element.find_all('a', class_='tag')
-            
-            if not (text and author):
-                logging.warning("Missing required quote elements")
-                return None
-                
-            return {
-                'quote': text.text.strip(),
-                'author': author.text.strip(),
-                'tags': [tag.text.strip() for tag in tags],
-                'scraped_at': datetime.now().isoformat()
-            }
+            text = quote_element.find('span', class_='text').get_text(strip=True)
+            author = quote_element.find('small', class_='author').get_text(strip=True)
+            tags = [tag.get_text(strip=True) for tag in quote_element.find_all('a', class_='tag')]
+            quote = Quote(text=text, author=author, tags=tags, scraped_at=datetime.now())
+            logging.debug("Parsed quote: %s", quote)
+            return quote
+        except AttributeError as e:
+            logging.warning("Missing elements in quote: %s", e)
+            return None
         except Exception as e:
-            logging.error(f"Error parsing quote: {e}")
+            logging.error("Error parsing quote: %s", e)
             return None
 
-    async def scrape_page_async(self, page: int) -> List[Dict]:
-        """Asynchronously scrape a single page."""
+    async def scrape_page_async(self, page: int) -> List[Quote]:
+        """Asynchronously scrape a single page and return a list of Quote objects."""
         url = f"{self.base_url}/page/{page}/"
-        
+        logging.info("Asynchronously scraping page: %d", page)
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(url, headers=self.get_headers()) as response:
                     if response.status == 200:
                         html = await response.text()
                         soup = BeautifulSoup(html, 'html.parser')
-                        quotes = []
-                        
-                        for quote in soup.find_all('div', class_='quote'):
-                            quote_data = self._parse_quote_element(quote)
-                            if quote_data:
-                                quotes.append(quote_data)
-                                
+                        quotes = [self._parse_quote_element(quote) for quote in soup.find_all('div', class_='quote') if self._parse_quote_element(quote)]
+                        logging.info("Scraped %d quotes from page %d", len(quotes), page)
                         return quotes
                     else:
-                        logging.error(f"Error {response.status} on page {page}")
+                        logging.error("Error %d on page %d", response.status, page)
                         return []
-        except Exception as e:
-            logging.error(f"Async scraping error on page {page}: {e}")
+        except aiohttp.ClientError as e:
+            logging.error("Async scraping error on page %d: %s", page, e)
             return []
 
-    async def scrape_multiple_pages_async(self, num_pages: int) -> List[Dict]:
+    async def scrape_multiple_pages_async(self, num_pages: int) -> List[Quote]:
         """Scrape multiple pages asynchronously."""
         tasks = [self.scrape_page_async(page) for page in range(1, num_pages + 1)]
         results = await asyncio.gather(*tasks)
         return [quote for page_quotes in results for quote in page_quotes]
 
-    def scrape_with_threading(self, num_pages: int, max_workers: int = 4) -> List[Dict]:
+    def scrape_with_threading(self, num_pages: int, max_workers: int = 4) -> List[Quote]:
         """Scrape multiple pages using thread pool."""
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             future_to_url = {
@@ -143,36 +155,42 @@ class QuoteScraper:
                     
             return all_quotes
 
-    def save_to_multiple_formats(self, quotes: List[Dict], base_filename: str):
-        """Save scraped data in multiple formats."""
+    def save_to_multiple_formats(self, quotes: List[Quote], base_filename: str) -> None:
+        """Save scraped quotes in multiple formats (CSV, JSON, Excel)."""
         try:
-            df = pd.DataFrame(quotes)
+            df = pd.DataFrame([quote.__dict__ for quote in quotes])
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            base_filename = f"{base_filename}_{timestamp}"
+            
             csv_path = self.output_dir / f"{base_filename}.csv"
             df.to_csv(csv_path, index=False, encoding='utf-8')
-
+            logging.debug("Saved quotes to CSV: %s", csv_path)
+    
             json_path = self.output_dir / f"{base_filename}.json"
             with open(json_path, 'w', encoding='utf-8') as f:
-                json.dump(quotes, f, ensure_ascii=False, indent=2)
-                
+                json.dump([quote.__dict__ for quote in quotes], f, ensure_ascii=False, indent=2)
+            logging.debug("Saved quotes to JSON: %s", json_path)
+                    
             excel_path = self.output_dir / f"{base_filename}.xlsx"
             df.to_excel(excel_path, index=False)
-            
-            logging.info(f"Data saved in multiple formats in {self.output_dir}")
-            
+            logging.debug("Saved quotes to Excel: %s", excel_path)
+                
+            logging.info("Data saved in multiple formats in %s", self.output_dir)
+                
         except Exception as e:
-            logging.error(f"Error saving data: {e}")
+            logging.error("Error saving data: %s", e)
             raise
 
-    def analyze_quotes(self, quotes: List[Dict]) -> Dict:
+    def analyze_quotes(self, quotes: List[Quote]) -> Dict:
         """Analyzing the scraped quotes data."""
         try:
-            df = pd.DataFrame(quotes)
+            df = pd.DataFrame([quote.__dict__ for quote in quotes])
             
             analysis = {
                 'total_quotes': len(quotes),
                 'unique_authors': len(df['author'].unique()),
                 'most_common_author': df['author'].mode().iloc[0],
-                'average_quote_length': df['quote'].str.len().mean(),
+                'average_quote_length': df['text'].str.len().mean(),
                 'most_common_tags': pd.Series([
                     tag for tags in df['tags'] for tag in tags
                 ]).value_counts().head(5).to_dict(),
@@ -185,38 +203,21 @@ class QuoteScraper:
             logging.error(f"Error analyzing quotes: {e}")
             return {}
 
-def main():
-    """Main execution function with multiple scraping options."""
-    base_url = 'https://quotes.toscrape.com'
-    num_pages = 3
-    scraper = QuoteScraper(base_url)
-    
-    try:
-        logging.info("Starting threaded scraping...")
-        quotes_threaded = scraper.scrape_with_threading(num_pages)
+    def scrape_with_caching(self, num_pages: int) -> List[Quote]:
+        """Scrape multiple pages with caching to avoid redundant requests."""
+        all_quotes = []
+        for page in range(1, num_pages + 1):
+            url = f"{self.base_url}/page/{page}/"
+            if url in self.quotes_cache:
+                logging.info("Loading quotes from cache for URL: %s", url)
+                all_quotes.extend(self.quotes_cache[url])
+            else:
+                quotes = self.scrape_static_quotes(url)
+                self.quotes_cache[url] = quotes
+                all_quotes.extend(quotes)
+                
+            # Introduce random delay between requests to avoid triggering anti-scraping mechanisms
+            time.sleep(random.uniform(1, 3))
         
-        logging.info("Starting async scraping...")
-        quotes_async = asyncio.run(scraper.scrape_multiple_pages_async(num_pages))
-        
-        all_quotes = quotes_threaded + quotes_async
-        df = pd.DataFrame(all_quotes).drop_duplicates(subset=['quote', 'author'])
-        
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        scraper.save_to_multiple_formats(df.to_dict('records'), f'quotes_{timestamp}')
-        
-        analysis = scraper.analyze_quotes(df.to_dict('records'))
-        
-        analysis_path = scraper.output_dir / f'analysis_{timestamp}.json'
-        with open(analysis_path, 'w') as f:
-            json.dump(analysis, f, indent=2)
-            
-        logging.info("Scraping completed successfully")
-        print(f"Total unique quotes collected: {len(df)}")
-        print(f"Analysis saved to {analysis_path}")
-        
-    except Exception as e:
-        logging.error(f"Script failed: {e}")
-        raise
-
-if __name__ == "__main__":
-    main()
+        self.save_cache()  # Save updated cache to disk after scraping
+        return all_quotes

@@ -1,3 +1,5 @@
+import logging 
+
 import numpy as np
 from advanced_graphing import (
     set_config, line_plot, bar_chart, scatter_plot, pie_chart, 
@@ -8,13 +10,13 @@ from advanced_graphing import (
 
 # Print available styles
 available_styles = get_available_styles()
-print("Available styles:", available_styles)
+logging.info("Available styles: %s", available_styles)
 
 # Set global configuration
 preferred_style = 'seaborn-v0_8-darkgrid' if 'seaborn-v0_8-darkgrid' in available_styles else 'ggplot'
 set_config(style=preferred_style, figsize=(12, 8), color_palette='Set2')
 
-# Generate some example data
+# Generate example data
 x = np.linspace(0, 10, 100)
 y = np.sin(x)
 
@@ -41,13 +43,13 @@ data = np.random.rand(10, 10)
 safe_plot(heatmap, data, title="Random Heatmap")
 
 # Subplots
-def plot1():
+def plot_sin():
     line_plot(x, np.sin(x), title="Sin(x)")
 
-def plot2():
+def plot_cos():
     line_plot(x, np.cos(x), title="Cos(x)")
 
-safe_plot(subplot, [plot1, plot2], 1, 2, ["Sin(x)", "Cos(x)"])
+safe_plot(subplot, [plot_sin, plot_cos], 1, 2, ["Sin(x)", "Cos(x)"])
 
 # Data preprocessing
 normalized_data = normalize_data(y)
@@ -71,4 +73,4 @@ safe_plot(annotated_plot)
 data = np.random.normal(0, 1, 1000)
 safe_plot(qq_plot, data, title="Q-Q Plot of Normal Distribution")
 
-print("All plots have been generated and displayed.")
+logging.info("All plots have been generated and displayed.")

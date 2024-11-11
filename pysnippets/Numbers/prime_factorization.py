@@ -7,14 +7,6 @@ def prime_factorization(n: int) -> list:
 
     Returns:
         list: A list of prime factors of n.
-
-    Raises:
-        ValueError: If n is not a positive integer.
-        TypeError: If n is not an integer.
-
-    Example:
-        >>> prime_factorization(28)
-        [2, 2, 7]
     """
     if not isinstance(n, int):
         raise TypeError("Input must be an integer.")

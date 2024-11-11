@@ -14,7 +14,7 @@ class TestFibonacci(unittest.TestCase):
 
     def test_large_input(self):
         # Test case for larger input
-        self.assertEqual(fibonacci(10), 55)
+        self.assertEqual(fibonacci(30), 832040)
 
     def test_negative_input(self):
         # Test case for negative input

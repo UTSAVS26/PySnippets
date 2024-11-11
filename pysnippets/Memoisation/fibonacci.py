@@ -1,10 +1,17 @@
-def fibonacci(n, memo={}):
-    if n in memo:
-        return memo[n]
-    if n <= 1:
-        return n
-    memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo)
-    return memo[n]
+import logging
+from dataclasses import dataclass
+from decorator import memoize
 
-if __name__ == "__main__":
-    print(fibonacci(10))  # Output: 55
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+@dataclass
+class FibonacciCalculator:
+    @staticmethod
+    @memoize
+    def fibonacci(n: int) -> int:
+        if n <= 0:
+            raise ValueError("Input must be a positive integer.")
+        elif n == 1 or n == 2:
+            return 1
+        return FibonacciCalculator.fibonacci(n-1) + FibonacciCalculator.fibonacci(n-2) 

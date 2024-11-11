@@ -9,8 +9,20 @@ def get_env_variable(var_name):
     
     Returns:
         str: The value of the environment variable or None if not found.
+    
+    Raises:
+        TypeError: If var_name is not a string.
+        
+    Examples:
+        >>> get_env_variable('PATH')
+        '/usr/local/bin:/usr/bin:/bin'
+        >>> get_env_variable('NON_EXISTENT_VAR') 
+        None
     """
-    return os.environ.get(var_name)
+    value = os.environ.get(var_name)
+    if value is None:
+        print(f"Warning: Environment variable '{var_name}' not found.")
+    return value
 
 def set_env_variable(var_name, value):
     """
@@ -23,7 +35,11 @@ def set_env_variable(var_name, value):
     Returns:
         None
     """
+    if not value:
+        raise ValueError("Value for environment variable cannot be empty.")
+    
     os.environ[var_name] = value
+    print(f"Environment variable '{var_name}' set to '{value}'.")
 
 def delete_env_variable(var_name):
     """
@@ -35,4 +51,14 @@ def delete_env_variable(var_name):
     Returns:
         None
     """
-    os.environ.pop(var_name, None)
+    if var_name in os.environ:
+        os.environ.pop(var_name)
+        print(f"Environment variable '{var_name}' deleted.")
+    else:
+        print(f"Warning: Environment variable '{var_name}' does not exist.")
+        
+# Example usage
+if __name__ == "__main__":
+    set_env_variable('MY_VAR', 'some_value')
+    print(get_env_variable('MY_VAR'))
+    delete_env_variable('MY_VAR')

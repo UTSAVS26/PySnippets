@@ -1,51 +1,34 @@
 import subprocess
 import psutil
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def start_process(command):
-    """
-    Starts a process using the given shell command.
-    
-    Args:
-        command (str): The shell command to start the process.
-    
-    Returns:
-        subprocess.Popen: The process object.
-    """
-    process = subprocess.Popen(command, shell=True)
-    return process
+    try:
+        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        logging.info(f"Process started with PID: {process.pid}")
+        return process
+    except Exception as e:
+        logging.error(f"Failed to start process: {e}")
+        raise
 
 def stop_process(pid):
-    """
-    Stops a process by its PID.
-    
-    Args:
-        pid (int): The process ID to terminate.
-    
-    Returns:
-        bool: True if the process was terminated, False otherwise.
-    """
     try:
         process = psutil.Process(pid)
         process.terminate()
-        return True
+        process.wait()
+        logging.info(f"Process with PID {pid} terminated")
     except psutil.NoSuchProcess:
-        return False
+        logging.error(f"No such process with PID {pid}")
+        raise
+    except Exception as e:
+        logging.error(f"Failed to stop process with PID {pid}: {e}")
+        raise
 
-def monitor_process(pid):
-    """
-    Monitors the CPU and memory usage of a process by its PID.
-    
-    Args:
-        pid (int): The process ID to monitor.
-    
-    Returns:
-        dict: A dictionary with CPU and memory usage of the process.
-    """
+if __name__ == "__main__":
     try:
-        process = psutil.Process(pid)
-        return {
-            "cpu_usage": process.cpu_percent(interval=1),
-            "memory_usage": process.memory_info().rss
-        }
-    except psutil.NoSuchProcess:
-        return None
+        proc = start_process('echo "Hello World"')
+        stop_process(proc.pid)
+    except Exception as e:
+        print(f"An error occurred: {e}")

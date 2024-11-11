@@ -1,18 +1,28 @@
-def knapsack(weights, values, capacity, n, memo={}):
-    if (n, capacity) in memo:
-        return memo[(n, capacity)]
-    if n == 0 or capacity == 0:
-        return 0
-    if weights[n - 1] > capacity:
-        memo[(n, capacity)] = knapsack(weights, values, capacity, n - 1, memo)
-    else:
-        memo[(n, capacity)] = max(values[n - 1] + knapsack(weights, values, capacity - weights[n - 1], n - 1, memo),
-                                   knapsack(weights, values, capacity, n - 1, memo))
-    return memo[(n, capacity)]
+import logging
+from dataclasses import dataclass
+from decorator import memoize
+from typing import Tuple
 
-if __name__ == "__main__":
-    weights = [1, 2, 3]
-    values = [10, 15, 40]
-    capacity = 6
-    n = len(values)
-    print(knapsack(weights, values, capacity, n))  # Output: 55
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+@dataclass(frozen=True)
+class Item:
+    value: int
+    weight: int
+
+@dataclass
+class KnapsackSolver:
+    @staticmethod
+    @memoize
+    def knapsack(max_weight: int, items: Tuple[Item, ...], n: int) -> int:
+        if n == 0 or max_weight == 0:
+            return 0
+        current_item = items[n-1]
+        if current_item.weight > max_weight:
+            return KnapsackSolver.knapsack(max_weight, items, n-1)
+        else:
+            return max(
+                current_item.value + KnapsackSolver.knapsack(max_weight - current_item.weight, items, n-1),
+                KnapsackSolver.knapsack(max_weight, items, n-1)
+            ) 
