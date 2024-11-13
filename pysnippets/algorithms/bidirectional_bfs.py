@@ -1,26 +1,25 @@
 from collections import deque
-
 def bidirectional_search(graph, start, target):
     '''
     Performs a bidirectional search on an undirected graph and returns the shortest path between two nodes.
-    Simultaneously uses two breadth-first searches (BFS) from the start and target nodes.
+    To do this, it simultaneously uses two breadth-first searches (BFS) from the start and target nodes.
     When the two searches meet, the path is reconstructed by backtracking to the start and target nodes.
-
-    Args:
-        graph (dict): A dictionary representing an undirected graph where keys are node identifiers and values
+        Args:
+            graph (dict): A dictionary representing an undirected graph where keys are node identifiers and values
                       are lists of neighboring nodes.
-        start: The starting node in the graph for the search. Represents a key in the `graph` dictionary.
-        target: The target node in the graph for the search. Represents a key in the `graph` dictionary.
+            start: The starting node in the graph for the search. Represents a key in the `graph` dictionary.
+            target: The target node in the graph for the search. Represents a key in the `graph` dictionary.
 
-    Returns:
-        list: A list representing the shortest path from `start` to `target`. If no path exists, returns `None`.
+        Returns:
+            list: A list representing the shortest path from `start` to `target`. If no path exists, returns `None`.
     '''
     if not isinstance(graph, dict):
-        raise TypeError("Graph should be a dictionary with nodes as keys and lists of neighbors as values.")
+        raise TypeError("Ensure graph is a dictionary with nodes as keys and lists of neighbors as values.")
     if start == target:
         return [start]
     if start not in graph or target not in graph:
         raise ValueError(f"Start ({start}) and target ({target}) nodes must exist in the graph.")
+
 
     queue_start = deque([start])
     queue_target = deque([target])
@@ -32,32 +31,31 @@ def bidirectional_search(graph, start, target):
     parents_target = {target: None}
 
     while queue_start and queue_target:
-        # Perform BFS from the start side
         path = bfs(graph, visited_start, queue_start, parents_start, visited_target)
         if path:
-            return path
-
-        # Perform BFS from the target side
+            path_start = _remake_path_start(parents_start, path)
+            path_target = _remake_path_target(parents_target, path)
+            return path_start + path_target[1:]
         path = bfs(graph, visited_target, queue_target, parents_target, visited_start)
         if path:
-            return path
-
-    return None  # No path found
+            path_start = _remake_path_start(parents_start, path)
+            path_target = _remake_path_target(parents_target, path)
+            return path_start + path_target[1:]
 
 def bfs(graph, visited, queue, parents, other_visited):
     '''
-    Breadth-first search from the current node to seek neighbours and check for intersection with the other search.
+    breadth-first search from the current node to seek neighbours.
 
     Args:
         graph (dict): The graph represented as a dictionary where each key is a node and its value is a list
                       of neighboring nodes.
         visited (set): A set of nodes already visited in this direction of the search.
         queue (deque): The BFS queue holding nodes to explore.
-        parents (dict): A dictionary mapping each visited node to its parent node.
+        parents (dict): A dictionary mapping each visited node to its parent node, can be used to remake paths.
         other_visited (set): A set of nodes visited by the BFS running in the opposite direction.
 
     Returns:
-        list or None: Returns the complete path if an intersection is found, otherwise `None`.
+        The meeting node if the current search intersects with the other search, otherwise `None`.
     '''
     current_node = queue.popleft()
     for neighbor in graph[current_node]:
@@ -67,43 +65,45 @@ def bfs(graph, visited, queue, parents, other_visited):
             queue.append(neighbor)
 
             if neighbor in other_visited:
-                # Reconstruct the path from start to target through the meeting node
-                return reconstruct_path(parents, current_node, neighbor)
+                return neighbor
     return None
 
-def reconstruct_path(parents, start_node, meeting_node):
+def _remake_path_start(parents_start, meeting_node):
     '''
-    Reconstruct the path from the start node to the meeting node by using the parent nodes.
+    Create the path from the start node to the meeting node by using the parent nodes.
 
     Args:
-        parents (dict): A dictionary where each key is a node and the value is the parent node in the path.
-        start_node: The starting node of the search.
+        parents_start (dict): A dictionary where each key is a node and the value
+                              is the parent node in the path from the start node.
+        meeting_node: The node where the start and target nodes meet.
+
+    Returns:
+        list: A list of nodes representing the path from the start node to the meeting node.
+    '''
+    path_start = []
+    node = meeting_node
+    while node is not None:
+        path_start.append(node)
+        node = parents_start[node]
+    path_start.reverse()
+    return path_start
+
+def _remake_path_target(parents_target, meeting_node):
+    '''
+    Create the path from the target node to the meeting node by tracing
+    back through the parent nodes.
+
+    Args:
+        parents_target (dict): A dictionary where each key is a node and the value
+                               is the parent node in the path from the target node.
         meeting_node: The node where the bidirectional search from start and target meets.
 
     Returns:
-        list: A list of nodes representing the path from start_node to the meeting_node.
+        list: A list of nodes representing the path from the meeting node to the target node.
     '''
-    path = []
-    # Backtrack from the meeting node to the start node
     node = meeting_node
+    path_target = []
     while node is not None:
-        path.append(node)
-        node = parents[node]
-    
-    path.reverse()
-    return path
-
-# Example usage:
-if __name__ == "__main__":
-    graph = {
-        'A': ['B', 'C'],
-        'B': ['A', 'D', 'E'],
-        'C': ['A', 'F'],
-        'D': ['B'],
-        'E': ['B', 'F'],
-        'F': ['C', 'E']
-    }
-
-    start, target = 'A', 'F'
-    path = bidirectional_search(graph, start, target)
-    print(f"Shortest path from {start} to {target}: {path}")
+        path_target.append(node)
+        node = parents_target[node]
+    return path_target
