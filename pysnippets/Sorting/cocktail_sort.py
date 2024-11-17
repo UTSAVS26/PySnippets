@@ -12,21 +12,26 @@ class SortItem:
     key: Any
     value: Dict[str, Any]
 
+
 def cocktail_sort(dict_list: List[Dict[str, Any]], key: str, reverse: bool = False) -> List[Dict[str, Any]]:
     try:
         if not isinstance(dict_list, list) or not all(isinstance(item, dict) for item in dict_list):
             logging.error("Input must be a list of dictionaries.")
             raise TypeError("dict_list must be a list of dictionaries.")
-        
+
+        if not isinstance(key, str):
+            logging.error(f"Provided key '{key}' is not a string.")
+            raise TypeError("The key must be a string.")
+
         if not all(key in item for item in dict_list):
             logging.error(f"The key '{key}' is not present in all dictionaries.")
             raise KeyError(f"The key '{key}' is not present in all dictionaries.")
-        
+
         n = len(dict_list)
         start = 0
         end = n - 1
         logging.debug(f"Starting Cocktail Sort with n={n}, key='{key}', reverse={reverse}")
-        
+
         while start < end:
             swapped = False
             new_end = start
@@ -37,11 +42,11 @@ def cocktail_sort(dict_list: List[Dict[str, Any]], key: str, reverse: bool = Fal
                     swapped = True
                     new_end = i
             end = new_end
-            
+
             if not swapped:
                 logging.debug("No swaps made during forward pass, list might be sorted already.")
                 break
-            
+
             swapped = False
             new_start = end
             for i in range(end - 1, start - 1, -1):
@@ -51,7 +56,7 @@ def cocktail_sort(dict_list: List[Dict[str, Any]], key: str, reverse: bool = Fal
                     swapped = True
                     new_start = i
             start = new_start
-            
+
             if not swapped:
                 logging.debug("No swaps made during backward pass, list might be sorted already.")
                 break
