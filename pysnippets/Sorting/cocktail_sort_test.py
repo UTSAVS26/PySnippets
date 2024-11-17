@@ -1,5 +1,5 @@
 import unittest
-from cocktail_sort import cocktail_sort
+from pysnippets.Sorting.cocktail_sort import cocktail_sort
 
 class TestCocktailSort(unittest.TestCase):
     def test_cocktail_sort_ascending(self):
