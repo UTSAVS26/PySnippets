@@ -55,5 +55,39 @@ class TestCocktailSort(unittest.TestCase):
         with self.assertRaises(KeyError):
             cocktail_sort(data, key="age")
 
+    def test_cocktail_sort_mixed_key_types(self):
+        data = [
+            {"name": "Alice", "age": 45},
+            {"name": "Bob", "age": "22"},  # Age is a string here
+            {"name": "Charlie", "age": 33}
+        ]
+        with self.assertRaises(TypeError):
+            cocktail_sort(data, key="age")
+
+    def test_cocktail_sort_duplicate_keys(self):
+        data = [
+            {"name": "Alice", "age": 33},
+            {"name": "Bob", "age": 33},
+            {"name": "Charlie", "age": 45},
+            {"name": "David", "age": 22}
+        ]
+        expected = [
+            {"name": "David", "age": 22},
+            {"name": "Alice", "age": 33},
+            {"name": "Bob", "age": 33},
+            {"name": "Charlie", "age": 45}
+        ]
+        result = cocktail_sort(data, key="age")
+        self.assertEqual(result, expected)
+
+    def test_cocktail_sort_invalid_key_type(self):
+        data = [
+            {"name": "Alice", "age": 45},
+            {"name": "Bob", "age": 22}
+        ]
+        with self.assertRaises(TypeError):
+            cocktail_sort(data, key=123)
+
+
 if __name__ == "__main__":
     unittest.main() 

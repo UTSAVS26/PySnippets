@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28ed6ecb-8d59-47a3-8a05-f6a1187ead1e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pysnippets/Sorting/cocktail_sort_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/pysnippets/Sorting/cocktail_sort_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +41,7 @@
     "Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_descending.executor": "Run",
     "Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_empty.executor": "Run",
     "Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_invalid_key.executor": "Run",
+    "Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_non_dict_input.executor": "Run",
     "Python tests.pytest for test_cocktail_sort.TestCocktailSort.test_sort_by_name_descending.executor": "Run",
     "Python tests.pytest for test_string_manipulation.TestStringManipulation.test_to_lowercase.executor": "Run",
     "Python tests.pytest for test_string_manipulation_added.test_to_decode.executor": "Run",
@@ -66,8 +66,8 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="pytest for cocktail_sort_test.TestCocktailSort" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_invalid_key_type">
+    <configuration name="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_duplicate_keys" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PySnippets" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -81,11 +81,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;cocktail_sort_test.TestCocktailSort&quot;" />
+      <option name="_new_target" value="&quot;cocktail_sort_test.TestCocktailSort.test_cocktail_sort_duplicate_keys&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_ascending" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_empty" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PySnippets" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -99,11 +99,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;cocktail_sort_test.TestCocktailSort.test_cocktail_sort_ascending&quot;" />
+      <option name="_new_target" value="&quot;cocktail_sort_test.TestCocktailSort.test_cocktail_sort_empty&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_descending" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_invalid_key_type" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PySnippets" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -117,11 +117,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;cocktail_sort_test.TestCocktailSort.test_cocktail_sort_descending&quot;" />
+      <option name="_new_target" value="&quot;cocktail_sort_test.TestCocktailSort.test_cocktail_sort_invalid_key_type&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_invalid_key" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_mixed_key_types" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PySnippets" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -135,17 +135,17 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;cocktail_sort_test.TestCocktailSort.test_cocktail_sort_invalid_key&quot;" />
+      <option name="_new_target" value="&quot;cocktail_sort_test.TestCocktailSort.test_cocktail_sort_mixed_key_types&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_string_manipulation.TestStringManipulation.test_to_lowercase" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_non_dict_input" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PySnippets" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tests/strings" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pysnippets/Sorting" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -153,17 +153,17 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_string_manipulation.TestStringManipulation.test_to_lowercase&quot;" />
+      <option name="_new_target" value="&quot;cocktail_sort_test.TestCocktailSort.test_cocktail_sort_non_dict_input&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for cocktail_sort_test.TestCocktailSort" />
-        <item itemvalue="Python tests.pytest for test_string_manipulation.TestStringManipulation.test_to_lowercase" />
-        <item itemvalue="Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_descending" />
-        <item itemvalue="Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_invalid_key" />
-        <item itemvalue="Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_ascending" />
+        <item itemvalue="Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_invalid_key_type" />
+        <item itemvalue="Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_duplicate_keys" />
+        <item itemvalue="Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_mixed_key_types" />
+        <item itemvalue="Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_non_dict_input" />
+        <item itemvalue="Python tests.pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_empty" />
       </list>
     </recent_temporary>
   </component>
@@ -188,12 +188,23 @@
       <workItem from="1730687568313" duration="243000" />
       <workItem from="1730687833490" duration="835000" />
       <workItem from="1730688927392" duration="6055000" />
-      <workItem from="1731864775195" duration="2392000" />
+      <workItem from="1731864775195" duration="2854000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -214,8 +225,9 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PySnippets$pytest_for_cocktail_sort_test_TestCocktailSort_test_cocktail_sort_invalid_key.coverage" NAME="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_invalid_key Coverage Results" MODIFIED="1731865778385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
     <SUITE FILE_PATH="coverage/PySnippets$pytest_for_test_cocktail_sort_TestCocktailSort_test_sort_by_name_descending.coverage" NAME="pytest for test_cocktail_sort.TestCocktailSort.test_sort_by_name_descending Coverage Results" MODIFIED="1730695382527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests/Sorting" />
-    <SUITE FILE_PATH="coverage/PySnippets$pytest_in_cocktail_sort_test_py.coverage" NAME="pytest in cocktail_sort_test.py Coverage Results" MODIFIED="1731867167381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
-    <SUITE FILE_PATH="coverage/PySnippets$pytest_for_cocktail_sort_test_TestCocktailSort_test_cocktail_sort_empty.coverage" NAME="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_empty Coverage Results" MODIFIED="1731865297970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
+    <SUITE FILE_PATH="coverage/PySnippets$pytest_in_cocktail_sort_test_py.coverage" NAME="pytest in cocktail_sort_test.py Coverage Results" MODIFIED="1731867577338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
+    <SUITE FILE_PATH="coverage/PySnippets$pytest_for_cocktail_sort_test_TestCocktailSort_test_cocktail_sort_non_dict_input.coverage" NAME="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_non_dict_input Coverage Results" MODIFIED="1731867612766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
+    <SUITE FILE_PATH="coverage/PySnippets$pytest_for_cocktail_sort_test_TestCocktailSort_test_cocktail_sort_empty.coverage" NAME="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_empty Coverage Results" MODIFIED="1731867602035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
     <SUITE FILE_PATH="coverage/PySnippets$bubble_sort.coverage" NAME="bubble_sort Coverage Results" MODIFIED="1730691032630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
     <SUITE FILE_PATH="coverage/PySnippets$pytest_for_test_string_manipulation_added_test_to_decode.coverage" NAME="pytest for test_string_manipulation_added.test_to_decode Coverage Results" MODIFIED="1730690043206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests/strings" />
     <SUITE FILE_PATH="coverage/PySnippets$pytest_for_cocktail_sort_test_TestCocktailSort.coverage" NAME="pytest for cocktail_sort_test.TestCocktailSort Coverage Results" MODIFIED="1731866374130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
@@ -227,7 +239,7 @@
     <SUITE FILE_PATH="coverage/PySnippets$cocktail_sort.coverage" NAME="cocktail_sort Coverage Results" MODIFIED="1731866935964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
     <SUITE FILE_PATH="coverage/PySnippets$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1731866866841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
     <SUITE FILE_PATH="coverage/PySnippets$pytest_in_test_sort_dict_list_py.coverage" NAME="pytest in test_sort_dict_list.py Coverage Results" MODIFIED="1730692176324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests/Sorting" />
-    <SUITE FILE_PATH="coverage/PySnippets$pytest_for_cocktail_sort_test_TestCocktailSort_test_cocktail_sort_ascending.coverage" NAME="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_ascending Coverage Results" MODIFIED="1731865709455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
+    <SUITE FILE_PATH="coverage/PySnippets$pytest_for_cocktail_sort_test_TestCocktailSort_test_cocktail_sort_ascending.coverage" NAME="pytest for cocktail_sort_test.TestCocktailSort.test_cocktail_sort_ascending Coverage Results" MODIFIED="1731867591111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
     <SUITE FILE_PATH="coverage/PySnippets$pytest_in_test_cocktail_sort_py.coverage" NAME="pytest in test_cocktail_sort.py Coverage Results" MODIFIED="1730695848997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests/Sorting" />
     <SUITE FILE_PATH="coverage/PySnippets$pytest_in_test_all_py.coverage" NAME="pytest in test_all.py Coverage Results" MODIFIED="1731866904324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pysnippets/Sorting" />
   </component>
