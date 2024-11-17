@@ -88,6 +88,12 @@ class TestCocktailSort(unittest.TestCase):
         with self.assertRaises(TypeError):
             cocktail_sort(data, key=123)
 
+    def test_cocktail_sort_case_sensitive_strings(self):
+        data = [{"name": "alice"}, {"name": "Bob"}, {"name": "Charlie"},{"name": "bob"}]
+        expected = [{"name": "Bob"},{"name": "Charlie"}, {"name": "alice"},{"name": "bob"}]
+        result = cocktail_sort(data, key="name", case_sensitive=True)
+        self.assertEqual(result, expected)
+
 
 if __name__ == "__main__":
     unittest.main() 
