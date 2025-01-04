@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Ensure docs directory exists
+        run: |
+          mkdir -p docs
       - name: Configure Git Credentials
         run: |
           git config --global user.name "$GITHUB_ACTOR"
