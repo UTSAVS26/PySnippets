@@ -1,22 +1,20 @@
+import asyncio
+import aiohttp
+import logging
+import random
+import time
+import pickle
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
-import logging
-import json
-from typing import List, Dict, Optional
+from typing import List, Dict, Any
 from datetime import datetime
 from pathlib import Path
-import aiohttp
-import asyncio
-from fake_useragent import UserAgent
-import concurrent.futures
 from retry import retry
+from fake_useragent import UserAgent
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
-from typing import Any
-import time
 import argparse
-import random
-import pickle
 
 logging.basicConfig(
     filename='scraper.log',
@@ -35,7 +33,7 @@ class Quote:
 class QuoteScraper:
     """A class to handle quote scraping with enhanced readability and performance."""
     
-    def __init__(self, base_url: str, output_dir: str = 'output', cache_file: str = 'cache.pkl') -> None:
+    def __init__(self, base_url: str, output_dir: str = 'output', cache_file: str = 'cache.pkl', max_concurrent_requests: int = 5) -> None:
         self.base_url = base_url
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True)
@@ -43,8 +41,9 @@ class QuoteScraper:
         self.session = requests.Session()
         self.ua = UserAgent()
         self.quotes_cache: Dict[str, List[Quote]] = self.load_cache()
+        self.max_concurrent_requests = max_concurrent_requests
         logging.debug("Initialized QuoteScraper with base_url: %s and output_dir: %s", base_url, output_dir)
-        
+
     def load_cache(self) -> Dict[str, List[Quote]]:
         """Load cached data from a file if available."""
         if self.cache_file.exists():
@@ -108,35 +107,37 @@ class QuoteScraper:
             logging.error("Error parsing quote: %s", e)
             return None
 
-    async def scrape_page_async(self, page: int) -> List[Quote]:
+    async def scrape_page_async(self, page: int, semaphore: asyncio.Semaphore) -> List[Quote]:
         """Asynchronously scrape a single page and return a list of Quote objects."""
         url = f"{self.base_url}/page/{page}/"
         logging.info("Asynchronously scraping page: %d", page)
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url, headers=self.get_headers()) as response:
-                    if response.status == 200:
-                        html = await response.text()
-                        soup = BeautifulSoup(html, 'html.parser')
-                        quotes = [self._parse_quote_element(quote) for quote in soup.find_all('div', class_='quote') if self._parse_quote_element(quote)]
-                        logging.info("Scraped %d quotes from page %d", len(quotes), page)
-                        return quotes
-                    else:
-                        logging.error("Error %d on page %d", response.status, page)
-                        return []
-        except aiohttp.ClientError as e:
-            logging.error("Async scraping error on page %d: %s", page, e)
-            return []
+        async with semaphore:
+            try:
+                async with aiohttp.ClientSession() as session:
+                    async with session.get(url, headers=self.get_headers()) as response:
+                        if response.status == 200:
+                            html = await response.text()
+                            soup = BeautifulSoup(html, 'html.parser')
+                            quotes = [self._parse_quote_element(quote) for quote in soup.find_all('div', class_='quote') if self._parse_quote_element(quote)]
+                            logging.info("Scraped %d quotes from page %d", len(quotes), page)
+                            return quotes
+                        else:
+                            logging.error("Error %d on page %d", response.status, page)
+                            return []
+            except aiohttp.ClientError as e:
+                logging.error("Async scraping error on page %d: %s", page, e)
+                return []
 
     async def scrape_multiple_pages_async(self, num_pages: int) -> List[Quote]:
         """Scrape multiple pages asynchronously."""
-        tasks = [self.scrape_page_async(page) for page in range(1, num_pages + 1)]
+        semaphore = asyncio.Semaphore(self.max_concurrent_requests)
+        tasks = [self.scrape_page_async(page, semaphore) for page in range(1, num_pages + 1)]
         results = await asyncio.gather(*tasks)
         return [quote for page_quotes in results for quote in page_quotes]
 
     def scrape_with_threading(self, num_pages: int, max_workers: int = 4) -> List[Quote]:
         """Scrape multiple pages using thread pool."""
-        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
             future_to_url = {
                 executor.submit(self.scrape_static_quotes, 
                               f"{self.base_url}/page/{page}/"): page 
@@ -162,15 +163,18 @@ class QuoteScraper:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             base_filename = f"{base_filename}_{timestamp}"
             
+            # Save CSV
             csv_path = self.output_dir / f"{base_filename}.csv"
             df.to_csv(csv_path, index=False, encoding='utf-8')
             logging.debug("Saved quotes to CSV: %s", csv_path)
     
+            # Save JSON
             json_path = self.output_dir / f"{base_filename}.json"
             with open(json_path, 'w', encoding='utf-8') as f:
                 json.dump([quote.__dict__ for quote in quotes], f, ensure_ascii=False, indent=2)
             logging.debug("Saved quotes to JSON: %s", json_path)
                     
+            # Save Excel
             excel_path = self.output_dir / f"{base_filename}.xlsx"
             df.to_excel(excel_path, index=False)
             logging.debug("Saved quotes to Excel: %s", excel_path)
