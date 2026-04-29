@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Check out the repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Run Duplicate Issue Checker
       uses: ahmadnassri/action-similar-issue@v1
