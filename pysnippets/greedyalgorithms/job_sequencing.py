@@ -33,7 +33,7 @@ def job_sequencing(jobs, n):
     return job_sequence
 
 # Example
-if __name__ == "__main__"
+if __name__ == "__main__":
     n = 4
     jobs = [
         Job('a', 4, 20),
