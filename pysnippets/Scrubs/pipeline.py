@@ -177,7 +177,7 @@ def aggregate_df(df, df_y, cols_flags):
             'y': conversion_measure
         })
         return pd.concat([s1, s2])
-    except:
+    except Exception:
         errors_aggregate_df.append(ckey)
         pass
 
