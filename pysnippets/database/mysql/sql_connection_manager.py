@@ -1,6 +1,3 @@
-import psycopg2
-import mysql.connector
-
 def connect_to_mysql(host, user, password, database):
     """
     Connects to a MySQL database.
@@ -14,6 +11,8 @@ def connect_to_mysql(host, user, password, database):
     Returns:
         mysql.connector.connection.MySQLConnection: Connection object if successful.
     """
+    import mysql.connector
+
     connection = mysql.connector.connect(
         host=host,
         user=user,
@@ -35,6 +34,8 @@ def connect_to_postgresql(host, user, password, database):
     Returns:
         psycopg2.extensions.connection: Connection object if successful.
     """
+    import psycopg2
+
     connection = psycopg2.connect(
         host=host,
         user=user,

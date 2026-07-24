@@ -12,7 +12,7 @@ def update_document(collection, filter_criteria, update_data, multiple=False):
         dict: The update result details.
     """
     if multiple:
-        result = collection.update_many(filter_criteria, {'$set': update_data})
+        result = collection.update_many(filter_criteria, update_data)
     else:
-        result = collection.update_one(filter_criteria, {'$set': update_data})
+        result = collection.update_one(filter_criteria, update_data)
     return result.raw_result
