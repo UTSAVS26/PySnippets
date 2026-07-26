@@ -68,16 +68,24 @@ class AESCipher:
 
         Returns:
             bytes: The unpadded data.
+
+        Raises:
+            ValueError: If padding is invalid.
         """
         pad_length = data[-1]
+        if pad_length < 1 or pad_length > AES.block_size:
+            raise ValueError("Invalid padding length")
+        if data[-pad_length:] != bytes([pad_length] * pad_length):
+            raise ValueError("Invalid padding bytes")
         return data[:-pad_length]
 
-    def encrypt(self, data: bytes) -> str:
+    def encrypt(self, data: bytes, salt: bytes = b"") -> str:
         """
         Encrypts the given data using AES encryption.
 
         Args:
             data (bytes): The data to encrypt.
+            salt (bytes): Optional salt to prepend for key derivation.
 
         Returns:
             str: The encrypted data encoded in base64.
@@ -86,22 +94,23 @@ class AESCipher:
         iv = get_random_bytes(AES.block_size)
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
         encrypted_data = cipher.encrypt(data)
-        return base64.b64encode(iv + encrypted_data).decode("utf-8")
+        return base64.b64encode(salt + iv + encrypted_data).decode("utf-8")
 
-    def decrypt(self, enc_data: str) -> str:
+    def decrypt(self, enc_data: str, salt_len: int = 0) -> str:
         """
         Decrypts the given encrypted data using AES decryption.
 
         Args:
             enc_data (str): The encrypted data encoded in base64.
+            salt_len (int): Length of the salt prepended to the data.
 
         Returns:
             str: The decrypted data.
         """
         enc_data = base64.b64decode(enc_data)
-        iv = enc_data[:AES.block_size]
+        iv = enc_data[salt_len:salt_len + AES.block_size]
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
-        data = cipher.decrypt(enc_data[AES.block_size:])
+        data = cipher.decrypt(enc_data[salt_len + AES.block_size:])
         return self.unpad(data).decode("utf-8")
 
     def encrypt_file(self, file_path: str) -> EncryptionResult:
@@ -193,20 +202,34 @@ def main() -> None:
     The main function that initializes the AESCipher and encrypts/decrypts specified files and folders.
     """
     passphrase = input("Enter a passphrase for encryption/decryption: ")
-    salt = get_random_bytes(16)  # This should be securely stored to decrypt later
-    key = AESCipher.generate_key(passphrase, salt)
-    cipher = AESCipher(key)
 
     operation = input("Would you like to (e)ncrypt or (d)ecrypt? ").strip().lower()
     
     if operation == 'e':
+        salt = get_random_bytes(16)
+        key = AESCipher.generate_key(passphrase, salt)
+        cipher = AESCipher(key)
         file_path = input("Enter the path to the file to encrypt: ")
         folder_path = input("Enter the path to the folder to encrypt (or leave blank): ")
         cipher.encrypt_file(file_path)
+        # Save salt alongside encrypted data
+        salt_path = file_path + ".salt"
+        with open(salt_path, "wb") as f:
+            f.write(salt)
+        logging.info(f"Salt saved to {salt_path} — keep this file to decrypt later")
         if folder_path:
             cipher.encrypt_folder(folder_path)
     elif operation == 'd':
         file_path = input("Enter the path to the file to decrypt: ")
+        salt_path = file_path + ".salt"
+        try:
+            with open(salt_path, "rb") as f:
+                salt = f.read()
+        except FileNotFoundError:
+            logging.error(f"Salt file {salt_path} not found. Cannot decrypt without the original salt.")
+            return
+        key = AESCipher.generate_key(passphrase, salt)
+        cipher = AESCipher(key)
         folder_path = input("Enter the path to the folder to decrypt (or leave blank): ")
         cipher.decrypt_file(file_path)
         if folder_path:
