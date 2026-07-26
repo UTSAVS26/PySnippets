@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import logging
 
-from exceptions import DivisionByZeroError
+from .exceptions import DivisionByZeroError
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
