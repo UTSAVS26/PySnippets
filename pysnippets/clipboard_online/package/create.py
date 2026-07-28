@@ -36,7 +36,7 @@ def get_clipboard_content() -> str:
 async def create(url_id, lifetime="60s"):
     text = get_clipboard_content()
     base_url = "https://cl1p.net"
-    convert_lifetime_to_seconds(lifetime)
+    _ = convert_lifetime_to_seconds(lifetime)
 
     async def create_clip():
         url = f"{base_url}/{url_id}"
