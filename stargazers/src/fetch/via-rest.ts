@@ -40,10 +40,10 @@ export const fetchPageViaRest = async ({
     return fetchPageViaRest({ repoOrg, repoName, page, abortSignal });
   }
 
-  const json = (await res.json()) as GitHubApiResponse;
   if (!res.ok) {
     throw new Error(`HTTP ${res.status} ${res.statusText} (${url})`);
   }
+  const json = (await res.json()) as GitHubApiResponse;
   return json.map((item) => {
     return {
       avatarUrl: item.user.avatar_url,
